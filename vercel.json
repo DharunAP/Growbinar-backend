@@ -1,13 +1,13 @@
 {
     "builds": [{
-        "src": "Growbinar-backend/wsgi.py",
+        "src": "Growbinar_backend/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "Growbinar-backend/wsgi.py"
+            "dest": "Growbinar_backend/wsgi.py"
         }
     ]
 }
