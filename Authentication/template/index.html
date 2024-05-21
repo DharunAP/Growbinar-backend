@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify your email address</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #aadddd;
+            margin: 0;
+            padding: 2%;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #F6F6F6;
+            padding: 20px 35px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            /* background-color: #fff9f9; */
+        }
+        .header img {
+            width: 15%;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #333333;
+        }
+        .content {
+            text-align: center;
+            background-color: #ffffff;
+        }
+        .content img {
+            width: 100%;
+            /* margin: 20px 0; */
+        }
+        .content h2 {
+            font-size: 20px;
+            color: #333333;
+        }
+        .content p {
+            font-size: 16px;
+            color: #555555;
+            font-weight: 600;
+            padding: 10px;
+            /* margin: 10px 0;S */
+        }
+        .content a{
+            text-decoration: none;
+        }
+        .button {
+            padding: 20px 0;
+            background-color: #ffffff;
+            /* background-color: red; */
+        }
+        .button a {
+            background-color: #5a67d8;   
+            color: #ffffff;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            
+            background-color: #ffffff;
+            color: #aaaaaa;
+        }
+        .footer a {
+            text-decoration: none;
+            color: #5a67d8;
+        }
+        .social-icons img {
+            width: 5%;
+            margin: 0 2%;
+        }
+        /* Media Queries for Mobile Responsiveness */
+        @media only screen and (max-width: 600px) {
+            body{
+                padding: 0;
+            }
+            .container {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+            .content h2 {
+                font-size: 18px;
+            }
+            .content p {
+                font-size: 14px;
+            }
+            .button a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+        <div class="header">
+            <!-- <img src="{{BASE_URL}}{% static 'images/growbinar_short_logo.png' %}" alt="Growbinar Logo"> -->
+            <!-- <h1>Growbinar</h1> -->
+            <img src="https://drive.google.com/thumbnail?id=1--KTLqvUYKK_LXMP0I8Mn_jXIuSAGkBN" alt="Growbinar Logo">
+        </div>
+        <div class="content">
+            <img src="{% static 'images/Mailbox.png' %}" alt="Mailbox">
+            <h2>Verify your email address</h2>
+            <p>Welcome to <a href="https://www.growbinar.com" style="color: #5a67d8;">Growbinar.com</a></p>
+            <p>Please click the button below to confirm your email address and activate your account.</p>
+            <div class="button">
+                <a href="{{BASE_URL}}{{verifyMail}}">CONFIRM EMAIL</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>If you received this in error, simply ignore this email and do not click the button.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/company/growbinar"><img src="{% static 'images/linkedin_logo.png' %}" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/growbinar"><img src="{% static 'images/insta_logo.png' %}" alt="Instagram"></a>
+                <a href="https://twitter.com/growbinar"><img src="{% static 'images/x_logo.png' %}" alt="Twitter"></a>
+            </div>
+            <!-- <img src="{% static 'images/Grow_logo_full.png' %}" alt="Growbinar Logo" style="width: 35%;;padding-top: 2%;"> -->
+            <img src="https://growbinar.com/static/media/Grow_logo_full.cd7f0b84bdc0b027eb3e.png" alt="Growbinar Logo" style="width: 35%;;padding-top: 2%;">
+            <p>&copy; 2024 Growbinar. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+ERROR 2024-05-21 21:45:56,952 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'urlsafe_base64_encode' is not defined
+ERROR 2024-05-21 21:47:26,638 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'urlsafe_base64_encode' is not defined
+ERROR 2024-05-21 21:49:29,739 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'encryptData' is not defined
+ERROR 2024-05-21 21:50:05,025 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'x' is not defined
+ERROR 2024-05-21 21:52:58,674 Authentication assets.py 32 MentorSignup message - Error creating a mentorCould not parse the remainder: '-mail' from 'verify-mail'
+ERROR 2024-05-21 21:56:28,156 Authentication assets.py 32 MentorSignup message - Error creating a mentorCould not parse the remainder: ' + verifyMail' from 'BASE_URL + verifyMail'
+ERROR 2024-05-21 22:11:56,983 Authentication assets.py 33 user_login message - Error while Login  JSON parse error - Expecting ':' delimiter: line 4 column 17 (char 100)
+ERROR 2024-05-21 22:12:27,689 Authentication assets.py 33 user_login message - Invalid Credentials
+ERROR 2024-05-21 22:13:25,250 Authentication assets.py 33 user_login message - Error while Login  name 'get_or_create_jwt' is not defined

@@ -1,0 +1,62 @@
+DEBUG 2024-05-21 21:45:56,107 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:45:56,942 Authentication assets.py 29 MentorSignup message - signup successfull
+ERROR 2024-05-21 21:45:56,952 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'urlsafe_base64_encode' is not defined
+DEBUG 2024-05-21 21:46:50,931 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+WARNING 2024-05-21 21:46:50,993 Authentication assets.py 31 MentorSignup message - Email already exists
+DEBUG 2024-05-21 21:47:25,627 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:47:26,618 Authentication assets.py 29 MentorSignup message - signup successfull
+ERROR 2024-05-21 21:47:26,638 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'urlsafe_base64_encode' is not defined
+DEBUG 2024-05-21 21:49:28,758 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:49:29,721 Authentication assets.py 29 MentorSignup message - signup successfull
+ERROR 2024-05-21 21:49:29,739 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'encryptData' is not defined
+DEBUG 2024-05-21 21:50:03,897 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:50:04,786 Authentication assets.py 29 MentorSignup message - signup successfull
+ERROR 2024-05-21 21:50:05,025 Authentication assets.py 33 MentorSignup message - Error creating a mentorname 'x' is not defined
+DEBUG 2024-05-21 21:50:45,854 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:50:46,751 Authentication assets.py 28 MentorSignup message - signup successfull
+DEBUG 2024-05-21 21:52:57,787 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:52:58,640 Authentication assets.py 28 MentorSignup message - signup successfull
+ERROR 2024-05-21 21:52:58,674 Authentication assets.py 32 MentorSignup message - Error creating a mentorCould not parse the remainder: '-mail' from 'verify-mail'
+DEBUG 2024-05-21 21:53:43,570 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:53:44,475 Authentication assets.py 28 MentorSignup message - signup successfull
+DEBUG 2024-05-21 21:56:13,147 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+WARNING 2024-05-21 21:56:13,345 Authentication assets.py 30 MentorSignup message - Email already exists
+DEBUG 2024-05-21 21:56:27,636 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:56:28,069 Authentication assets.py 28 MentorSignup message - signup successfull
+ERROR 2024-05-21 21:56:28,156 Authentication assets.py 32 MentorSignup message - Error creating a mentorCould not parse the remainder: ' + verifyMail' from 'BASE_URL + verifyMail'
+DEBUG 2024-05-21 21:57:06,095 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:57:06,932 Authentication assets.py 28 MentorSignup message - signup successfull
+DEBUG 2024-05-21 21:58:12,210 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+WARNING 2024-05-21 21:58:12,368 Authentication assets.py 30 MentorSignup message - Email already exists
+DEBUG 2024-05-21 21:58:28,377 Authentication assets.py 28 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-21 21:58:29,485 Authentication assets.py 28 MentorSignup message - signup successfull
+DEBUG 2024-05-21 21:59:46,826 Authentication assets.py 29 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-05-21 21:59:46,938 Authentication assets.py 29 VerifyMentor message - Email verification sucess for 43
+DEBUG 2024-05-21 22:00:11,893 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-21 22:00:11,993 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-21 22:00:39,298 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-21 22:00:40,183 Authentication assets.py 29 MenteeSignup message - signup successfull
+DEBUG 2024-05-21 22:00:57,771 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+WARNING 2024-05-21 22:00:57,841 Authentication assets.py 31 getMenteeDetails message - Email not verified
+DEBUG 2024-05-21 22:01:08,836 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-05-21 22:01:08,911 Authentication assets.py 29 VerifyMentee message - Email verification sucess for 25
+DEBUG 2024-05-21 22:01:14,140 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-21 22:01:14,310 Authentication assets.py 29 getMenteeDetails message - success
+DEBUG 2024-05-21 22:01:21,950 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-21 22:01:22,732 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-21 22:03:42,927 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-05-21 22:03:43,003 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-05-21 22:11:56,972 Authentication assets.py 29 user_login message - Entered User-Login 
+ERROR 2024-05-21 22:11:56,983 Authentication assets.py 33 user_login message - Error while Login  JSON parse error - Expecting ':' delimiter: line 4 column 17 (char 100)
+DEBUG 2024-05-21 22:12:27,578 Authentication assets.py 29 user_login message - Entered User-Login 
+DEBUG 2024-05-21 22:12:27,677 Authentication assets.py 29 user_login message - User is Mentor
+ERROR 2024-05-21 22:12:27,689 Authentication assets.py 33 user_login message - Invalid Credentials
+DEBUG 2024-05-21 22:13:24,796 Authentication assets.py 29 user_login message - Entered User-Login 
+DEBUG 2024-05-21 22:13:24,880 Authentication assets.py 29 user_login message - User is Mentor
+ERROR 2024-05-21 22:13:25,250 Authentication assets.py 33 user_login message - Error while Login  name 'get_or_create_jwt' is not defined
+DEBUG 2024-05-21 22:19:58,577 Authentication assets.py 29 user_login message - Entered User-Login 
+DEBUG 2024-05-21 22:19:58,677 Authentication assets.py 29 user_login message - User is Mentor
+DEBUG 2024-05-21 22:19:59,596 Authentication assets.py 29 user_login message - User Logged In
+DEBUG 2024-05-21 22:22:50,108 Authentication assets.py 29 user_login message - Entered User-Login 
+DEBUG 2024-05-21 22:22:50,181 Authentication assets.py 29 user_login message - User is Mentor
+DEBUG 2024-05-21 22:22:50,541 Authentication assets.py 29 user_login message - User Logged In
