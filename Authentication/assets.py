@@ -15,7 +15,7 @@ def sendVerificationMail(url, email_id):
         subject="Verify your mail by clicking the below link",  # subject in the sending mail
         from_email="admin@growbinar.com",                       # sender mail
         html_message= template,                                 # html template
-        message='http://localhost:5000/'+url,                   # message in the mail
+        message='https://growbinar-backend-4.onrender.com/'+url,# message in the mail
         recipient_list=[email_id,]                              # recipient mail id
     )
     print("mail sent")
