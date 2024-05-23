@@ -10,7 +10,7 @@ urlpatterns = [
     path('',include('Authentication.urls')),
     path('profile/',include('profile_details.urls')),
     path('sessions/',include('Sessions.urls'))
-] + static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 def handle404(request, *args, **kwargs):
