@@ -11,6 +11,26 @@ LIST_MENTORS = 'listMentors/'
 MENTOR_PROFILE = 'mentors/'
 MENTEE_PROFILE = 'mentees/<str:id>/'
 CREATE_AVAILABLE_SESSIONS = 'availableSessions/'
+BOOK_SESSION = 'bookSession/'
+SESSION_CREATION = 'sessionFeedback/'
+
+userLogin = 'login/'
+
+upcomingSesions = 'upcoming-sessions/'
+
+mentorDetails = 'mentor-details/<str:id>/'
+
+userLogout = 'logout/'
+
+newsession = 'new-sessions/<str:mentee_id>'
+
+availablesession = 'available-sessions/'
+
+cancelsession = 'cancel-sessions/'
+
+listMentee = 'Mentee-listing/'
+
+Query = 'Query/'
 
 # '/mentors/234'  get method -> return details of the mentor 234
 # '/mentors/' get method return -> all mentors

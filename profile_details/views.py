@@ -1,9 +1,10 @@
-from static.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session
+from static.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session,Testimonial
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS
+from static.message_constants import STATUSES,INVALID_CREDENTIALS,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS
 from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
+from .serializers import TestimonialSerializer
 
 from datetime import datetime
 
@@ -110,4 +111,243 @@ def listMentorsOfMentee(request):
         log("Error fetching mentor details"+str(e),1)
         return Response({"message":ERROR_SENDING_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
+@api_view(['GET','POST'])
+def testimonials(request):
+    log('Entered testimonials endpoint',1)
+    if(request.method=='GET'):
+        try:
+            testimonial_data = Testimonial.objects.all()
+            data = []
+            for index in testimonial_data:
+                value = dict()
+                value['mentor'] = {'name':index.mentor.first_name+" "+index.mentor.last_name,'role':index.mentor.designation}
+                value['mentee'] = {'name':index.mentee.first_name+" "+index.mentee.last_name,'role':index.mentee.role}
+                value['content'] = index.content
+                data.append(value)
+            return Response({'data':data},status=STATUSES['SUCCESS'])
+        except Exception as e:
+            print(e)
+            return Response({'message':'Error getting testimonials'},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    try:
+        # request.data['mentor'] = r
+        serializer = TestimonialSerializer(data=request.data)
+        if(serializer.is_valid()):
+            instance = Testimonial.objects.create(
+                mentor_id= request.data['mentor'],
+                mentee_id= request.data['mentee'],
+                content= request.data['content']
+            )
+            instance.save()
+            return Response({'message':'Testimonial created sucessfully.'},status=STATUSES['SUCCESS'])
+        print(serializer.errors)
+        return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
+    except Exception as e:
+        print(e)
+        return Response({'message':'Error creating testimonial'},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
+
+
+
+# Guhan code
+
+from static.models import Mentor,Experience,AvailabeSession,Mentee,UserQuery
+from rest_framework.decorators import api_view,permission_classes
+from static.message_constants import STATUSES,USER_NOT_FOUND,FETCHING_ERROR,MENTOR_DETAILS,SESSION_EXISTS,QUERY_SUBMITTED,QUERY_EMPTY
+from .assets import log
+from rest_framework.decorators import api_view
+from django.http import JsonResponse
+from static.cipher import decryptData,encryptData
+from Authentication.jwtVerification import validate_token
+from datetime import datetime
+from Authentication.jwtVerification import validate_token
+from rest_framework.permissions import IsAuthenticated
+import pyshorteners
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def mentor_details(request,id):
+
+    validation_response = validate_token(request)  # to validate the token
+    if validation_response is not None:
+        return validation_response
+
+    mentor_id = decryptData(id) # decoding of the id 
+    print('mentor - id',mentor_id,'----')
+
+    log("Entered mentor details",1)
+    print("Request in mentor_details")
+
+    try:
+        print(request.data)
+
+        
+        mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")[0]
+        availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
+        print('----avai-----',availabeSession)
+        # print(mentor.is_email_verified)
+        log("mentor email verified",1)
+        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id};")[0]
+        # availabeSessions_list = list(availabeSession.values('mentor','availableSlots'))
+
+        data = {
+            "name":mentor.first_name+" "+mentor.last_name,
+            "location":mentor.city,
+            "organisation" : mentor.company,
+            "languages" : mentor.languages,
+            "experience" : {
+                'role' : experience.role,
+                'date' : {
+                    'startDate' : experience.from_duration,
+                    'endDate' : experience.to_duration
+                }
+            },
+            "overview":mentor.bio,
+            'background' : {
+                'expertise' : mentor.areas_of_expertise,
+                'fluency' : mentor.languages
+            },
+            "Available-Sessions" :availabeSession.availableSlots
+        }
+        # background languages experience
+        log("Mentor details provided sucessfully",1)
+        return JsonResponse({'message' : MENTOR_DETAILS,
+                             'data':data},status=STATUSES['SUCCESS'])
+    except Exception as e:
+        print(e)
+        log('Error while fetching details',3)
+        return JsonResponse({'message' : FETCHING_ERROR},status = STATUSES['INTERNAL_SERVER_ERROR'])
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createAvailableSession(request):
+    log('Entered create available session endpoint ',1)
+    try:
+        print(decryptData(request.data['id']),"---------")
+
+        #for verifying the token
+        validation_response = validate_token(request)
+        if validation_response is not None:
+            return validation_response
+
+
+        availabeSession = AvailabeSession.objects.filter(mentor_id = decryptData(request.data['id']))
+        print(availabeSession)
+        if availabeSession.exists():
+            # update code
+            conflictingSlots = []
+            newSlots = availabeSession[0].availableSlots
+            # checking weather the slot already exists in the table
+            for slot in request.data['availableSlots']:
+                print(slot)
+                if slot in newSlots:
+                    conflictingSlots.append(slot)
+                    continue
+                # adding the slot to the array
+                date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
+                from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
+                to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
+                newSlots.append({
+                    "date":str(date),
+                    "from":str(from_time),
+                    "to":str(to_time)
+                })
+            
+            # adding the new slots to the table
+            availabeSession.update(availableSlots = newSlots)
+            log('New slots crated sucessfully ',1)
+            return JsonResponse({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
+
+        # creating new available session for the mentor
+        print('hi')
+        slots = []
+        for slot in request.data['availableSlots']:
+            date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
+            from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
+            to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
+            slots.append({
+                "date":str(date),
+                "from":str(from_time),
+                "to":str(to_time)
+            })
+        print(slots)
+        instance = AvailabeSession.objects.create(
+            mentor_id = decryptData(request.data['id']),
+            availableSlots = slots
+        )
+        instance.save()
+        log("New session created sucessfully ",1)
+        return JsonResponse({"message":"Successfully created","slots":slots},status=STATUSES['SUCCESS'])
+    except Exception as e:
+        print(e)
+        log("Error in creating available session "+str(e),3)
+        return JsonResponse({'message':""},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    
+
+@api_view(['GET'])
+def listAllMentees(request):
+    log("Entered list Mentee",1)
+    try:
+        # getting required fields from the mentor table for each mentor
+        mentee = Mentee.objects.raw("SELECT id,first_name,last_name,country,city,phone_number,email_id,profile_picture_url,areas_of_interest FROM static_mentee;")
+        data = []
+        print('hi',len(mentee))
+        # iterating through the query set to convert each instance to an proper list 
+        for mentee in mentee:
+            if(mentee.first_name==None):
+                continue
+            value = dict()
+            value['mentee_id']=encryptData(mentee.id)
+            value['profile_picture_url']=pyshorteners.Shortener().tinyurl.short(mentee.profile_picture_url) # implementing url shortner
+            value['name'] = mentee.first_name + " " + mentee.last_name
+            value['role'] = mentee.role
+            value['email-id'] = mentee.email_id
+            value['organization'] = mentee.organization
+            value['areas_of_interest'] = mentee.areas_of_interest
+            value['country'] = mentee.country
+            value['date_of_birth'] = mentee.date_of_birth
+            value['city'] = mentee.city
+            
+            data.append(value)
+
+        log("Mentees listed successfully",1)
+        return JsonResponse({'message':'Mentee List Displayed',
+                             'data':data},status=STATUSES['SUCCESS'])
+    except Exception as e:
+        log("Error in list mentors"+str(e), 3)
+        return JsonResponse({'message':'error'},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    
+
+@api_view(['POST'])
+def userQuery (request):
+    print('In query View')
+    try :
+        log('Enter query form',1)
+        name = request.data['name']
+        from_email = request.data['email']
+        to_email = 'growbinar@gmail.com'
+        phone_number = request.data['phone_number']
+        query = request.data['query']
+        log('Got the inputs',1)
+        if query :
+            user_query = UserQuery(
+                name=name,
+                from_email=from_email,
+                to_email=to_email,
+                phone_number=phone_number,
+                query=query
+            )
+
+            user_query.save()
+            log('Query saved and returned',1)
+            return JsonResponse({'message': QUERY_SUBMITTED}, status=STATUSES['SUCCESS'])
+
+        else :
+            log('Query filed is missing',2)
+            return JsonResponse({'message': QUERY_EMPTY}, status=STATUSES['SUCCESS'])
+
+    except Exception as ex :
+        log('Error in query',3)
+        return JsonResponse({'message' : 'Some Error Occured',
+                             'Error' : str(ex)},status = STATUSES['INTERNAL_SERVER_ERROR'])

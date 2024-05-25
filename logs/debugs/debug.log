@@ -60,3 +60,15 @@ DEBUG 2024-05-21 22:19:59,596 Authentication assets.py 29 user_login message - U
 DEBUG 2024-05-21 22:22:50,108 Authentication assets.py 29 user_login message - Entered User-Login 
 DEBUG 2024-05-21 22:22:50,181 Authentication assets.py 29 user_login message - User is Mentor
 DEBUG 2024-05-21 22:22:50,541 Authentication assets.py 29 user_login message - User Logged In
+DEBUG 2024-05-25 18:59:39,053 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 18:59:56,037 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:00:49,226 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:01:19,179 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:01:45,182 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:02:20,342 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:04:23,414 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:04:52,404 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:06:12,387 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:06:35,021 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:09:15,212 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-25 19:09:59,722 profile_details assets.py 15 testimonials message - Entered testimonials endpoint

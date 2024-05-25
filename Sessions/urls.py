@@ -4,6 +4,10 @@ from static import routes      # importing url routes from the static files in t
 
 urlpatterns = [
     path(routes.CREATE_AVAILABLE_SESSIONS, createAvalableSession, name='create-available-sessions'),
-    path('bookSession/',bookSession,name='book-session'),
-    path('sessionFeedback/',sessionFeedback,name='session-feedback')
+    path(routes.BOOK_SESSION,bookSession,name='book-session'),
+    path(routes.SESSION_CREATION,sessionFeedback,name='session-feedback'),
+    path(routes.upcomingSesions,upcoming_sessions,name='upcomming-sessions'),
+    path(routes.newsession, new_sessions_booking, name = 'new-session-bboking'),
+    path(routes.cancelsession, session_cancellation, name = 'cancel-session')
+
 ]

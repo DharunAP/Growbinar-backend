@@ -76,6 +76,65 @@ EMAIL_NOT_VERIFIFED = 'Verify email before entering user details'
 
 SUCESS = "Details sent sucessfully"
 
+INVALID_ROLE = 'Invalid Role'
+
+USER_NOT_FOUND = 'User not found'
+
+LOGIN_SUCCESS = 'Logged In Successfully'
+
+INVALID_CREDENTIALS = 'Invalid Credentials'
+
+LOGIN_ERROR = "Error while Login"
+
+FETCHING_ERROR = 'Error while fetching the details'
+
+MENTOR_DETAILS = "Mentor Details Displayed Successfully"
+
+TOKEN_TIMEDOUT = "JWT Token has Expired"
+
+INVALID_TOKEN = "The Token does not exist"
+
+VALID_TOKEN = "Valid Token"
+
+SESSION_UNAVAILABLE = "Already Session available in this interval"
+
+SESSION_EXISTS = "The required session had exist"
+
+INVALID_DATE = 'The Entered date is Invalid'
+
+INVALID_TIME = 'The Entered time is Invalid'
+
+SAME_TIME = 'Both Start Time and End Time are same'
+
+NEW_SESSION = "New Session Created Successfully"
+
+BOOKED_SESSION = "The Session had Booked Already"
+
+WRONG_TIME = "Mentor Not available on that Time"
+
+UNAVAILABLE_SLOTS = "No free Slots Available"
+
+NO_TIME_SESSION = "Session cannot be cancelled due to low time"
+
+CANCELLATION_SUCCESS = "Session has been cancelled successfully"
+
+NO_ACCESS_TO_CANCEL = "User have no access to cancel the session"
+
+QUERY_SUBMITTED = "Query Submitted successfully !"
+
+QUERY_EMPTY = 'Query Field is Empty'
+
+MEET_TYPE = {
+    101 : "One to One",
+    102 : "Group"
+}
+
+MEET_STATUS = {
+    201 : 'Upcoming',
+    202 : 'Completed',
+    203 : 'Pending Request'
+}
+
 STATUSES  = {
     'SUCCESS':200,
     'BAD_REQUEST':400,

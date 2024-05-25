@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from static.models import Mentee,Mentor,Experience
 from rest_framework.decorators import api_view
 from static.cipher import encryptData,decryptData
@@ -249,7 +250,7 @@ def getMenteeDetails(request):
 
 
 def verifyMailSampleTemplate(request):
-    return render(request, 'template/index.html',{'BASE_URL':'http://localhost:5000/'})
+    return render(request, 'template/index.html',{'BASE_URL':'http://localhost:8000/'})
 
 
 

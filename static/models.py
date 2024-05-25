@@ -102,3 +102,17 @@ class SessionFeedback(models.Model):
     description = models.TextField()
     ratings = models.IntegerField()
     created_at = models.DateTimeField(null=False, auto_now_add=True)
+
+class UserQuery(models.Model) :
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100,null=True,blank=True)
+    from_email = models.EmailField()
+    to_email = models.EmailField()
+    phone_number = models.CharField(max_length=15,null=True,blank=True)
+    query = models.CharField(max_length=500,null=True,blank=True)
+
+class Testimonial(models.Model):
+    id = models.AutoField(primary_key=True)
+    mentor = models.ForeignKey(Mentor,on_delete=models.CASCADE)
+    mentee = models.ForeignKey(Mentee,on_delete=models.CASCADE)
+    content = models.TextField()
