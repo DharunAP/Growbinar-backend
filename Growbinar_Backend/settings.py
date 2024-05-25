@@ -47,10 +47,9 @@ REST_FRAMEWORK = {
 }
 
 # Django project settings.py
-
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),    # timne for access token to expire
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),      # time for refrewsh token to get expire
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),    # timne for access token to expire
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),      # time for refrewsh token to get expire
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "UPDATE_LAST_LOGIN": False,
@@ -64,7 +63,7 @@ SIMPLE_JWT = {
     "JWK_URL": None,
     "LEEWAY": 0,
 
-    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_TYPES": "Bearer",
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
@@ -189,29 +188,29 @@ WSGI_APPLICATION = 'Growbinar_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'GrowbinarDB',
-        'USER':'Django',
-        'PASSWORD':'django',
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'verceldb',
-#         'USER': 'default',
-#         'PASSWORD': 'pJihmtHYq91v',
-#         'HOST': 'ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech',
-#         'PORT': '5432',  # Default PostgreSQL port is 5432
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#             'connect_timeout': 15,
-#         }
+#         'NAME':'GrowbinarDB',
+#         'USER':'Django',
+#         'PASSWORD':'django',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'pJihmtHYq91v',
+        'HOST': 'ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech',
+        'PORT': '5432',  # Default PostgreSQL port is 5432
+        'OPTIONS': {
+            'sslmode': 'require',
+            'connect_timeout': 15,
+        }
+    }
+}
 
 
 # Email Settings

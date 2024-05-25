@@ -164,14 +164,15 @@ from rest_framework.permissions import IsAuthenticated
 import pyshorteners
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def mentor_details(request,id):
 
     validation_response = validate_token(request)  # to validate the token
     if validation_response is not None:
         return validation_response
 
-    mentor_id = decryptData(id) # decoding of the id 
+    # mentor_id = decryptData(id) # decoding of the id 
+    mentor_id = id
     print('mentor - id',mentor_id,'----')
 
     log("Entered mentor details",1)

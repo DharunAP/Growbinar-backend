@@ -7,3 +7,35 @@ ERROR 2024-05-21 21:56:28,156 Authentication assets.py 32 MentorSignup message -
 ERROR 2024-05-21 22:11:56,983 Authentication assets.py 33 user_login message - Error while Login  JSON parse error - Expecting ':' delimiter: line 4 column 17 (char 100)
 ERROR 2024-05-21 22:12:27,689 Authentication assets.py 33 user_login message - Invalid Credentials
 ERROR 2024-05-21 22:13:25,250 Authentication assets.py 33 user_login message - Error while Login  name 'get_or_create_jwt' is not defined
+ERROR 2024-05-26 00:11:16,594 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-26 00:27:58,305 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'QuerySet' object has no attribute 'user_type'
+ERROR 2024-05-26 00:37:08,649 Authentication assets.py 33 MenteeSignup message - Error creating a mentee[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+ERROR 2024-05-26 00:38:08,640 Authentication assets.py 33 MenteeSignup message - Error creating a mentee[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+ERROR 2024-05-26 00:59:04,409 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - name 'userDetails' is not defined
+ERROR 2024-05-26 01:11:35,965 Authentication assets.py 33 user_login message - Error while Login  unsupported operand type(s) for +: 'NoneType' and 'NoneType'
+ERROR 2024-05-26 01:16:13,425 Authentication assets.py 33 user_login message - Invalid Credentials
+ERROR 2024-05-26 01:31:40,542 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-05-26 01:32:44,728 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-05-26 01:32:53,369 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-05-26 01:33:30,711 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - name 'userDetails' is not defined
+ERROR 2024-05-26 01:34:06,572 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'QuerySet' object has no attribute 'user_type'
+ERROR 2024-05-26 01:35:15,584 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'QuerySet' object has no attribute 'user_type'
+ERROR 2024-05-26 01:36:05,287 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'QuerySet' object has no attribute 'jwt'
+ERROR 2024-05-26 01:36:27,524 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-26 01:37:14,917 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-26 01:37:37,108 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'NoneType' object is not subscriptable
+ERROR 2024-05-26 01:51:42,101 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'NoneType' object is not subscriptable
+ERROR 2024-05-26 01:52:11,566 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'NoneType' object is not subscriptable
+ERROR 2024-05-26 01:52:41,110 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'NoneType' object is not subscriptable
+ERROR 2024-05-26 01:53:15,177 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'NoneType' object is not subscriptable
+ERROR 2024-05-26 01:53:48,092 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'AuthToken' object is not iterable
+ERROR 2024-05-26 01:54:03,352 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'AuthToken' object has no attribute 'jwt'
+ERROR 2024-05-26 01:54:28,630 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'AuthToken' object has no attribute 'referenced_id'
+ERROR 2024-05-26 01:54:52,974 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'AuthToken' object has no attribute 'referencedId'
+ERROR 2024-05-26 01:55:04,804 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
+ERROR 2024-05-26 01:55:36,771 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
+ERROR 2024-05-26 01:56:02,488 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
+ERROR 2024-05-26 01:56:21,324 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
+ERROR 2024-05-26 02:04:43,372 Authentication assets.py 33 MentorSignup message - Error creating a mentor[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+ERROR 2024-05-26 02:05:42,148 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - Mentor matching query does not exist.
+ERROR 2024-05-26 02:05:58,387 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - 'id'
