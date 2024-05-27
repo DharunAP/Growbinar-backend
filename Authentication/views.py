@@ -95,9 +95,8 @@ def MenteeSignup(request):
             instance = Mentee.objects.create(email_id=request.data['email_id'],password=make_password(request.data['password']))
             instance.save()
             encryptedID = encryptData(instance.id)       # encrypting the id to send as the response
-            sendVerificationMail(VERIFY_MENTEE_ROUTE+"?id="+encryptedID,request.data['email_id'])
-            jwt_token = get_or_create_jwt(instance, 'mentee', instance.email_id)
-            # log("signup successfull",1)
+            sendVerificationMail(VERIFY_MENTEE_ROUTE+"?id="+encryptedID,request.data['email_id'])  # sending the verification mail
+            jwt_token = get_or_create_jwt(instance, 'mentee', instance.email_id)  # creating jwt token for the user
             log("signup successfull",1)
             return Response({'message':USER_CREATED,'id':encryptedID,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
         else:
@@ -128,8 +127,8 @@ def MentorSignup(request):
             instance.save()
             log("signup successfull",1)
             encryptedID = encryptData(instance.id)      # encrypting the id to send as the response
-            sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptedID,request.data['email_id'])
-            jwt_token = get_or_create_jwt(instance, 'mentor', instance.email_id)
+            sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptedID,request.data['email_id']) # sending the verification mail
+            jwt_token = get_or_create_jwt(instance, 'mentor', instance.email_id)  # creating jwt token for the user
             return Response({'message':USER_CREATED,'id':encryptedID,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
         else:
             # sending bad request response
@@ -173,22 +172,20 @@ def VerifyMentor(request):
         return Response({'message':ERROR_VERIFYING_USER_EMAIL},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
-# @authentication_classes([])
-@permission_classes([])
 def getMentorDetails(request):
     log('Entered mentor details endpoint',1)
     try:
-        print('here ')
-        validation_response = validate_token(request)
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
             return validation_response
 
-        userDetails = getUserDetails(request)
-        print('mid')
-        if userDetails['type']!='mentor':
-            if userDetails['Invalid User']:
-                return Response({'message':'Error authorizing the user try logging in again'})
-            return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor':  # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})   
         print(userDetails['id'])
         mentor = Mentor.objects.get(id=userDetails['id'])
         # mentor = Mentor.objects.get(id = decryptData(request.data['id']))
@@ -234,12 +231,12 @@ def getMenteeDetails(request):
     log('Entered mentor details endpoint',1)
     try:
         print('here ')
-        validation_response = validate_token(request)
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
             return validation_response
         try:
-            userDetails = getUserDetails(request)
-            if userDetails['type']!='mentee':
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
         except Exception as error:
             print(error)

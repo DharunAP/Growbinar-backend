@@ -374,3 +374,9 @@ DEBUG 2024-05-27 23:45:17,120 Authentication assets.py 29 getMenteeDetails messa
 ERROR 2024-05-27 23:45:17,167 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range
 DEBUG 2024-05-27 23:46:14,342 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
 DEBUG 2024-05-27 23:46:21,430 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-28 00:46:31,028 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-05-28 00:46:31,107 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-05-28 00:47:21,270 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-05-28 00:47:21,342 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-05-28 00:48:46,673 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-28 00:49:31,403 profile_details assets.py 15 testimonials message - Entered testimonials endpoint

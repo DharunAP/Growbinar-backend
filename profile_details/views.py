@@ -5,6 +5,7 @@ from static.message_constants import STATUSES,INVALID_CREDENTIALS,ERROR_GETTING_
 from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer
+from Authentication.jwtVerification import validate_token, getUserDetails
 
 from datetime import datetime
 
@@ -46,11 +47,21 @@ def listAllMentors(request):
         return Response({'message':ERROR_GETTING_MENTOR_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
-def menteeDetails(request,id):
+def menteeDetails(request):
     log("Entered mentee details",1)
     try:
         # getting the requested mentee details from the table
-        id = decryptData(id)
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+        
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})   
+        print(userDetails['id'])
+        id = userDetails['id']
         mentee = Mentee.objects.raw(f"SELECT id,is_experience,first_name,last_name,languages,role,organization,profile_picture_url,city,is_experience,description,areas_of_interest FROM static_mentee WHERE id={id};")[0]
         
         # urlShortner(mentee.profile_picture_url) # implementing url shortner
@@ -130,6 +141,18 @@ def testimonials(request):
             print(e)
             return Response({'message':'Error getting testimonials'},status=STATUSES['INTERNAL_SERVER_ERROR'])
     try:
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentee':  # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})   
+        print(userDetails['id'])
         # request.data['mentor'] = r
         request.data['mentor'] = int(decryptData(request.data['mentor']))
         request.data['mentee'] = int(decryptData(request.data['mentee']))
