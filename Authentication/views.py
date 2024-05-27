@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from static.models import Mentee,Mentor,Experience
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from static.cipher import encryptData,decryptData
 from static.message_constants import LOGIN_SUCCESS,INVALID_ROLE,LOGIN_ERROR,INVALID_CREDENTIALS,STATUSES,USER_NOT_FOUND
 from rest_framework_simplejwt.tokens import AccessToken
@@ -99,7 +99,7 @@ def MenteeSignup(request):
             jwt_token = get_or_create_jwt(instance, 'mentee', instance.email_id)
             # log("signup successfull",1)
             log("signup successfull",1)
-            return Response({'message':USER_CREATED,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
+            return Response({'message':USER_CREATED,'id':encryptedID,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
         else:
             # sending bad request response for invalid payload
             log("invalid credentails for signup "+str(serializer.errors),2)
@@ -128,9 +128,9 @@ def MentorSignup(request):
             instance.save()
             log("signup successfull",1)
             encryptedID = encryptData(instance.id)      # encrypting the id to send as the response
-            # sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptedID,request.data['email_id'])
+            sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptedID,request.data['email_id'])
             jwt_token = get_or_create_jwt(instance, 'mentor', instance.email_id)
-            return Response({'message':USER_CREATED,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
+            return Response({'message':USER_CREATED,'id':encryptedID,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
         else:
             # sending bad request response
             log("invalid credentails for signup",2)
@@ -173,6 +173,8 @@ def VerifyMentor(request):
         return Response({'message':ERROR_VERIFYING_USER_EMAIL},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
+# @authentication_classes([])
+@permission_classes([])
 def getMentorDetails(request):
     log('Entered mentor details endpoint',1)
     try:
@@ -182,10 +184,14 @@ def getMentorDetails(request):
             return validation_response
 
         userDetails = getUserDetails(request)
+        print('mid')
         if userDetails['type']!='mentor':
-            return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            if userDetails['Invalid User']:
+                return Response({'message':'Error authorizing the user try logging in again'})
+            return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
         print(userDetails['id'])
         mentor = Mentor.objects.get(id=userDetails['id'])
+        # mentor = Mentor.objects.get(id = decryptData(request.data['id']))
         print(mentor)
         if not mentor.is_email_verified:
             log("Email not verified",2)
@@ -219,7 +225,7 @@ def getMentorDetails(request):
             return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
         log("Error saving mentor details - "+str(e),3)
-        print(e)
+        print('final',e)
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
@@ -231,12 +237,16 @@ def getMenteeDetails(request):
         validation_response = validate_token(request)
         if validation_response is not None:
             return validation_response
-
-        userDetails = getUserDetails(request)
-        if userDetails['type']!='mentee':
-            return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        try:
+            userDetails = getUserDetails(request)
+            if userDetails['type']!='mentee':
+                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
         print(userDetails['id'])
         mentee = Mentee.objects.get(id=userDetails['id'])
+        # mentee = Mentee.objects.get(id = decryptData(request.data['id']))
         if not mentee.is_email_verified:
             log("Email not verified",2)
             return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])

@@ -52,3 +52,34 @@ WARNING 2024-05-26 02:05:05,763 Authentication assets.py 31 MentorSignup message
 ERROR 2024-05-26 02:05:42,148 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - Mentor matching query does not exist.
 ERROR 2024-05-26 02:05:58,387 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - 'id'
 WARNING 2024-05-26 02:06:55,880 Authentication assets.py 31 getMentorDetails message - Email not verified
+ERROR 2024-05-27 21:24:45,757 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - Cannot resolve keyword '4' into field. Choices are: areas_of_expertise, availabesession, bio, city, company, country, created_at, date_of_birth, designation, email_id, experience, first_name, gender, id, is_email_verified, is_experience, is_top_rated, languages, last_name, mentor_experience, number_of_likes, password, phone_number, profile_picture_url, session, testimonial
+WARNING 2024-05-27 21:25:41,862 Authentication assets.py 31 getMentorDetails message - Email not verified
+ERROR 2024-05-27 21:35:39,716 Sessions assets.py 14 createAvalableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(33) is not present in table "static_mentor".
+
+ERROR 2024-05-27 22:35:31,994 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:35:52,026 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:52:42,062 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:53:35,624 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:54:29,792 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:54:55,761 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:57:05,863 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:57:23,595 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 22:57:34,782 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+WARNING 2024-05-27 22:58:00,258 Authentication assets.py 31 getMentorDetails message - Email not verified
+WARNING 2024-05-27 23:00:20,161 Authentication assets.py 31 getMentorDetails message - Email not verified
+WARNING 2024-05-27 23:11:35,086 Authentication assets.py 31 MentorSignup message - Email already exists
+ERROR 2024-05-27 23:39:12,555 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'id'
+WARNING 2024-05-27 23:39:44,651 Authentication assets.py 31 getMenteeDetails message - Email not verified
+ERROR 2024-05-27 23:39:59,580 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:08,168 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:09,059 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:09,383 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:09,609 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:10,569 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:10,786 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:10,964 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:41:23,243 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-05-27 23:43:40,664 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
+ERROR 2024-05-27 23:44:46,723 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range
+ERROR 2024-05-27 23:45:17,167 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range

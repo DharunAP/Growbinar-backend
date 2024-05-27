@@ -35,10 +35,11 @@ def listAllMentors(request):
                 value['tag'] = 'Exclusive'
             else:
                 value['tag'] = None
-            
+            print(value,'--')
             data.append(value)
 
         log("Mentors listed successfully",1)
+        print(data)
         return Response({'data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
         log("Error in list mentors"+str(e), 3)
@@ -102,7 +103,7 @@ def listMentorsOfMentee(request):
                 if booked_session[0].is_completed:
                     # if the session is completed then add the mentor details to the list
                     mentor_list.append({
-                        'id':encryptData(session.mentor_id)
+                        'mentor_id':encryptData(session.mentor_id)
                     })
         # listing the mentor details as the response
         return Response({"message":SUCESS,"data":mentor_list},status=STATUSES['SUCCESS'])
@@ -130,6 +131,8 @@ def testimonials(request):
             return Response({'message':'Error getting testimonials'},status=STATUSES['INTERNAL_SERVER_ERROR'])
     try:
         # request.data['mentor'] = r
+        request.data['mentor'] = int(decryptData(request.data['mentor']))
+        request.data['mentee'] = int(decryptData(request.data['mentee']))
         serializer = TestimonialSerializer(data=request.data)
         if(serializer.is_valid()):
             instance = Testimonial.objects.create(
@@ -142,7 +145,7 @@ def testimonials(request):
         print(serializer.errors)
         return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
-        print(e)
+        print(e,'==')
         return Response({'message':'Error creating testimonial'},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 

@@ -11,7 +11,7 @@ from static.message_constants import STATUSES,TOKEN_TIMEDOUT,INVALID_TOKEN,VALID
 def getUserDetails(request):
     authorization_header = request.headers.get('Authorization')
     if authorization_header:
-        if authorization_header.startswith('jwt '):
+        if authorization_header.startswith('Bearer '):
             jwt = authorization_header.split(' ')[1]
         else:
             jwt = authorization_header

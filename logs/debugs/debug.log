@@ -216,3 +216,161 @@ DEBUG 2024-05-26 02:06:55,824 Authentication assets.py 29 getMentorDetails messa
 WARNING 2024-05-26 02:06:55,880 Authentication assets.py 31 getMentorDetails message - Email not verified
 DEBUG 2024-05-26 02:07:07,262 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
 DEBUG 2024-05-26 02:07:07,324 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-26 02:27:31,717 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-26 02:27:31,766 Authentication assets.py 29 MenteeSignup message - Email already exists as a mentee
+DEBUG 2024-05-27 12:32:08,913 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 12:32:09,001 Authentication assets.py 29 getMenteeDetails message - success
+DEBUG 2024-05-27 12:33:19,805 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 12:33:19,866 Authentication assets.py 29 getMenteeDetails message - success
+DEBUG 2024-05-27 21:17:21,525 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:17:23,592 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:17:48,835 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-05-27 21:17:48,898 profile_details assets.py 15 menteeDetails message - Error fetching mentee detailslist index out of range
+DEBUG 2024-05-27 21:24:17,219 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-27 21:24:17,566 Authentication assets.py 29 MentorSignup message - signup successfull
+DEBUG 2024-05-27 21:24:45,754 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 21:24:45,757 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - Cannot resolve keyword '4' into field. Choices are: areas_of_expertise, availabesession, bio, city, company, country, created_at, date_of_birth, designation, email_id, experience, first_name, gender, id, is_email_verified, is_experience, is_top_rated, languages, last_name, mentor_experience, number_of_likes, password, phone_number, profile_picture_url, session, testimonial
+DEBUG 2024-05-27 21:25:41,749 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+WARNING 2024-05-27 21:25:41,862 Authentication assets.py 31 getMentorDetails message - Email not verified
+DEBUG 2024-05-27 21:26:08,130 Authentication assets.py 29 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-05-27 21:26:08,179 Authentication assets.py 29 VerifyMentor message - Email verification sucess for 46
+DEBUG 2024-05-27 21:27:01,587 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-27 21:27:06,405 Authentication assets.py 29 MenteeSignup message - signup successfull
+DEBUG 2024-05-27 21:27:19,729 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-05-27 21:27:19,775 profile_details assets.py 15 menteeDetails message - Error fetching mentee detailsunsupported operand type(s) for +: 'NoneType' and 'str'
+DEBUG 2024-05-27 21:27:57,921 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-05-27 21:27:57,979 Authentication assets.py 29 VerifyMentee message - Email verification sucess for 35
+DEBUG 2024-05-27 21:28:15,169 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 21:28:15,228 Authentication assets.py 29 getMenteeDetails message - success
+DEBUG 2024-05-27 21:28:19,624 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:28:19,669 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:28:22,524 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:28:22,569 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:28:27,076 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:28:27,123 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:28:34,942 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:28:34,998 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:29:44,771 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:29:44,826 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:29:56,144 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:29:56,193 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:30:07,060 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:30:07,104 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:30:11,668 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:30:11,732 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:30:59,364 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:30:59,417 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:31:10,053 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 21:31:10,164 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 21:31:15,649 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-05-27 21:31:16,221 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-05-27 21:31:25,772 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-05-27 21:31:25,823 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-05-27 21:35:33,118 Sessions assets.py 10 createAvalableSession message - Entered create available session endpoint for GET
+DEBUG 2024-05-27 21:35:39,650 Sessions assets.py 10 createAvalableSession message - Entered create available session endpoint for POST
+ERROR 2024-05-27 21:35:39,716 Sessions assets.py 14 createAvalableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(33) is not present in table "static_mentor".
+
+DEBUG 2024-05-27 21:36:04,217 Sessions assets.py 10 createAvalableSession message - Entered create available session endpoint for POST
+DEBUG 2024-05-27 21:36:04,281 Sessions assets.py 10 createAvalableSession message - New session created successfully 
+DEBUG 2024-05-27 21:36:17,833 Sessions assets.py 10 createAvalableSession message - Entered create available session endpoint for POST
+DEBUG 2024-05-27 21:36:17,884 Sessions assets.py 10 createAvalableSession message - New slots crated sucessfully 
+DEBUG 2024-05-27 21:36:20,427 Sessions assets.py 10 createAvalableSession message - Entered create available session endpoint for POST
+DEBUG 2024-05-27 21:36:20,492 Sessions assets.py 10 createAvalableSession message - New slots crated sucessfully 
+DEBUG 2024-05-27 21:37:01,393 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:37:33,937 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:38:27,183 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:38:36,825 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:38:48,877 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:39:21,100 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:39:30,654 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:40:40,625 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:40:55,747 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:41:15,463 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:41:39,733 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:42:01,131 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:42:25,654 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:42:57,624 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:43:34,296 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:43:40,624 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-05-27 21:54:00,288 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-27 21:54:05,724 Authentication assets.py 29 MenteeSignup message - signup successfull
+DEBUG 2024-05-27 22:34:27,258 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 22:34:27,402 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 22:34:33,738 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 22:34:33,793 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 22:35:31,845 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:35:31,994 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:35:51,934 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:35:52,026 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:38:55,318 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-05-27 22:38:55,622 Authentication assets.py 29 MentorSignup message - signup successfull
+DEBUG 2024-05-27 22:52:42,015 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:52:42,062 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:53:35,571 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:53:35,624 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:54:29,738 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:54:29,792 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:54:55,715 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:54:55,761 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:57:05,811 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:57:05,863 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:57:23,545 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:57:23,595 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:57:34,735 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 22:57:34,782 Authentication assets.py 33 getMentorDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 22:58:00,199 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+WARNING 2024-05-27 22:58:00,258 Authentication assets.py 31 getMentorDetails message - Email not verified
+DEBUG 2024-05-27 23:00:20,106 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+WARNING 2024-05-27 23:00:20,161 Authentication assets.py 31 getMentorDetails message - Email not verified
+DEBUG 2024-05-27 23:02:16,132 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:02:16,190 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 23:02:38,891 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:02:38,949 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 23:04:17,230 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:04:17,299 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 23:05:09,292 Authentication assets.py 29 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:05:09,358 Authentication assets.py 29 getMentorDetails message - success
+DEBUG 2024-05-27 23:11:35,046 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+WARNING 2024-05-27 23:11:35,086 Authentication assets.py 31 MentorSignup message - Email already exists
+DEBUG 2024-05-27 23:14:10,270 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-27 23:14:10,606 Authentication assets.py 29 MenteeSignup message - signup successfull
+DEBUG 2024-05-27 23:38:53,828 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-27 23:38:53,873 Authentication assets.py 29 MenteeSignup message - Email already exists as a mentee
+DEBUG 2024-05-27 23:39:12,550 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 23:39:12,555 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - 'id'
+DEBUG 2024-05-27 23:39:44,595 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+WARNING 2024-05-27 23:39:44,651 Authentication assets.py 31 getMenteeDetails message - Email not verified
+DEBUG 2024-05-27 23:39:59,486 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:39:59,580 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:08,116 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:08,168 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:09,010 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:09,059 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:09,334 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:09,383 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:09,562 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:09,609 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:10,525 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:10,569 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:10,737 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:10,786 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:10,917 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:10,964 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:23,186 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-05-27 23:41:23,243 Authentication assets.py 33 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-05-27 23:41:59,279 Authentication assets.py 29 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-05-27 23:41:59,590 Authentication assets.py 29 MenteeSignup message - signup successfull
+DEBUG 2024-05-27 23:42:52,766 Authentication assets.py 29 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-05-27 23:42:52,819 Authentication assets.py 29 VerifyMentee message - Email verification sucess for 38
+DEBUG 2024-05-27 23:43:40,612 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 23:43:40,664 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
+DEBUG 2024-05-27 23:44:06,371 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:44:06,422 Authentication assets.py 29 getMenteeDetails message - success
+DEBUG 2024-05-27 23:44:35,099 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:44:46,680 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 23:44:46,723 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 23:45:17,120 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+ERROR 2024-05-27 23:45:17,167 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - list index out of range
+DEBUG 2024-05-27 23:46:14,342 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-05-27 23:46:21,430 Authentication assets.py 29 getMenteeDetails message - Entered mentor details endpoint
