@@ -112,6 +112,7 @@ def MenteeSignup(request):
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
         log("Error creating a mentee"+str(e),3)
+        print(e)
         return Response({'message':SIGNUP_ERROR}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
@@ -143,6 +144,7 @@ def MentorSignup(request):
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
         log("Error creating a mentor"+str(e),3)
+        print(e)
         return Response({'message':SIGNUP_ERROR}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
@@ -160,6 +162,7 @@ def VerifyMentee(request):
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
     except Exception as e:
         log("Error verifying email "+str(e),3)
+        print(e)
         return Response({'message':ERROR_VERIFYING_USER_EMAIL},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
@@ -175,6 +178,7 @@ def VerifyMentor(request):
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
     except Exception as e:
         log("Error verifying email "+str(e),3)
+        print(e)
         return Response({'message':ERROR_VERIFYING_USER_EMAIL},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
@@ -278,6 +282,7 @@ def getMenteeDetails(request):
             return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
         log("Error saving mentor details - "+str(e),3)
+        print(e)
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
