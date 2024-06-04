@@ -16,11 +16,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL=True  
 
+CORS_ORIGIN_WHITELIST = [
+    'http://google.com',
+    'http://hostname.example.com',
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'http://127.0.0.1:9000'
+]
 
 # Application definition
 
@@ -182,29 +190,29 @@ WSGI_APPLICATION = 'Growbinar_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME':'GrowbinarDB',
-#         'USER':'Django',
-#         'PASSWORD':'django',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': 'pJihmtHYq91v',
-        'HOST': 'ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech',
-        'PORT': '5432',  # Default PostgreSQL port is 5432
-        'OPTIONS': {
-            'sslmode': 'require',
-            'connect_timeout': 15,
-        }
+        'NAME':'GrowbinarDB',
+        'USER':'Django',
+        'PASSWORD':'django',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'verceldb',
+#         'USER': 'default',
+#         'PASSWORD': 'pJihmtHYq91v',
+#         'HOST': 'ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech',
+#         'PORT': '5432',  # Default PostgreSQL port is 5432
+#         'OPTIONS': {
+#             'sslmode': 'require',
+#             'connect_timeout': 15,
+#         }
+#     }
+# }
 
 
 # Email Settings

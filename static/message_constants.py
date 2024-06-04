@@ -38,6 +38,10 @@ FEEDBACK_CREATED = 'Feedback created successfully'
 
 ERROR_CREATING_FEEDBACK = 'Error creating feedback'
 
+EMAIL_NOT_VERIFIED = 'User Email not verified'
+
+DETAILS_NOT_ENTERED= 'User details not completely entered.'
+
 SESSION_NOT_COMPLETED = 'Session is not yet completed'
 
 FETCHING_ERROR = 'Error while fetching the details'

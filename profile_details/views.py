@@ -1,7 +1,7 @@
 from static.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session,Testimonial
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,INVALID_CREDENTIALS,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS
+from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS
 from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer
@@ -23,7 +23,7 @@ def listAllMentors(request):
                 continue
             value = dict()
             value['mentor_id']=encryptData(mentor.id)
-            value['profile_picture_url']=urlShortner(mentor.profile_picture_url) # implementing url shortner
+            value['profile_picture_url']=mentor.profile_picture_url # implementing url shortner
             value['languages']=mentor.languages
             value['name'] = mentor.first_name + " " + mentor.last_name
             value['role'] = mentor.designation
@@ -57,6 +57,11 @@ def menteeDetails(request):
         
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
+            user = Mentee.objects.get(userDetails['id'])
+            if not user.is_email_verified:  # checking for user email verification
+                return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
+            elif user.first_name is None:   # checking weather user has completed stepper page
+                return Response({'message':DETAILS_NOT_ENTERED},status=STATUSES['BAD_REQUEST']) 
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})   
@@ -95,8 +100,18 @@ def menteeDetails(request):
 @api_view(['POST'])
 def listMentorsOfMentee(request):
     try:
-        
-        menteeID = decryptData(request.data['id'])
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        print(userDetails['id'])
+        menteeID = userDetails['id']
         # getting the requested sessions of the mentee
         request_sessions = RequestedSession.objects.raw(f'SELECT session_id,mentee_id,is_accepted from static_RequestedSession where mentee_id={menteeID};')
         if(len(request_sessions)<1): # check if there is some data or not
@@ -191,22 +206,28 @@ import pyshorteners
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
-def mentor_details(request,id):
-
-    validation_response = validate_token(request)  # to validate the token
-    if validation_response is not None:
-        return validation_response
-
-    # mentor_id = decryptData(id) # decoding of the id 
-    mentor_id = id
-    print('mentor - id',mentor_id,'----')
-
-    log("Entered mentor details",1)
-    print("Request in mentor_details")
-
+def mentor_details(request):
     try:
-        print(request.data)
 
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        print(userDetails['id'])
+
+        # mentor_id = decryptData(id) # decoding of the id 
+        mentor_id = userDetails['id']
+        print('mentor - id',mentor_id,'----')
+
+        log("Entered mentor details",1)
+        print("Request in mentor_details")
+        print(request.data)
         
         mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")[0]
         availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
@@ -254,12 +275,20 @@ def createAvailableSession(request):
         print(decryptData(request.data['id']),"---------")
 
         #for verifying the token
-        validation_response = validate_token(request)
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
             return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        print(userDetails['id'])
 
 
-        availabeSession = AvailabeSession.objects.filter(mentor_id = decryptData(request.data['id']))
+        availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
         print(availabeSession)
         if availabeSession.exists():
             # update code

@@ -11,5 +11,6 @@ urlpatterns = [
     path(routes.MENTOR_DETAILS,getMentorDetails,name="get-mentor-details"),
     path(routes.MENTEE_DETAILS,getMenteeDetails,name="get-mentee-details"),
     path(routes.LOGIN_ROUTE,user_login,name="login-route"),
+    path(routes.RESEND_MAIL,resendMail,name = 'resend-mail'),
     path('verifyMailSampleTemplate/',verifyMailSampleTemplate)
 ]

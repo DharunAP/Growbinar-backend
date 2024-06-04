@@ -7,7 +7,7 @@ from rest_framework_simplejwt.tokens import AccessToken
 from django.http import JsonResponse
 from rest_framework.response import Response
 from .serializers import MentorSerializer,MenteeSerializer,UserSerializer
-from static.message_constants import STATUSES,INVALID_CREDENTIALS,USER_CREATED,EMAIL_EXISTS,SIGNUP_ERROR,VERIFIED_USER_EMAIL,ERROR_VERIFYING_USER_EMAIL,USER_DETAILS_SAVED,ERROR_SAVING_USER_DETAILS,EMAIL_NOT_VERIFIFED
+from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,USER_CREATED,EMAIL_EXISTS,SIGNUP_ERROR,VERIFIED_USER_EMAIL,ERROR_VERIFYING_USER_EMAIL,USER_DETAILS_SAVED,ERROR_SAVING_USER_DETAILS,EMAIL_NOT_VERIFIFED
 from static.routes import VERIFY_MENTOR_ROUTE,VERIFY_MENTEE_ROUTE
 from django.contrib.auth.hashers import make_password,check_password
 from .assets import sendVerificationMail,log
@@ -55,6 +55,12 @@ def user_login(request):
             token = str(get_or_create_jwt(user,user_role,email))
             print(token, " tata printed ")
             log("User Logged In",1)
+
+            if not user.is_email_verified:  # checking for user email verification
+                return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
+            elif user.first_name is None:   # checking weather user has completed stepper page
+                return Response({'message':DETAILS_NOT_ENTERED,'token':token},status=STATUSES['BAD_REQUEST']) 
+
             return JsonResponse({
                 'message': LOGIN_SUCCESS,  # Using 'message' key
                 'token' : token,
@@ -226,7 +232,6 @@ def getMentorDetails(request):
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
 def getMenteeDetails(request):
     log('Entered mentor details endpoint',1)
     try:
@@ -280,8 +285,28 @@ def getMenteeDetails(request):
 def verifyMailSampleTemplate(request):
     return render(request, 'template/index.html',{'BASE_URL':'http://localhost:8000/'})
 
-
-
+@api_view(['GET'])
+def resendMail(request):
+    try:
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        print(userDetails['id'])
+        if userDetails['type']=='mentee':
+            email = Mentee.objects.get(id = userDetails['id']).email_id
+            sendVerificationMail(VERIFY_MENTEE_ROUTE+"?id="+encryptData(userDetails['id']),email)  # sending the verification mail
+        else:
+            email = Mentor.objects.get(id = userDetails['id']).email_id
+            sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptData(userDetails['id']),email)  # sending the verification mail
+        return Response({'message':'Mail sent successfully'},status=STATUSES['SUCCESS'])
+    except Exception as e:
+        print(e)
+        return Response({'message':'Error sending mail'},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 
