@@ -2,6 +2,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from datetime import timedelta
+from corsheaders.defaults import default_headers
 
 load_dotenv()
 
@@ -18,17 +19,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
-CORS_ORIGIN_ALLOW_ALL=True  
-
-CORS_ORIGIN_WHITELIST = [
-    'http://google.com',
-    'http://hostname.example.com',
-    'http://localhost:8000',
-    'http://localhost:3000',
-    'http://127.0.0.1:9000'
-]
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -39,10 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    'corsheaders',
     'Authentication',
     'static',
     'Sessions'
@@ -92,20 +83,26 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+# CORS Configuration
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = (
-    'http://example.com',
-    'https://example.com',
-)
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'http://192.168.137.104:3000'
+]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'credentials',
+]
+
 
 Formatters={
     "standard": {
@@ -256,7 +253,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

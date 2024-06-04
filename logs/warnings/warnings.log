@@ -94,3 +94,14 @@ ERROR 2024-05-30 21:12:24,704 profile_details assets.py 19 listAllMentors messag
 WARNING 2024-06-03 22:24:02,255 Authentication assets.py 31 getMenteeDetails message - Email not verified
 ERROR 2024-06-03 22:37:18,318 Authentication assets.py 33 getMenteeDetails message - Error saving mentor details - Mentee matching query does not exist.
 WARNING 2024-06-04 22:55:56,520 Authentication assets.py 31 getMentorDetails message - Email not verified
+ERROR 2024-06-05 00:27:54,405 Authentication assets.py 33 MentorSignup message - Error creating a mentorUnsupported media type "text/plain;charset=UTF-8" in request.
+ERROR 2024-06-05 00:32:40,527 Authentication assets.py 33 MentorSignup message - Error creating a mentorUnsupported media type "text/plain;charset=UTF-8" in request.
+ERROR 2024-06-05 00:32:40,527 Authentication assets.py 33 MentorSignup message - Error creating a mentorUnsupported media type "text/plain;charset=UTF-8" in request.
+ERROR 2024-06-05 00:39:26,254 Authentication assets.py 33 MentorSignup message - Error creating a mentorJSON parse error - Expecting value: line 1 column 2 (char 1)
+ERROR 2024-06-05 00:39:26,255 Authentication assets.py 33 MentorSignup message - Error creating a mentorJSON parse error - Expecting value: line 1 column 2 (char 1)
+ERROR 2024-06-05 00:40:09,096 Authentication assets.py 33 MentorSignup message - Error creating a mentor'email_id'
+ERROR 2024-06-05 00:40:17,336 Authentication assets.py 33 MentorSignup message - Error creating a mentor'email_id'
+ERROR 2024-06-05 00:40:17,367 Authentication assets.py 33 MentorSignup message - Error creating a mentor'email_id'
+WARNING 2024-06-05 00:40:40,117 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
+WARNING 2024-06-05 00:40:45,225 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
+WARNING 2024-06-05 00:40:45,250 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
