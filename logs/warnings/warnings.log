@@ -105,3 +105,6 @@ ERROR 2024-06-05 00:40:17,367 Authentication assets.py 33 MentorSignup message -
 WARNING 2024-06-05 00:40:40,117 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
 WARNING 2024-06-05 00:40:45,225 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
 WARNING 2024-06-05 00:40:45,250 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
+WARNING 2024-06-05 01:01:56,466 Authentication assets.py 31 MentorSignup message - Email already exists
+WARNING 2024-06-05 01:01:59,244 Authentication assets.py 31 MentorSignup message - Email already exists
+WARNING 2024-06-05 01:01:59,531 Authentication assets.py 31 MentorSignup message - Email already exists

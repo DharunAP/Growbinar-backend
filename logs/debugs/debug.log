@@ -457,3 +457,9 @@ DEBUG 2024-06-05 00:40:44,866 Authentication assets.py 29 MentorSignup message -
 DEBUG 2024-06-05 00:40:44,949 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
 WARNING 2024-06-05 00:40:45,225 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
 WARNING 2024-06-05 00:40:45,250 Authentication assets.py 31 MentorSignup message - invalid credentails for signup
+DEBUG 2024-06-05 01:01:56,399 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-05 01:01:56,466 Authentication assets.py 31 MentorSignup message - Email already exists
+DEBUG 2024-06-05 01:01:58,988 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-05 01:01:59,050 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-05 01:01:59,244 Authentication assets.py 31 MentorSignup message - Email already exists
+WARNING 2024-06-05 01:01:59,531 Authentication assets.py 31 MentorSignup message - Email already exists
