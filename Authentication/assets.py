@@ -10,7 +10,7 @@ def urlShortner(url):
 
 def sendVerificationMail(url, email_id):
     print(url)
-    template = get_template('template/index.html').render({'BASE_URL':'http://localhost:5000/','verifyMail':url})
+    template = get_template('template/index.html').render({'BASE_URL':'https://growbinar-backend-4.onrender.com/','verifyMail':url})
     send_mail(
         subject="Verify your mail by clicking the below link",  # subject in the sending mail
         from_email="admin@growbinar.com",                       # sender mail
