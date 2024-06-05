@@ -5,7 +5,7 @@ from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_EN
 from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer
-from Authentication.jwtVerification import validate_token, getUserDetails
+from Authentication.jwtVerification import *
 
 from datetime import datetime
 
@@ -57,11 +57,7 @@ def menteeDetails(request):
         
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
-            user = Mentee.objects.get(userDetails['id'])
-            if not user.is_email_verified:  # checking for user email verification
-                return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
-            elif user.first_name is None:   # checking weather user has completed stepper page
-                return Response({'message':DETAILS_NOT_ENTERED},status=STATUSES['BAD_REQUEST']) 
+            checkUserStatus(userDetails['user'])
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})   
@@ -107,6 +103,9 @@ def listMentorsOfMentee(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
@@ -164,6 +163,9 @@ def testimonials(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':  # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})   
@@ -216,6 +218,9 @@ def mentor_details(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
@@ -268,7 +273,7 @@ def mentor_details(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def createAvailableSession(request):
     log('Entered create available session endpoint ',1)
     try:
@@ -282,6 +287,9 @@ def createAvailableSession(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})

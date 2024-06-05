@@ -463,3 +463,58 @@ DEBUG 2024-06-05 01:01:58,988 Authentication assets.py 29 MentorSignup message -
 DEBUG 2024-06-05 01:01:59,050 Authentication assets.py 29 MentorSignup message - Entered mentor-signup
 WARNING 2024-06-05 01:01:59,244 Authentication assets.py 31 MentorSignup message - Email already exists
 WARNING 2024-06-05 01:01:59,531 Authentication assets.py 31 MentorSignup message - Email already exists
+DEBUG 2024-06-06 00:52:33,838 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 00:53:23,314 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 00:53:55,238 Authentication assets.py 29 user_login message - Entered User-Login 
+DEBUG 2024-06-06 00:53:55,303 Authentication assets.py 29 user_login message - User is Mentor
+DEBUG 2024-06-06 00:53:55,612 Authentication assets.py 29 user_login message - User Logged In
+DEBUG 2024-06-06 00:54:07,291 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:54:07,367 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:54:44,462 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:54:44,744 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:55:22,138 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:55:22,305 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:56:23,869 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:56:23,998 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:57:27,089 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:57:27,209 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:58:14,303 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:58:14,503 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:58:38,563 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:58:38,691 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:59:14,889 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:59:15,018 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 00:59:48,636 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+ERROR 2024-06-06 00:59:48,742 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+DEBUG 2024-06-06 01:00:43,376 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:00:43,445 Sessions assets.py 10 createAvailableSession message - New session created successfully 
+DEBUG 2024-06-06 01:01:02,292 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:01:02,350 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-06 01:01:43,080 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:03:23,875 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:08:18,842 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:08:32,946 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:08:41,385 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:09:13,428 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:09:30,954 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:09:31,007 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-06 01:16:19,805 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-06 01:16:19,863 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 

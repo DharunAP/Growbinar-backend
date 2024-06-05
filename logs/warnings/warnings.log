@@ -108,3 +108,30 @@ WARNING 2024-06-05 00:40:45,250 Authentication assets.py 31 MentorSignup message
 WARNING 2024-06-05 01:01:56,466 Authentication assets.py 31 MentorSignup message - Email already exists
 WARNING 2024-06-05 01:01:59,244 Authentication assets.py 31 MentorSignup message - Email already exists
 WARNING 2024-06-05 01:01:59,531 Authentication assets.py 31 MentorSignup message - Email already exists
+ERROR 2024-06-06 00:54:07,367 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:54:44,744 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:55:22,305 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:56:23,998 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:57:27,209 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:58:14,503 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:58:38,691 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:59:15,018 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+
+ERROR 2024-06-06 00:59:48,742 Sessions assets.py 14 createAvailableSession message - Error in creating available session insert or update on table "static_availabesession" violates foreign key constraint "static_availabesession_mentor_id_1ac2a4a0_fk_static_mentor_id"
+DETAIL:  Key (mentor_id)=(46) is not present in table "static_mentor".
+

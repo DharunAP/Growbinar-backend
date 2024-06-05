@@ -5,8 +5,14 @@ from django.utils import timezone
 from datetime import timedelta
 from rest_framework_simplejwt.tokens import AccessToken
 from static.models import Mentee,Mentor,AuthToken
-from static.message_constants import STATUSES,TOKEN_TIMEDOUT,INVALID_TOKEN,VALID_TOKEN
+from static.message_constants import STATUSES,TOKEN_TIMEDOUT,INVALID_TOKEN,VALID_TOKEN,EMAIL_NOT_VERIFIFED,DETAILS_NOT_ENTERED
 
+def checkUserStatus(user):
+    if not user.is_email_verified:
+        return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
+    if user.first_name == None:
+        return Response({'message':DETAILS_NOT_ENTERED},status=STATUSES['BAD_REQUEST'])
+    return None
 
 def getUserDetails(request):
     authorization_header = request.headers.get('Authorization')
@@ -21,7 +27,13 @@ def getUserDetails(request):
     if authToken==None:
         return {'type':'Invalid User'}
     # print(authToken.jwt_token)
-    return {'type':authToken.user_type,'id':authToken.referenceId}
+    user = None
+    if authToken.user_type=='mentor':
+        print(authToken.referenceId,' ref id')
+        user = Mentor.objects.get(id = authToken.referenceId)
+    elif authToken.user_type=='mentee':
+        user = Mentee.objects.get(id = authToken.referenceId)
+    return {'type':authToken.user_type,'id':authToken.referenceId,'user':user}
 
 
 

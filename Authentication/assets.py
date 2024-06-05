@@ -33,5 +33,4 @@ def log(message,code):
         logger.error(message)
 
 
-
 # renge wise check

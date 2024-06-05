@@ -10,7 +10,7 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.utils import timezone
 from datetime import date,datetime
-from Authentication.jwtVerification import validate_token
+from Authentication.jwtVerification import *
 from rest_framework.decorators import api_view,permission_classes
 from datetime import datetime,date
 from .validators import convert_to_hms,is_valid_date,is_valid_time
@@ -35,13 +35,18 @@ def createAvailableSession(request):
         userDetails = getUserDetails(request)  # getting the details of the requested user
         if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
             return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        userChecking = checkUserStatus(userDetails['user'])
+        if(userChecking is not None):
+            return userChecking
+        print(userDetails['user'])
+        # user = Mentee.objects.get(id = userDetails['id'])
     except Exception as error:
         print(error)
         return Response({'message':'Error authorizing the user try logging in again'})
     print(userDetails['id'])
     if request.method == 'GET':
         try:
-            availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
+            availabeSession = AvailabeSession.objects.filter(mentor = userDetails['user'])
             if(not availabeSession.exists()):
                 return Response({'message':'No session exixts'},status=200)
             upComming_sessions = []
@@ -65,12 +70,13 @@ def createAvailableSession(request):
     # for post method to strore data
     try:
         # getting the available session object
-        availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
-
+        availabeSession = AvailabeSession.objects.filter(mentor = userDetails['user'])
+        
         if availabeSession.exists():
             # update code
             conflictingSlots = []
             newSlots = availabeSession[0].availableSlots
+            
             # checking weather the slot already exists in the table
             for slot in request.data['availableSlots']:
                 if slot in newSlots:
@@ -103,7 +109,7 @@ def createAvailableSession(request):
                 "to":str(to_time)
             })
         instance = AvailabeSession.objects.create(
-            mentor_id = decryptData(request.data['id']),
+            mentor = userDetails['user'],
             availableSlots = slots
         )
         instance.save()
@@ -125,6 +131,9 @@ def bookSession(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
@@ -162,6 +171,10 @@ def sessionCompleted(request):
 
 @api_view(['POST'])
 def sessionFeedback(request):
+
+    '''
+        docs input, output param 2-3 lines code writer name
+    '''
     log('Entered creating session feedback',1)
     try:
         validation_response = validate_token(request)  # validating the requested user using authorization headder
@@ -171,6 +184,9 @@ def sessionFeedback(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
@@ -205,7 +221,16 @@ def upcoming_sessions(request) :
     validation_response = validate_token(request)
     if validation_response is not None:
         return validation_response
-
+    try:
+        userDetails = getUserDetails(request)  # getting the details of the requested user
+        if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+            return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+        userChecking = checkUserStatus(userDetails['user'])
+        if(userChecking is not None):
+            return userChecking
+    except Exception as error:
+        print(error)
+        return Response({'message':'Error authorizing the user try logging in again'})
     mentor_id = decryptData( request.data['id']) # decoding the data
 
     current_date = date.today()           # current date
@@ -308,6 +333,9 @@ def new_sessions_booking(request, mentee_id):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
@@ -442,7 +470,7 @@ def new_sessions_booking(request, mentee_id):
                              'Error' : str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def session_cancellation(request):
     print("Session Cancellation")
     
@@ -457,6 +485,16 @@ def session_cancellation(request):
         validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
             return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
 
             
         #taking current date and time for checking
