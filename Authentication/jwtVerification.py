@@ -6,6 +6,20 @@ from datetime import timedelta
 from rest_framework_simplejwt.tokens import AccessToken
 from static.models import Mentee,Mentor,AuthToken
 from static.message_constants import STATUSES,TOKEN_TIMEDOUT,INVALID_TOKEN,VALID_TOKEN,EMAIL_NOT_VERIFIFED,DETAILS_NOT_ENTERED
+import pytz
+from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
+from datetime import datetime
+
+
+def is_token_expired(token):
+    try:
+        decoded_token = AccessToken(token)
+        exp_timestamp = decoded_token['exp']
+        exp_datetime = datetime.fromtimestamp(exp_timestamp, tz=pytz.utc)
+        return exp_datetime < datetime.now(pytz.utc)
+    except (TokenError, InvalidToken) as e:
+        return True
+
 
 def checkUserStatus(user):
     if not user.is_email_verified:
@@ -36,45 +50,45 @@ def getUserDetails(request):
     return {'type':authToken.user_type,'id':authToken.referenceId,'user':user}
 
 
-
-def get_or_create_jwt (user_data,user_role,email) :
-    print(user_data , "  " , user_role)
+def get_or_create_jwt(user_data, user_role, email):
+    print(user_data, "  ", user_role)
     token = None
-    
+
     if user_role == 'mentor':
         print("Entered if")
         mentor = Mentor.objects.filter(email_id=email).first()
         referenceId = mentor.id
     else:
         print("Entered else")
-        mentee = Mentee.objects.filter(email_id = email).first()
-        # referenceId = Mentee.objects.get(user = user_data).id
+        mentee = Mentee.objects.filter(email_id=email).first()
         referenceId = mentee.id
 
-    existing = AuthToken.objects.filter(referenceId = referenceId,user_type = user_role).first()
-    print(existing,'this is length of existing--')
-    
-    #  new user
-    if existing is None or 0 :
-        print("he is a new user ")
-        
+    existing = AuthToken.objects.filter(referenceId=referenceId, user_type=user_role).first()
+    print(existing, 'this is length of existing--')
+
+    # Check if the token exists and is not expired
+    if existing:
+        if is_token_expired(existing.jwt_token):
+            print("Token is expired, deleting the existing token")
+            existing.delete()
+            existing = None
+        else:
+            print("Token is valid")
+            existing.created_date = timezone.now().date()
+            existing.save()
+            token = existing.jwt_token
+
+    # If there is no existing valid token, create a new one
+    if existing is None:
+        print("Creating a new token for the user")
         access_token = AccessToken.for_user(user_data)
-
         newToken = AuthToken.objects.create(
-        user_type = user_role,
-        referenceId=referenceId,
-        jwt_token = str(access_token),
-    )
+            user_type=user_role,
+            referenceId=referenceId,
+            jwt_token=str(access_token),
+        )
         newToken.save()
-
         token = access_token
-
-    # Existing User
-    else :
-        print("He is old user")
-
-        token = existing.jwt_token
-        existing.created_date = timezone.now().date() 
 
     return token
 

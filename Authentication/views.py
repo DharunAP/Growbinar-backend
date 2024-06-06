@@ -7,11 +7,11 @@ from rest_framework_simplejwt.tokens import AccessToken
 from django.http import JsonResponse
 from rest_framework.response import Response
 from .serializers import MentorSerializer,MenteeSerializer,UserSerializer
-from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,USER_CREATED,EMAIL_EXISTS,SIGNUP_ERROR,VERIFIED_USER_EMAIL,ERROR_VERIFYING_USER_EMAIL,USER_DETAILS_SAVED,ERROR_SAVING_USER_DETAILS,EMAIL_NOT_VERIFIFED
+from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,USER_CREATED,EMAIL_EXISTS,SIGNUP_ERROR,VERIFIED_USER_EMAIL,ERROR_VERIFYING_USER_EMAIL,USER_DETAILS_SAVED,ERROR_SAVING_USER_DETAILS,EMAIL_NOT_VERIFIFED,ACCESS_DENIED
 from static.routes import VERIFY_MENTOR_ROUTE,VERIFY_MENTEE_ROUTE
 from django.contrib.auth.hashers import make_password,check_password
 from .assets import sendVerificationMail,log
-from .jwtVerification import get_or_create_jwt, getUserDetails, validate_token
+from .jwtVerification import get_or_create_jwt, getUserDetails, validate_token, checkUserStatus
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -56,10 +56,10 @@ def user_login(request):
             print(token, " tata printed ")
             log("User Logged In",1)
 
-            # if not user.is_email_verified:  # checking for user email verification
-            #     return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
-            # elif user.first_name is None:   # checking weather user has completed stepper page
-            #     return Response({'message':DETAILS_NOT_ENTERED,'token':token},status=STATUSES['BAD_REQUEST']) 
+            if not user.is_email_verified:  # checking for user email verification
+                return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
+            elif user.first_name is None:   # checking weather user has completed stepper page
+                return Response({'message':DETAILS_NOT_ENTERED,'token':token},status=STATUSES['SUCCESS']) 
 
             return JsonResponse({
                 'message': LOGIN_SUCCESS,  # Using 'message' key
@@ -81,6 +81,8 @@ def user_login(request):
         print(ex)
         log('Error while Login  ' + str(ex),3)
         return JsonResponse({'message' : LOGIN_ERROR}, status = STATUSES['INTERNAL_SERVER_ERROR'])
+
+
 
 
 @api_view(['POST'])
@@ -192,7 +194,7 @@ def getMentorDetails(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':  # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})   
@@ -246,7 +248,7 @@ def getMenteeDetails(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
@@ -285,7 +287,25 @@ def getMenteeDetails(request):
         print(e)
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
-
+@api_view(['GET'])
+def checkUserDetails(request):
+    try:
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'])
+            if(userChecking is not None):
+                return userChecking
+            return Response({'message':'Perfect go ahead'})
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+    except Exception as e:
+        return Response({'message':'Error checking the user status.'})
 
 def verifyMailSampleTemplate(request):
     return render(request, 'template/index.html',{'BASE_URL':'http://localhost:8000/'})
@@ -319,6 +339,14 @@ def resendMail(request):
 # log("Invalid user_role",3)
 #             return JsonResponse({'message' : INVALID_ROLE},status = STATUSES['BAD_REQUEST'])
             
+
+# Login:
+# error for email no token
+# no error for stepper - 200
+
+# common
+# no token _> login
+# no stepper -> 400
 
        
 

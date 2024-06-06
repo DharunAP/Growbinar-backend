@@ -14,6 +14,7 @@ CREATE_AVAILABLE_SESSIONS = 'availableSessions/'
 BOOK_SESSION = 'bookSession/'
 SESSION_CREATION = 'sessionFeedback/'
 RESEND_MAIL = 'resendMail/'
+CommonEndpoint = 'commonEndpoint/'
 
 userLogin = 'login/'
 

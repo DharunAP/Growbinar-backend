@@ -2,7 +2,7 @@ from django.shortcuts import render
 from static.models import AvailabeSession,Session,SessionFeedback,BookedSession,RequestedSession
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,ERROR_CREATING_FEEDBACK,FEEDBACK_CREATED,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ERROR_SAVING_USER_DETAILS
+from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,ERROR_CREATING_FEEDBACK,FEEDBACK_CREATED,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ERROR_SAVING_USER_DETAILS,ACCESS_DENIED
 from .assets import log
 from static.cipher import encryptData,decryptData
 from datetime import datetime
@@ -34,7 +34,7 @@ def createAvailableSession(request):
     try:
         userDetails = getUserDetails(request)  # getting the details of the requested user
         if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-            return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
         userChecking = checkUserStatus(userDetails['user'])
         if(userChecking is not None):
             return userChecking
@@ -130,7 +130,7 @@ def bookSession(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
@@ -183,7 +183,7 @@ def sessionFeedback(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
@@ -224,7 +224,7 @@ def upcoming_sessions(request) :
     try:
         userDetails = getUserDetails(request)  # getting the details of the requested user
         if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-            return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+            return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
         userChecking = checkUserStatus(userDetails['user'])
         if(userChecking is not None):
             return userChecking
@@ -332,7 +332,7 @@ def new_sessions_booking(request, mentee_id):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
@@ -488,7 +488,7 @@ def session_cancellation(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking

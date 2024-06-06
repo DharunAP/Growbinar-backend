@@ -76,7 +76,9 @@ CANCELLATION_SUCCESS = "Session has been cancelled successfully"
 
 NO_ACCESS_TO_CANCEL = "User has no access to cancel the session"
 
-EMAIL_NOT_VERIFIFED = 'Verify email before entering user details'
+EMAIL_NOT_VERIFIFED = 'Verify your email'
+
+ACCESS_DENIED = 'Access Denied for the user'
 
 SUCESS = "Details sent sucessfully"
 

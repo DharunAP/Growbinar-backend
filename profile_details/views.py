@@ -1,7 +1,7 @@
 from static.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session,Testimonial
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS
+from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ACCESS_DENIED
 from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer
@@ -102,7 +102,7 @@ def listMentorsOfMentee(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
@@ -162,7 +162,7 @@ def testimonials(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':  # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied for the user'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
@@ -217,7 +217,7 @@ def mentor_details(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
@@ -286,7 +286,7 @@ def createAvailableSession(request):
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':'Acess denied'},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
