@@ -56,10 +56,10 @@ def user_login(request):
             print(token, " tata printed ")
             log("User Logged In",1)
 
-            if not user.is_email_verified:  # checking for user email verification
-                return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
-            elif user.first_name is None:   # checking weather user has completed stepper page
-                return Response({'message':DETAILS_NOT_ENTERED,'token':token},status=STATUSES['BAD_REQUEST']) 
+            # if not user.is_email_verified:  # checking for user email verification
+            #     return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
+            # elif user.first_name is None:   # checking weather user has completed stepper page
+            #     return Response({'message':DETAILS_NOT_ENTERED,'token':token},status=STATUSES['BAD_REQUEST']) 
 
             return JsonResponse({
                 'message': LOGIN_SUCCESS,  # Using 'message' key
