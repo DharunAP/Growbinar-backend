@@ -297,7 +297,7 @@ def checkUserDetails(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
             return Response({'message':'Perfect go ahead','role':userDetails['type']},status=STATUSES['SUCCESS'])

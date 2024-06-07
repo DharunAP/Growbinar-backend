@@ -21,11 +21,11 @@ def is_token_expired(token):
         return True
 
 
-def checkUserStatus(user):
+def checkUserStatus(user,userType):
     if not user.is_email_verified:
-        return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
+        return Response({'message':EMAIL_NOT_VERIFIFED,'role':userType},status=STATUSES['BAD_REQUEST'])
     if user.first_name == None:
-        return Response({'message':DETAILS_NOT_ENTERED},status=STATUSES['BAD_REQUEST'])
+        return Response({'message':DETAILS_NOT_ENTERED,'role':userType},status=STATUSES['BAD_REQUEST'])
     return None
 
 def getUserDetails(request):
