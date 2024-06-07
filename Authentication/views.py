@@ -300,7 +300,7 @@ def checkUserDetails(request):
             userChecking = checkUserStatus(userDetails['user'])
             if(userChecking is not None):
                 return userChecking
-            return Response({'message':'Perfect go ahead'})
+            return Response({'message':'Perfect go ahead','role':userDetails['type']},status=STATUSES['SUCCESS'])
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
