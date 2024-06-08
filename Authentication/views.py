@@ -77,10 +77,10 @@ def user_login(request):
             
             return JsonResponse({'message' : INVALID_CREDENTIALS}, status = STATUSES['BAD_REQUEST'])
             
-    except Exception as ex:
-        print(ex)
-        log('Error while Login  ' + str(ex),3)
-        return JsonResponse({'message' : LOGIN_ERROR}, status = STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        print(error)
+        log('Error while Login  ' + str(error),3)
+        return JsonResponse({'message' : LOGIN_ERROR,'error':str(error)}, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 
@@ -113,9 +113,9 @@ def MenteeSignup(request):
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
-        log("Error creating a mentee"+str(e),3)
-        print(e)
-        return Response({'message':SIGNUP_ERROR}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+        log("Error creating a mentee"+str(error),3)
+        print(error)
+        return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def MentorSignup(request):
@@ -144,10 +144,10 @@ def MentorSignup(request):
             log("invalid credentails for signup",2)
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
-    except Exception as e:
-        log("Error creating a mentor"+str(e),3)
-        print(e)
-        return Response({'message':SIGNUP_ERROR}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        log("Error creating a mentor"+str(error),3)
+        print(error)
+        return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 @api_view(['GET'])
@@ -162,10 +162,10 @@ def VerifyMentee(request):
         mentee.save()
         log('Email verification sucess for '+menteeID,1)
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
-    except Exception as e:
-        log("Error verifying email "+str(e),3)
-        print(e)
-        return Response({'message':ERROR_VERIFYING_USER_EMAIL},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        log("Error verifying email "+str(error),3)
+        print(error)
+        return Response({'message':ERROR_VERIFYING_USER_EMAIL,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
 def VerifyMentor(request):
@@ -178,10 +178,10 @@ def VerifyMentor(request):
         mentor.save()
         log('Email verification sucess for '+mentorID,1)
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
-    except Exception as e:
-        log("Error verifying email "+str(e),3)
-        print(e)
-        return Response({'message':ERROR_VERIFYING_USER_EMAIL},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        log("Error verifying email "+str(error),3)
+        print(error)
+        return Response({'message':ERROR_VERIFYING_USER_EMAIL,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def getMentorDetails(request):
@@ -232,10 +232,10 @@ def getMentorDetails(request):
         else:
             log('invalid details '+str(serializer.errors),2)
             return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
-    except Exception as e:
-        log("Error saving mentor details - "+str(e),3)
-        print('final',e)
-        return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        log("Error saving mentor details - "+str(error),3)
+        print('final',error)
+        return Response({'message':ERROR_SAVING_USER_DETAILS,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def getMenteeDetails(request):
@@ -282,10 +282,10 @@ def getMenteeDetails(request):
         else:
             log('invalid details '+str(serializer.errors),2)
             return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
-    except Exception as e:
-        log("Error saving mentor details - "+str(e),3)
-        print(e)
-        return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        log("Error saving mentor details - "+str(error),3)
+        print(error)
+        return Response({'message':ERROR_SAVING_USER_DETAILS,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
 def checkUserDetails(request):
@@ -304,8 +304,8 @@ def checkUserDetails(request):
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
-    except Exception as e:
-        return Response({'message':'Error checking the user status.'})
+    except Exception as error:
+        return Response({'message':'Error checking the user status.','error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 def verifyMailSampleTemplate(request):
     return render(request, 'template/index.html',{'BASE_URL':'http://localhost:8000/'})
@@ -329,9 +329,9 @@ def resendMail(request):
             email = Mentor.objects.get(id = userDetails['id']).email_id
             sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptData(userDetails['id']),email)  # sending the verification mail
         return Response({'message':'Mail sent successfully'},status=STATUSES['SUCCESS'])
-    except Exception as e:
-        print(e)
-        return Response({'message':'Error sending mail'},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as error:
+        print(error)
+        return Response({'message':'Error sending mail','error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 
