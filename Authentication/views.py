@@ -13,12 +13,13 @@ from django.contrib.auth.hashers import make_password,check_password
 from .assets import sendVerificationMail,log
 from .jwtVerification import get_or_create_jwt, getUserDetails, validate_token, checkUserStatus
 from rest_framework.permissions import IsAuthenticated
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
 
 
 @api_view(['POST'])
 def user_login(request):
     print("Request has Entered into User Login Page")
-    log("Entered User-Login ",1)
+    log("Entered User-Login ",DEBUG_CODE)
 
     try:
         print(request.data)
@@ -29,32 +30,32 @@ def user_login(request):
         if user_role == 'mentor':
                  # Request entered where the user exist
             user = Mentor.objects.filter(email_id=email).first()
-            log("User is Mentor",1)
+            log("User is Mentor",DEBUG_CODE)
 
         elif user_role == 'mentee':
             user = Mentee.objects.filter(email_id=email).first()
-            log("User is Mentee",1)
+            log("User is Mentee",DEBUG_CODE)
             
         else:
-            log("Invalid user_role",3)
+            log("Invalid user_role",ERROR_CODE)
             return JsonResponse({'message' : INVALID_ROLE},status = STATUSES['BAD_REQUEST'])
         print(user)
 
         if not user:
                     # Request entered were user not exist
             if user_role == 'mentor':
-                log("User Not Found",2)
+                log("User Not Found",WARNING_CODE)
                 return JsonResponse({'message' : USER_NOT_FOUND }, status = STATUSES['BAD_REQUEST'])
             
             else :
-                log("User Not Found",2)
+                log("User Not Found",WARNING_CODE)
                 return JsonResponse({'message' :USER_NOT_FOUND},status = STATUSES['BAD_REQUEST'])
             
         if check_password(password, user.password):
         # if (password == user.password):
             token = str(get_or_create_jwt(user,user_role,email))
             print(token, " tata printed ")
-            log("User Logged In",1)
+            log("User Logged In",DEBUG_CODE)
 
             if not user.is_email_verified:  # checking for user email verification
                 return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
@@ -73,13 +74,13 @@ def user_login(request):
             }, status= STATUSES['SUCCESS'])
         
         else:
-            log("Invalid Credentials",3)
+            log("Invalid Credentials",ERROR_CODE)
             
             return JsonResponse({'message' : INVALID_CREDENTIALS}, status = STATUSES['BAD_REQUEST'])
             
     except Exception as error:
         print(error)
-        log('Error while Login  ' + str(error),3)
+        log('Error while Login  ' + str(error),ERROR_CODE)
         return JsonResponse({'message' : LOGIN_ERROR,'error':str(error)}, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
 
@@ -87,11 +88,11 @@ def user_login(request):
 
 @api_view(['POST'])
 def MenteeSignup(request):
-    log("Entered mentee-signup",1)
+    log("Entered mentee-signup",DEBUG_CODE)
     try:
         # chekking weather email already exists
         if Mentee.objects.filter(email_id=request.data['email_id']).exists():
-            log("Email already exists as a mentee",1)
+            log("Email already exists as a mentee",DEBUG_CODE)
             return Response({"message":EMAIL_EXISTS},status=STATUSES['BAD_REQUEST'])
 
         serializer = UserSerializer(data=request.data)
@@ -105,25 +106,25 @@ def MenteeSignup(request):
             encryptedID = encryptData(instance.id)       # encrypting the id to send as the response
             sendVerificationMail(VERIFY_MENTEE_ROUTE+"?id="+encryptedID,request.data['email_id'])  # sending the verification mail
             jwt_token = get_or_create_jwt(instance, 'mentee', instance.email_id)  # creating jwt token for the user
-            log("signup successfull",1)
+            log("signup successfull",DEBUG_CODE)
             return Response({'message':USER_CREATED,'id':encryptedID,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
         else:
             # sending bad request response for invalid payload
-            log("invalid credentails for signup "+str(serializer.errors),2)
+            log("invalid credentails for signup "+str(serializer.errors),WARNING_CODE)
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
-        log("Error creating a mentee"+str(error),3)
+        log("Error creating a mentee"+str(error),ERROR_CODE)
         print(error)
         return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def MentorSignup(request):
-    log("Entered mentor-signup",1)
+    log("Entered mentor-signup",DEBUG_CODE)
     try:
         # chekking weather email already exists
         if Mentor.objects.filter(email_id=request.data['email_id']).exists():
-            log("Email already exists",2)
+            log("Email already exists",WARNING_CODE)
             return Response({"message":EMAIL_EXISTS},status=STATUSES['BAD_REQUEST'])
 
         serializer = UserSerializer(data=request.data)
@@ -134,25 +135,25 @@ def MentorSignup(request):
             # creating mentor object
             instance = Mentor.objects.create(email_id=request.data['email_id'],password=make_password(request.data['password']))
             instance.save()
-            log("signup successfull",1)
+            log("signup successfull",DEBUG_CODE)
             encryptedID = encryptData(instance.id)      # encrypting the id to send as the response
             sendVerificationMail(VERIFY_MENTOR_ROUTE+"?id="+encryptedID,request.data['email_id']) # sending the verification mail
             jwt_token = get_or_create_jwt(instance, 'mentor', instance.email_id)  # creating jwt token for the user
             return Response({'message':USER_CREATED,'id':encryptedID,"jwt_token":str(jwt_token)}, status=STATUSES['SUCCESS'])
         else:
             # sending bad request response
-            log("invalid credentails for signup",2)
+            log("invalid credentails for signup",WARNING_CODE)
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as error:
-        log("Error creating a mentor"+str(error),3)
+        log("Error creating a mentor"+str(error),ERROR_CODE)
         print(error)
         return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 @api_view(['GET'])
 def VerifyMentee(request):
-    log('Entered email verification of mentee',1)
+    log('Entered email verification of mentee',DEBUG_CODE)
     try:
         # Getting mentee id from the url and setting is_email_verified to True
         menteeID = decryptData(request.GET.get('id'))
@@ -160,32 +161,32 @@ def VerifyMentee(request):
         mentee = Mentee.objects.get(id=menteeID)
         mentee.is_email_verified = True
         mentee.save()
-        log('Email verification sucess for '+menteeID,1)
+        log('Email verification sucess for '+menteeID,DEBUG_CODE)
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
     except Exception as error:
-        log("Error verifying email "+str(error),3)
+        log("Error verifying email "+str(error),ERROR_CODE)
         print(error)
         return Response({'message':ERROR_VERIFYING_USER_EMAIL,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
 def VerifyMentor(request):
-    log('Entered email verification mentor',1)
+    log('Entered email verification mentor',DEBUG_CODE)
     try:
         # Getting mentor id from the url and setting is_email_verified to True
         mentorID = decryptData(request.GET.get('id'))
         mentor = Mentor.objects.get(id=mentorID)
         mentor.is_email_verified = True
         mentor.save()
-        log('Email verification sucess for '+mentorID,1)
+        log('Email verification sucess for '+mentorID,DEBUG_CODE)
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
     except Exception as error:
-        log("Error verifying email "+str(error),3)
+        log("Error verifying email "+str(error),ERROR_CODE)
         print(error)
         return Response({'message':ERROR_VERIFYING_USER_EMAIL,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def getMentorDetails(request):
-    log('Entered mentor details endpoint',1)
+    log('Entered mentor details endpoint',DEBUG_CODE)
     try:
         validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
@@ -203,7 +204,7 @@ def getMentorDetails(request):
         # mentor = Mentor.objects.get(id = decryptData(request.data['id']))
         print(mentor)
         if not mentor.is_email_verified:
-            log("Email not verified",2)
+            log("Email not verified",WARNING_CODE)
             return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
         request.data['password'] = mentor.password
         serializer = MentorSerializer(data=request.data)
@@ -227,19 +228,19 @@ def getMentorDetails(request):
             mentor.company=request.data['company']
 
             mentor.save()
-            log("success",1)
+            log("success",DEBUG_CODE)
             return Response({'message':USER_DETAILS_SAVED},status=STATUSES['SUCCESS'])
         else:
-            log('invalid details '+str(serializer.errors),2)
+            log('invalid details '+str(serializer.errors),WARNING_CODE)
             return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as error:
-        log("Error saving mentor details - "+str(error),3)
+        log("Error saving mentor details - "+str(error),ERROR_CODE)
         print('final',error)
         return Response({'message':ERROR_SAVING_USER_DETAILS,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def getMenteeDetails(request):
-    log('Entered mentor details endpoint',1)
+    log('Entered mentor details endpoint',DEBUG_CODE)
     try:
         print('here ')
         validation_response = validate_token(request)  # validating the requested user using authorization headder
@@ -256,7 +257,7 @@ def getMenteeDetails(request):
         mentee = Mentee.objects.get(id=userDetails['id'])
         # mentee = Mentee.objects.get(id = decryptData(request.data['id']))
         if not mentee.is_email_verified:
-            log("Email not verified",2)
+            log("Email not verified",WARNING_CODE)
             return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
         serializer = MenteeSerializer(data=request.data)
         valid = serializer.is_valid()
@@ -277,13 +278,13 @@ def getMenteeDetails(request):
             mentee.is_experience=request.data['is_experience']
 
             mentee.save()
-            log("success",1)
+            log("success",DEBUG_CODE)
             return Response({'message':USER_DETAILS_SAVED},status=STATUSES['SUCCESS'])
         else:
-            log('invalid details '+str(serializer.errors),2)
+            log('invalid details '+str(serializer.errors),WARNING_CODE)
             return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as error:
-        log("Error saving mentor details - "+str(error),3)
+        log("Error saving mentor details - "+str(error),ERROR_CODE)
         print(error)
         return Response({'message':ERROR_SAVING_USER_DETAILS,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
@@ -336,7 +337,7 @@ def resendMail(request):
 
 
 
-# log("Invalid user_role",3)
+# log("Invalid user_role",ERROR_CODE)
 #             return JsonResponse({'message' : INVALID_ROLE},status = STATUSES['BAD_REQUEST'])
             
 
@@ -355,17 +356,17 @@ def resendMail(request):
 #         if not user:
 #                     # Request entered were user not exist
 #             if user_role == 'mentor':
-#                 log("User Not Found",2)
+#                 log("User Not Found",WARNING_CODE)
 #                 return JsonResponse({'message' : USER_NOT_FOUND }, status = STATUSES['BAD_REQUEST'])
             
 #             else :
-#                 log("User Not Found",2)
+#                 log("User Not Found",WARNING_CODE)
 #                 return JsonResponse({'message' :USER_NOT_FOUND},status = STATUSES['BAD_REQUEST'])
             
 #         if check_password(password, user.password):
 #         # if (password == user.password):
 #             token = AccessToken.for_user(user)
-#             log("User Logged In",1)
+#             log("User Logged In",DEBUG_CODE)
 #             return JsonResponse({
 #                 'message': LOGIN_SUCCESS,  # Using 'message' key
 #                 'token': str(token),
@@ -377,12 +378,12 @@ def resendMail(request):
 #             }, status= STATUSES['SUCCESS'])
         
 #         else:
-#             log("Invalid Credentials",3)
+#             log("Invalid Credentials",ERROR_CODE)
 #             return JsonResponse({'message' : INVALID_CREDENTIALS}, status = STATUSES['BAD_REQUEST'])
             
 #     except Exception as ex:
 #         print(ex)
-#         log('Error while Login  ' + str(ex),3)
+#         log('Error while Login  ' + str(ex),ERROR_CODE)
 #         return JsonResponse({'message' : LOGIN_ERROR}, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
 

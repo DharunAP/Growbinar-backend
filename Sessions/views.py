@@ -6,6 +6,7 @@ from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,ERROR_CREATI
 from .assets import log
 from static.cipher import encryptData,decryptData
 from datetime import datetime
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
 
 from django.http import JsonResponse
 from django.utils import timezone
@@ -26,7 +27,7 @@ def get_datetime(entry):
 
 @api_view(['GET','POST'])
 def createAvailableSession(request):
-    log('Entered create available session endpoint for '+request.method,1)
+    log('Entered create available session endpoint for '+request.method,DEBUG_CODE)
     # to provide all the avalilable sessions of the mentor listed up-next
     validation_response = validate_token(request)  # validating the requested user using authorization headder
     if validation_response is not None:
@@ -61,10 +62,10 @@ def createAvailableSession(request):
                     upComming_sessions.append(session)
 
             sorted_data = sorted(upComming_sessions, key=get_datetime)
-            log('available sessions returned sucessfully',3)
+            log('available sessions returned sucessfully',DEBUG_CODE)
             return Response({'message':sorted_data},status=STATUSES['SUCCESS'])
         except Exception as e:
-            log('Error returing the available sessions '+str(e),3)
+            log('Error returing the available sessions '+str(e),ERROR_CODE)
             return Response({'message':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
     # for post method to strore data
@@ -94,7 +95,7 @@ def createAvailableSession(request):
             
             # adding the new slots to the table
             availabeSession.update(availableSlots = newSlots)
-            log('New slots crated sucessfully ',1)
+            log('New slots crated sucessfully ',DEBUG_CODE)
             return Response({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
 
         # creating new available session for the mentor
@@ -113,16 +114,16 @@ def createAvailableSession(request):
             availableSlots = slots
         )
         instance.save()
-        log("New session created successfully ",1)
+        log("New session created successfully ",DEBUG_CODE)
         return Response({"message":SUCESS,"slots":slots},status=STATUSES['SUCCESS'])
     except Exception as e:
         print(e)
-        log("Error in creating available session "+str(e),3)
+        log("Error in creating available session "+str(e),ERROR_CODE)
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def bookSession(request):
-    log('Entered booking a session',1)
+    log('Entered booking a session',DEBUG_CODE)
     try:
         validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
@@ -153,10 +154,10 @@ def bookSession(request):
             requested_session = requested_session,
         )
         booked_session.save()
-        log('session booked',1)
+        log('session booked',DEBUG_CODE)
         return Response({'message':'Session booked sucessfully','id':booked_session.id},status=STATUSES['SUCCESS'])
     except Exception as e:
-        log('Error booking a session '+str(e),3)
+        log('Error booking a session '+str(e),ERROR_CODE)
         return Response({'message':"Error booking a session"},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
@@ -175,7 +176,7 @@ def sessionFeedback(request):
     '''
         docs input, output param 2-3 lines code writer name
     '''
-    log('Entered creating session feedback',1)
+    log('Entered creating session feedback',DEBUG_CODE)
     try:
         validation_response = validate_token(request)  # validating the requested user using authorization headder
         if validation_response is not None:
@@ -200,13 +201,13 @@ def sessionFeedback(request):
                 ratings = request.data['ratings']
             )
             feedback.save()
-            log('Feedback created sucessfully',1)
+            log('Feedback created sucessfully',DEBUG_CODE)
             return Response({'message':FEEDBACK_CREATED},status=STATUSES['SUCCESS'])
         else:
-            log('Session is not completed',2)
+            log('Session is not completed',WARNING_CODE)
             return Response({'message':SESSION_NOT_COMPLETED},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
-        log('Error creating session feedback '+str(e),3)
+        log('Error creating session feedback '+str(e),ERROR_CODE)
         return Response({'message':ERROR_CREATING_FEEDBACK},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
@@ -216,7 +217,7 @@ def sessionFeedback(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def upcoming_sessions(request) :
-    log('Entered upcoming session',1)
+    log('Entered upcoming session',DEBUG_CODE)
 
     validation_response = validate_token(request)
     if validation_response is not None:
@@ -244,7 +245,7 @@ def upcoming_sessions(request) :
         # if mentor_details.exists() :
         if mentor_details :
             # if the mentor Exists
-            log("Mentor Exists",1)
+            log("Mentor Exists",DEBUG_CODE)
             # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
             session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE id={mentor_id};")
                  
@@ -267,34 +268,34 @@ def upcoming_sessions(request) :
                     if (index.slot_date - current_date).days == 0:
                         if index.from_slot_time > current_time :
                                 # days are same but time of meeting is after than current time
-                            log('same day but session time in upcoming time',1)
+                            log('same day but session time in upcoming time',DEBUG_CODE)
                             value['status'] = MEET_STATUS[201]
                         else :
                                 # days are same but time of meeting is before the current time
-                            log('same day but session time has completed',1)
+                            log('same day but session time has completed',DEBUG_CODE)
                             value['status'] = MEET_STATUS[202]
                     
                     elif (index.slot_date - current_date).days > 0:
                             # session date is before the current date
-                        log('date of session in upcoming days',1)
+                        log('date of session in upcoming days',DEBUG_CODE)
                         value['status'] = MEET_STATUS[201]
 
                     else :
                             # session date is after current date
-                        log("Date of the session completed",1)
+                        log("Date of the session completed",DEBUG_CODE)
                         value['status'] = MEET_STATUS[202]
 
                 else :
                     if (index.slot_date - current_date).days < 0 :
                             # session is not acceted by mentor and the date also before current date
-                        log('session not accepted by mentor',1)
+                        log('session not accepted by mentor',DEBUG_CODE)
                         value['status'] = MEET_STATUS[203]
 
                 value['meet_type'] = MEET_TYPE[101]
                 
                 sessions.append(value)
 
-            log("Upcoming session displayed",1)
+            log("Upcoming session displayed",DEBUG_CODE)
             print(request.auth," === ", "this is the auth token")
             return JsonResponse({
                 "message" : "The details of upcoming session",
@@ -303,7 +304,7 @@ def upcoming_sessions(request) :
         
         else :
                 # User not found with the id
-            log("User not Found",2)
+            log("User not Found",WARNING_CODE)
             return JsonResponse({
                 'message' : USER_NOT_FOUND
             }, status = STATUSES['NOT_FOUND'])
@@ -311,7 +312,7 @@ def upcoming_sessions(request) :
     except Exception as ex :
         print(ex,"in catch")
             # Error while fetching the details
-        log("Error while displaying upcoming session",3)
+        log("Error while displaying upcoming session",ERROR_CODE)
         return JsonResponse({
                 'message' : FETCHING_ERROR
             }, status = STATUSES['NOT_FOUND'])
@@ -350,15 +351,15 @@ def new_sessions_booking(request, mentee_id):
 
     # Validating the time and date
         if not is_valid_date(start_date):
-            log("Enter the valid date",3)
+            log("Enter the valid date",ERROR_CODE)
             return JsonResponse({'message': INVALID_DATE}, status= STATUSES['INTERNAL_SERVER_ERROR'])
 
             # Validate start_time and end_time
         if not is_valid_time(start_time):
-            log('Enter the valid time',3)
+            log('Enter the valid time',ERROR_CODE)
             return JsonResponse({'message': INVALID_TIME}, status= STATUSES['INTERNAL_SERVER_ERROR'])
         if not is_valid_time(end_time):
-            log('Enter the valid time',3)
+            log('Enter the valid time',ERROR_CODE)
             return JsonResponse({'message': INVALID_TIME}, status= STATUSES['INTERNAL_SERVER_ERROR'])
 
     #taking the mentor instance
@@ -388,7 +389,7 @@ def new_sessions_booking(request, mentee_id):
 
             if users_start_time == users_end_time:
             # if both time are equal
-                log('Start and End time are same',3)
+                log('Start and End time are same',ERROR_CODE)
                 return JsonResponse({'message': SAME_TIME}, status=STATUSES['INTERNAL_SERVER_ERROR'])
             
             if users_start_time >= present_start_time and users_end_time <= present_end_time:
@@ -397,7 +398,7 @@ def new_sessions_booking(request, mentee_id):
                 print(session_details, "-- the session setails --")
 
                 if not session_details :
-                    log('No already session available ',1)
+                    log('No already session available ',DEBUG_CODE)
                     new_session = Session.objects.create(
                             mentor=mentor_ins,
                             slot_date=start_date,
@@ -406,7 +407,7 @@ def new_sessions_booking(request, mentee_id):
                         )
 
                     new_session.save()
-                    log('New session created',1)
+                    log('New session created',DEBUG_CODE)
 
                     mentee_ins = Mentee.objects.filter(id=decryptData(mentee_id))[0]
                     
@@ -416,7 +417,7 @@ def new_sessions_booking(request, mentee_id):
                         is_accepted=False
                     )
                     requested_session.save()
-                    log('Requestedsession created successfully',1)
+                    log('Requestedsession created successfully',DEBUG_CODE)
                     return JsonResponse({'message': NEW_SESSION,
                                          'session_id' : new_session}, status=STATUSES['SUCCESS'])
 
@@ -430,7 +431,7 @@ def new_sessions_booking(request, mentee_id):
                         users_start_time >= datetime.strptime(available_from_time, '%H:%M:%S').time() and
                         users_end_time <= datetime.strptime(available_to_time, '%H:%M:%S').time()) :
 
-                        log('Session already available',2)
+                        log('Session already available',WARNING_CODE)
                         return JsonResponse({'message': BOOKED_SESSION}, status=STATUSES['INTERNAL_SERVER_ERROR'])
                         
                     else :
@@ -443,7 +444,7 @@ def new_sessions_booking(request, mentee_id):
                         )
 
                         new_session.save()
-                        log('Session created successfully',1)
+                        log('Session created successfully',DEBUG_CODE)
 
                         mentee_ins = Mentee.objects.filter(id=decryptData(mentee_id))[0]
                     
@@ -453,19 +454,19 @@ def new_sessions_booking(request, mentee_id):
                             is_accepted=False
                         )
                         requested_session.save()
-                        log('Requestedsession created successfully',1)
+                        log('Requestedsession created successfully',DEBUG_CODE)
                         return JsonResponse({'message': NEW_SESSION,
                                              'session_id' : new_session}, status=STATUSES['SUCCESS'])
 
             else:
-                log('Enter the wrong time',2)
+                log('Enter the wrong time',WARNING_CODE)
                 return JsonResponse({'message': WRONG_TIME}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
-        log('No free slots available',1)
+        log('No free slots available',DEBUG_CODE)
         return JsonResponse({'message': UNAVAILABLE_SLOTS}, status=STATUSES['INTERNAL_SERVER_ERROR'])
     
     except Exception as e:
-        log('Some error occurred',3)
+        log('Some error occurred',ERROR_CODE)
         return JsonResponse({'message':'error',
                              'Error' : str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
@@ -513,61 +514,61 @@ def session_cancellation(request):
 
         # if the user is mentee
         if user_type == 'mentee':
-            log('User is mentee',1)
+            log('User is mentee',DEBUG_CODE)
             mentee_details = Mentee.objects.get(id=user_id)
 
             if requested_session.mentee_id == int(user_id):
-                log('Mentee have access to cancel the session',1)
+                log('Mentee have access to cancel the session',DEBUG_CODE)
                 print('same mentee')
                 if requested_session.is_accepted:
-                    log('Session has been accepted by mentor',1)
+                    log('Session has been accepted by mentor',DEBUG_CODE)
                     print('session accepted already')
                     time_difference = (session_start_datetime - current_datetime).total_seconds() #to check time difference
 
                     if time_difference <= 4 * 3600:
-                        log('Due to less than 4hrs session cannot cancelled',2)
+                        log('Due to less than 4hrs session cannot cancelled',WARNING_CODE)
                         return JsonResponse({'message': NO_TIME_SESSION}, status=STATUSES['INTERNAL_SERVER_ERROR'])
                     else:
                         session_details.delete()
-                        log('Session cancelled successfully',1)
+                        log('Session cancelled successfully',DEBUG_CODE)
                         return JsonResponse({'message': CANCELLATION_SUCCESS}, status=STATUSES['SUCCESS'])
                 else:
                     session_details.delete()
-                    log('Session cancelled successfully',1)
+                    log('Session cancelled successfully',DEBUG_CODE)
                     return JsonResponse({'message': CANCELLATION_SUCCESS}, status=STATUSES['SUCCESS'])
             else:
-                log("Don't have access to cancel the session",2)
+                log("Don't have access to cancel the session",WARNING_CODE)
                 return JsonResponse({'message': NO_ACCESS_TO_CANCEL}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
         # if the user is mentor
         else:
-            log('User is mentor',1)
+            log('User is mentor',DEBUG_CODE)
             mentor_details = Mentor.objects.get(id=user_id)
 
             if session_details.mentor_id == int(user_id):
-                log('Mentor have access to cancel the session',1)
+                log('Mentor have access to cancel the session',DEBUG_CODE)
                 if requested_session.is_accepted:
                     print("Session got accepted")
-                    log('Session has been accepted by mentor',1)
+                    log('Session has been accepted by mentor',DEBUG_CODE)
                     if (session_details.slot_date - current_date).days <= 0:
-                        log('It is same day',1)
+                        log('It is same day',DEBUG_CODE)
                         time_difference = (session_start_datetime - current_datetime).total_seconds()
                         if time_difference <= 4 * 3600:
-                            log('Time less than 4hrs',2)
+                            log('Time less than 4hrs',WARNING_CODE)
                             return JsonResponse({'message': NO_TIME_SESSION}, status=STATUSES['INTERNAL_SERVER_ERROR'])
                     else:
                         session_details.delete()
-                        log('Session deleted successfully',1)
+                        log('Session deleted successfully',DEBUG_CODE)
                         return JsonResponse({'message': CANCELLATION_SUCCESS}, status=STATUSES['SUCCESS'])
                 else:
                     session_details.delete()
-                    log('Session deleted successfully',1)
+                    log('Session deleted successfully',DEBUG_CODE)
                     return JsonResponse({'message': CANCELLATION_SUCCESS}, status=STATUSES['SUCCESS'])
             else:
                 print(' --- mentor_id != user_id --- ')
-                log('Mentor had no access to delete the session',2)
+                log('Mentor had no access to delete the session',WARNING_CODE)
                 return JsonResponse({'message': NO_ACCESS_TO_CANCEL}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
     except Exception as e:
-        log('Error had occured',3)
+        log('Error had occured',ERROR_CODE)
         return JsonResponse({'message': "Error Occured", "Error": str(e)}, status=STATUSES['INTERNAL_SERVER_ERROR'])

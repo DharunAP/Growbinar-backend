@@ -6,12 +6,13 @@ from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer
 from Authentication.jwtVerification import *
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
 
 from datetime import datetime
 
 @api_view(['GET'])
 def listAllMentors(request):
-    log("Entered list Mentors",1)
+    log("Entered list Mentors",DEBUG_CODE)
     try:
         # getting required fields from the mentor table for each mentor
         mentors = Mentor.objects.raw("SELECT id,profile_picture_url,is_top_rated,is_experience,languages,first_name,last_name,designation,company,mentor_experience FROM static_mentor;")
@@ -39,16 +40,17 @@ def listAllMentors(request):
             print(value,'--')
             data.append(value)
 
-        log("Mentors listed successfully",1)
+        log("Mentors listed successfully",DEBUG_CODE)
         print(data)
         return Response({'data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
-        log("Error in list mentors"+str(e), 3)
-        return Response({'message':ERROR_GETTING_MENTOR_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
+        print(e)
+        log("Error in list mentors"+str(e), ERROR_CODE)
+        return Response({'message':ERROR_GETTING_MENTOR_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
 def menteeDetails(request):
-    log("Entered mentee details",1)
+    log("Entered mentee details",DEBUG_CODE)
     try:
         # getting the requested mentee details from the table
         validation_response = validate_token(request)  # validating the requested user using authorization headder
@@ -86,12 +88,12 @@ def menteeDetails(request):
             "experience":experience_list
         }
         # background languages experience
-        log("Mentee details provided sucessfully",1)
+        log("Mentee details provided sucessfully",DEBUG_CODE)
         return Response({'message':SUCESS,'data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
-        # print(e)
-        log("Error fetching mentee details"+str(e),1)
-        return Response({'message':ERROR_SENDING_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
+        print(e)
+        log("Error fetching mentee details"+str(e),ERORR_CODE)
+        return Response({'message':ERROR_SENDING_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def listMentorsOfMentee(request):
@@ -133,13 +135,13 @@ def listMentorsOfMentee(request):
         # listing the mentor details as the response
         return Response({"message":SUCESS,"data":mentor_list},status=STATUSES['SUCCESS'])
     except Exception as e:
-        # print(e)
-        log("Error fetching mentor details"+str(e),1)
-        return Response({"message":ERROR_SENDING_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
+        print(e)
+        log("Error fetching mentor details"+str(e),ERORR_CODE)
+        return Response({"message":ERROR_SENDING_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET','POST'])
 def testimonials(request):
-    log('Entered testimonials endpoint',1)
+    log('Entered testimonials endpoint',DEBUG_CODE)
     if(request.method=='GET'):
         try:
             testimonial_data = Testimonial.objects.all()
@@ -185,8 +187,8 @@ def testimonials(request):
         print(serializer.errors)
         return Response({'message':INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
-        print(e,'==')
-        return Response({'message':'Error creating testimonial'},status=STATUSES['INTERNAL_SERVER_ERROR'])
+        print(e)
+        return Response({'message':'Error creating testimonial','error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 
@@ -230,7 +232,7 @@ def mentor_details(request):
         mentor_id = userDetails['id']
         print('mentor - id',mentor_id,'----')
 
-        log("Entered mentor details",1)
+        log("Entered mentor details",DEBUG_CODE)
         print("Request in mentor_details")
         print(request.data)
         
@@ -238,7 +240,7 @@ def mentor_details(request):
         availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
         print('----avai-----',availabeSession)
         # print(mentor.is_email_verified)
-        log("mentor email verified",1)
+        log("mentor email verified",DEBUG_CODE)
         experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id};")[0]
         # availabeSessions_list = list(availabeSession.values('mentor','availableSlots'))
 
@@ -262,96 +264,96 @@ def mentor_details(request):
             "Available-Sessions" :availabeSession.availableSlots
         }
         # background languages experience
-        log("Mentor details provided sucessfully",1)
+        log("Mentor details provided sucessfully",DEBUG_CODE)
         return JsonResponse({'message' : MENTOR_DETAILS,
                              'data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
         print(e)
-        log('Error while fetching details',3)
-        return JsonResponse({'message' : FETCHING_ERROR},status = STATUSES['INTERNAL_SERVER_ERROR'])
+        log('Error while fetching details',ERROR_CODE)
+        return JsonResponse({'message' : FETCHING_ERROR,'error':str(e)},status = STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 
-@api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-def createAvailableSession(request):
-    log('Entered create available session endpoint ',1)
-    try:
-        print(decryptData(request.data['id']),"---------")
+# @api_view(['POST'])
+# # @permission_classes([IsAuthenticated])
+# def createAvailableSession(request):
+#     log('Entered create available session endpoint ',DEBUG_CODE)
+#     try:
+#         print(decryptData(request.data['id']),"---------")
 
-        #for verifying the token
-        validation_response = validate_token(request)  # validating the requested user using authorization headder
-        if validation_response is not None:
-            return validation_response
-        try:
-            userDetails = getUserDetails(request)  # getting the details of the requested user
-            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
-            if(userChecking is not None):
-                return userChecking
-        except Exception as error:
-            print(error)
-            return Response({'message':'Error authorizing the user try logging in again'})
-        print(userDetails['id'])
+#         #for verifying the token
+#         validation_response = validate_token(request)  # validating the requested user using authorization headder
+#         if validation_response is not None:
+#             return validation_response
+#         try:
+#             userDetails = getUserDetails(request)  # getting the details of the requested user
+#             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+#                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+#             userChecking = checkUserStatus(userDetails['user'])
+#             if(userChecking is not None):
+#                 return userChecking
+#         except Exception as error:
+#             print(error)
+#             return Response({'message':'Error authorizing the user try logging in again'})
+#         print(userDetails['id'])
 
 
-        availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
-        print(availabeSession)
-        if availabeSession.exists():
-            # update code
-            conflictingSlots = []
-            newSlots = availabeSession[0].availableSlots
-            # checking weather the slot already exists in the table
-            for slot in request.data['availableSlots']:
-                print(slot)
-                if slot in newSlots:
-                    conflictingSlots.append(slot)
-                    continue
-                # adding the slot to the array
-                date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
-                from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
-                to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
-                newSlots.append({
-                    "date":str(date),
-                    "from":str(from_time),
-                    "to":str(to_time)
-                })
+#         availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
+#         print(availabeSession)
+#         if availabeSession.exists():
+#             # update code
+#             conflictingSlots = []
+#             newSlots = availabeSession[0].availableSlots
+#             # checking weather the slot already exists in the table
+#             for slot in request.data['availableSlots']:
+#                 print(slot)
+#                 if slot in newSlots:
+#                     conflictingSlots.append(slot)
+#                     continue
+#                 # adding the slot to the array
+#                 date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
+#                 from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
+#                 to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
+#                 newSlots.append({
+#                     "date":str(date),
+#                     "from":str(from_time),
+#                     "to":str(to_time)
+#                 })
             
-            # adding the new slots to the table
-            availabeSession.update(availableSlots = newSlots)
-            log('New slots crated sucessfully ',1)
-            return JsonResponse({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
+#             # adding the new slots to the table
+#             availabeSession.update(availableSlots = newSlots)
+#             log('New slots crated sucessfully ',DEBUG_CODE)
+#             return JsonResponse({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
 
-        # creating new available session for the mentor
-        print('hi')
-        slots = []
-        for slot in request.data['availableSlots']:
-            date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
-            from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
-            to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
-            slots.append({
-                "date":str(date),
-                "from":str(from_time),
-                "to":str(to_time)
-            })
-        print(slots)
-        instance = AvailabeSession.objects.create(
-            mentor_id = decryptData(request.data['id']),
-            availableSlots = slots
-        )
-        instance.save()
-        log("New session created sucessfully ",1)
-        return JsonResponse({"message":"Successfully created","slots":slots},status=STATUSES['SUCCESS'])
-    except Exception as e:
-        print(e)
-        log("Error in creating available session "+str(e),3)
-        return JsonResponse({'message':""},status=STATUSES['INTERNAL_SERVER_ERROR'])
+#         # creating new available session for the mentor
+#         print('hi')
+#         slots = []
+#         for slot in request.data['availableSlots']:
+#             date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
+#             from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
+#             to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
+#             slots.append({
+#                 "date":str(date),
+#                 "from":str(from_time),
+#                 "to":str(to_time)
+#             })
+#         print(slots)
+#         instance = AvailabeSession.objects.create(
+#             mentor_id = decryptData(request.data['id']),
+#             availableSlots = slots
+#         )
+#         instance.save()
+#         log("New session created sucessfully ",DEBUG_CODE)
+#         return JsonResponse({"message":"Successfully created","slots":slots},status=STATUSES['SUCCESS'])
+#     except Exception as e:
+#         print(e)
+#         log("Error in creating available session "+str(e),ERROR_CODE)
+#         return JsonResponse({'message':""},status=STATUSES['INTERNAL_SERVER_ERROR'])
     
 
 @api_view(['GET'])
 def listAllMentees(request):
-    log("Entered list Mentee",1)
+    log("Entered list Mentee",DEBUG_CODE)
     try:
         # getting required fields from the mentor table for each mentor
         mentee = Mentee.objects.raw("SELECT id,first_name,last_name,country,city,phone_number,email_id,profile_picture_url,areas_of_interest FROM static_mentee;")
@@ -375,25 +377,25 @@ def listAllMentees(request):
             
             data.append(value)
 
-        log("Mentees listed successfully",1)
+        log("Mentees listed successfully",DEBUG_CODE)
         return JsonResponse({'message':'Mentee List Displayed',
                              'data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
-        log("Error in list mentors"+str(e), 3)
-        return JsonResponse({'message':'error'},status=STATUSES['INTERNAL_SERVER_ERROR'])
+        log("Error in list mentors"+str(e), ERROR_CODE)
+        return JsonResponse({'message':'error','error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
     
 
 @api_view(['POST'])
 def userQuery (request):
     print('In query View')
     try :
-        log('Enter query form',1)
+        log('Enter query form',DEBUG_CODE)
         name = request.data['name']
         from_email = request.data['email']
         to_email = 'growbinar@gmail.com'
         phone_number = request.data['phone_number']
         query = request.data['query']
-        log('Got the inputs',1)
+        log('Got the inputs',DEBUG_CODE)
         if query :
             user_query = UserQuery(
                 name=name,
@@ -404,7 +406,7 @@ def userQuery (request):
             )
 
             user_query.save()
-            log('Query saved and returned',1)
+            log('Query saved and returned',DEBUG_CODE)
             return JsonResponse({'message': QUERY_SUBMITTED}, status=STATUSES['SUCCESS'])
 
         else :
@@ -412,6 +414,5 @@ def userQuery (request):
             return JsonResponse({'message': QUERY_EMPTY}, status=STATUSES['SUCCESS'])
 
     except Exception as ex :
-        log('Error in query',3)
-        return JsonResponse({'message' : 'Some Error Occured',
-                             'Error' : str(ex)},status = STATUSES['INTERNAL_SERVER_ERROR'])
+        log('Error in query',ERROR_CODE)
+        return JsonResponse({'message' : 'Some Error Occured','error' : str(ex)},status = STATUSES['INTERNAL_SERVER_ERROR'])

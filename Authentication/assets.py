@@ -3,6 +3,7 @@ import pyshorteners
 import logging
 import inspect
 from django.template.loader import render_to_string,get_template
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
 
 def urlShortner(url):
     short_url = pyshorteners.Shortener().tinyurl.short(url) # using tinyURL service to shorten the url from the pyShortner
@@ -25,11 +26,11 @@ def log(message,code):
     logger = logging.getLogger("Authentication")
     # this inspect.stack provides the funcion name which called this log
     message = str(inspect.stack()[1][3])+" message - "+message
-    if code==1:
+    if code==DEBUG_CODE:
         logger.debug(message)
-    elif code==2:
+    elif code==WARNING_CODE:
         logger.warn(message)
-    elif code==3:
+    elif code==ERORR_CODE:
         logger.error(message)
 
 
