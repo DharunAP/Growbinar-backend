@@ -146,7 +146,7 @@ def MentorSignup(request):
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as error:
-        log("Error creating a mentor"+str(error),ERROR_CODE)
+        log("Error creating a mentor"+str(error),ERORR_CODE)
         print(error)
         return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
