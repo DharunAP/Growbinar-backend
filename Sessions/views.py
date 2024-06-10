@@ -6,7 +6,7 @@ from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,ERROR_CREATI
 from .assets import log
 from static.cipher import encryptData,decryptData
 from datetime import datetime
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 from django.http import JsonResponse
 from django.utils import timezone
@@ -34,9 +34,9 @@ def createAvailableSession(request):
         return validation_response
     try:
         userDetails = getUserDetails(request)  # getting the details of the requested user
-        if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+        if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
             return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-        userChecking = checkUserStatus(userDetails['user'])
+        userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
         if(userChecking is not None):
             return userChecking
         print(userDetails['user'])
@@ -47,7 +47,11 @@ def createAvailableSession(request):
     print(userDetails['id'])
     if request.method == 'GET':
         try:
-            availabeSession = AvailabeSession.objects.filter(mentor = userDetails['user'])
+            try:
+                id = decryptData(request.data['id'])
+            except:
+                id = userDetails['id']
+            availabeSession = AvailabeSession.objects.filter(mentor_id = id)
             if(not availabeSession.exists()):
                 return Response({'message':'No session exixts'},status=200)
             upComming_sessions = []
@@ -63,7 +67,7 @@ def createAvailableSession(request):
 
             sorted_data = sorted(upComming_sessions, key=get_datetime)
             log('available sessions returned sucessfully',DEBUG_CODE)
-            return Response({'message':sorted_data},status=STATUSES['SUCCESS'])
+            return Response({'data':sorted_data},status=STATUSES['SUCCESS'])
         except Exception as e:
             log('Error returing the available sessions '+str(e),ERROR_CODE)
             return Response({'message':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])

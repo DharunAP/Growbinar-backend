@@ -3,7 +3,7 @@ import pyshorteners
 import logging
 import inspect
 from django.template.loader import render_to_string,get_template
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 def urlShortner(url):
     short_url = pyshorteners.Shortener().tinyurl.short(url) # using tinyURL service to shorten the url from the pyShortner
@@ -30,7 +30,7 @@ def log(message,code):
         logger.debug(message)
     elif code==WARNING_CODE:
         logger.warn(message)
-    elif code==ERORR_CODE:
+    elif code==ERROR_CODE:
         logger.error(message)
 
 

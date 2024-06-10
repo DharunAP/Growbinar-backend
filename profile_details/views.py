@@ -6,7 +6,7 @@ from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer
 from Authentication.jwtVerification import *
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 from datetime import datetime
 
@@ -30,6 +30,11 @@ def listAllMentors(request):
             value['role'] = mentor.designation
             value['organization'] = mentor.company
             value['experience'] = mentor.mentor_experience
+            slots = AvailabeSession.objects.filter(mentor=mentor)
+            if slots.exists():
+                value['avaliableSession'] = slots[0].availableSlots
+            else:
+                value['availableSession'] = []
             # checking for mentor tags like toprated and exclusive
             if mentor.is_top_rated:
                 value['tag'] = 'TopRated'
@@ -59,12 +64,18 @@ def menteeDetails(request):
         
         try:
             userDetails = getUserDetails(request)  # getting the details of the requested user
-            checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+            if(userChecking is not None):
+                return userChecking
         except Exception as error:
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})   
         print(userDetails['id'])
-        id = userDetails['id']
+
+        try :
+            id = decryptData(request.data['id'])
+        except:
+            id = userDetails['id']
         mentee = Mentee.objects.raw(f"SELECT id,is_experience,first_name,last_name,languages,role,organization,profile_picture_url,city,is_experience,description,areas_of_interest FROM static_mentee WHERE id={id};")[0]
         
         # urlShortner(mentee.profile_picture_url) # implementing url shortner
@@ -92,7 +103,7 @@ def menteeDetails(request):
         return Response({'message':SUCESS,'data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
         print(e)
-        log("Error fetching mentee details"+str(e),ERORR_CODE)
+        log("Error fetching mentee details"+str(e),ERROR_CODE)
         return Response({'message':ERROR_SENDING_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
@@ -105,7 +116,7 @@ def listMentorsOfMentee(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:
@@ -136,7 +147,7 @@ def listMentorsOfMentee(request):
         return Response({"message":SUCESS,"data":mentor_list},status=STATUSES['SUCCESS'])
     except Exception as e:
         print(e)
-        log("Error fetching mentor details"+str(e),ERORR_CODE)
+        log("Error fetching mentor details"+str(e),ERROR_CODE)
         return Response({"message":ERROR_SENDING_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET','POST'])

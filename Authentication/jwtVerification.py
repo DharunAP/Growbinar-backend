@@ -46,6 +46,7 @@ def getUserDetails(request):
         print(authToken.referenceId,' ref id')
         user = Mentor.objects.get(id = authToken.referenceId)
     elif authToken.user_type=='mentee':
+        print(authToken.referenceId,'mentee ref id')
         user = Mentee.objects.get(id = authToken.referenceId)
     return {'type':authToken.user_type,'id':authToken.referenceId,'user':user}
 

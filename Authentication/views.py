@@ -13,7 +13,7 @@ from django.contrib.auth.hashers import make_password,check_password
 from .assets import sendVerificationMail,log
 from .jwtVerification import get_or_create_jwt, getUserDetails, validate_token, checkUserStatus
 from rest_framework.permissions import IsAuthenticated
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERORR_CODE
+from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 
 @api_view(['POST'])
@@ -23,23 +23,26 @@ def user_login(request):
 
     try:
         print(request.data)
-        email = request.data.get('email')
+        email = request.data.get('email_id')
         password = request.data.get('password')
         user_role = request.data.get('user_role')  # 'mentor' or 'mentee'
         user = None
         if user_role == 'mentor':
                  # Request entered where the user exist
+            print('mentor')
+            print(email)
             user = Mentor.objects.filter(email_id=email).first()
             log("User is Mentor",DEBUG_CODE)
 
         elif user_role == 'mentee':
+            print('mentee')
             user = Mentee.objects.filter(email_id=email).first()
             log("User is Mentee",DEBUG_CODE)
             
         else:
             log("Invalid user_role",ERROR_CODE)
             return JsonResponse({'message' : INVALID_ROLE},status = STATUSES['BAD_REQUEST'])
-        print(user)
+        print(user,'-----')
 
         if not user:
                     # Request entered were user not exist
@@ -146,7 +149,7 @@ def MentorSignup(request):
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as error:
-        log("Error creating a mentor"+str(error),ERORR_CODE)
+        log("Error creating a mentor"+str(error),ERROR_CODE)
         print(error)
         return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
