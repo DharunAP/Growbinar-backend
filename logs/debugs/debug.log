@@ -698,3 +698,17 @@ DEBUG 2024-06-12 10:12:38,674 profile_details assets.py 15 listAllMentors messag
 ERROR 2024-06-12 10:12:38,806 profile_details assets.py 19 listAllMentors message - Error in list mentorsname 'get_datetime' is not defined
 DEBUG 2024-06-12 10:15:03,988 profile_details assets.py 15 listAllMentors message - Entered list Mentors
 DEBUG 2024-06-12 10:15:04,112 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-12 10:22:49,693 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-12 10:22:54,057 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-12 23:41:20,529 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-12 23:42:31,730 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-12 23:42:40,172 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-12 23:42:42,044 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-12 23:42:43,160 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-12 23:42:55,526 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-12 23:43:21,234 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-12 23:44:16,965 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-12 23:44:19,960 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-12 23:44:27,036 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-12 23:44:29,831 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-12 23:44:30,070 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed

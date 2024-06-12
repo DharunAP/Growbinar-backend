@@ -218,8 +218,8 @@ def sessionFeedback(request):
 
 # Guhan code
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
 def upcoming_sessions(request) :
     log('Entered upcoming session',DEBUG_CODE)
 
@@ -230,13 +230,13 @@ def upcoming_sessions(request) :
         userDetails = getUserDetails(request)  # getting the details of the requested user
         if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
             return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-        userChecking = checkUserStatus(userDetails['user'])
+        userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
         if(userChecking is not None):
             return userChecking
     except Exception as error:
         print(error)
         return Response({'message':'Error authorizing the user try logging in again'})
-    mentor_id = decryptData( request.data['id']) # decoding the data
+    mentor_id = userDetails['id'] # decoding the data
 
     current_date = date.today()           # current date
     current_time = datetime.now().time()  # current time
