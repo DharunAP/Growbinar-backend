@@ -119,3 +119,4 @@ ERROR 2024-06-11 01:52:41,426 Sessions assets.py 14 createAvailableSession messa
 ERROR 2024-06-11 01:52:57,306 Sessions assets.py 14 createAvailableSession message - Error returing the available sessions 'id'
 ERROR 2024-06-11 01:54:14,474 profile_details assets.py 19 menteeDetails message - Error fetching mentee details'id'
 ERROR 2024-06-11 01:58:06,627 profile_details assets.py 19 listAllMentors message - Error in list mentorsAvailabeSession matching query does not exist.
+ERROR 2024-06-12 10:12:38,806 profile_details assets.py 19 listAllMentors message - Error in list mentorsname 'get_datetime' is not defined

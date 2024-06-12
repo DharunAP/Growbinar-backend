@@ -692,3 +692,9 @@ DEBUG 2024-06-11 02:00:15,679 Sessions assets.py 10 createAvailableSession messa
 DEBUG 2024-06-11 02:00:15,743 Sessions assets.py 10 createAvailableSession message - New session created successfully 
 DEBUG 2024-06-11 02:00:20,558 profile_details assets.py 15 listAllMentors message - Entered list Mentors
 DEBUG 2024-06-11 02:00:20,606 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-12 10:11:15,419 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-12 10:11:15,660 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-12 10:12:38,674 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+ERROR 2024-06-12 10:12:38,806 profile_details assets.py 19 listAllMentors message - Error in list mentorsname 'get_datetime' is not defined
+DEBUG 2024-06-12 10:15:03,988 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-12 10:15:04,112 profile_details assets.py 15 listAllMentors message - Mentors listed successfully

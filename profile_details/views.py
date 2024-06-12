@@ -10,6 +10,30 @@ from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 from datetime import datetime
 
+def get_datetime(entry):
+    date_str = entry["date"]
+    time_str = entry["from"]
+    datetime_str = f"{date_str} {time_str}"
+    return datetime.strptime(datetime_str, "%Y-%m-%d %H:%M:%S")
+
+def getAvailableSessions(id):
+    availabeSession = AvailabeSession.objects.filter(mentor_id = id)
+    if(not availabeSession.exists()):
+        return []
+    upComming_sessions = []
+    current_date = datetime.now().date()
+    current_time = datetime.now().time()
+    # looping in the array to get only the upcomming sessions        
+    for session in availabeSession[0].availableSlots:
+        if current_date<=datetime.strptime(session['date'], '%Y-%m-%d').date(): # date checking
+            if current_date == datetime.strptime(session['date'], '%Y-%m-%d').date(): 
+                if current_time>datetime.strptime(session['from'],'%H:%M:%S').time(): # time checking for same date
+                    continue
+            upComming_sessions.append(session)
+
+    sorted_data = sorted(upComming_sessions, key=get_datetime)
+    return sorted_data
+
 @api_view(['GET'])
 def listAllMentors(request):
     log("Entered list Mentors",DEBUG_CODE)
@@ -30,11 +54,12 @@ def listAllMentors(request):
             value['role'] = mentor.designation
             value['organization'] = mentor.company
             value['experience'] = mentor.mentor_experience
-            slots = AvailabeSession.objects.filter(mentor=mentor)
-            if slots.exists():
-                value['avaliableSession'] = slots[0].availableSlots
-            else:
-                value['availableSession'] = []
+            # slots = AvailabeSession.objects.filter(mentor=mentor)
+            value['avaliableSession'] = getAvailableSessions(mentor.id)
+            # if slots.exists():
+            #     value['avaliableSession'] = slots[0].availableSlots 
+            # else:
+            #     value['availableSession'] = []
             # checking for mentor tags like toprated and exclusive
             if mentor.is_top_rated:
                 value['tag'] = 'TopRated'
