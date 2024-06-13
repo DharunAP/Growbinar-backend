@@ -729,3 +729,9 @@ ERROR 2024-06-13 18:11:19,902 profile_details assets.py 19 mentor_details messag
 DEBUG 2024-06-13 18:11:54,385 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-13 18:11:55,025 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-13 18:11:55,329 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-13 22:09:16,689 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 22:09:17,219 profile_details assets.py 15 mentor_details message - mentor email verified
+ERROR 2024-06-13 22:09:17,608 profile_details assets.py 19 mentor_details message - Error while fetching details
+DEBUG 2024-06-13 22:10:39,742 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 22:10:40,381 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-13 22:10:40,700 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
