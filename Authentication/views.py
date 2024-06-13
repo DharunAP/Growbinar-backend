@@ -117,9 +117,9 @@ def MenteeSignup(request):
             print(serializer.errors)
             return Response({"message":INVALID_CREDENTIALS},status=STATUSES['BAD_REQUEST'])
     except Exception as e:
-        log("Error creating a mentee"+str(error),ERROR_CODE)
-        print(error)
-        return Response({'message':SIGNUP_ERROR,'error':str(error)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+        log("Error creating a mentee"+str(e),ERROR_CODE)
+        print('error',e)
+        return Response({'message':SIGNUP_ERROR,'error':str(e)}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def MentorSignup(request):
