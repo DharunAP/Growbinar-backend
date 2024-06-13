@@ -275,13 +275,16 @@ def mentor_details(request):
         mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")[0]
         try:
             availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
+            flag=True
         except:
+            flag=False
             availabeSession = {'availableSlots':[]}
         print('----avai-----',availabeSession)
         # print(mentor.is_email_verified)
         log("mentor email verified",DEBUG_CODE)
         # experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id};")[0]
         # availabeSessions_list = list(availabeSession.values('mentor','availableSlots'))
+        print(availabeSession)
 
         data = {
             "name":mentor.first_name+" "+mentor.last_name,
@@ -300,7 +303,7 @@ def mentor_details(request):
                 'expertise' : mentor.areas_of_expertise,
                 'fluency' : mentor.languages
             },
-            "Available-Sessions" :availabeSession['availableSlots']
+            "Available-Sessions" :[] if flag==False else availabeSession.availableSlots
         }
         # background languages experience
         log("Mentor details provided sucessfully",DEBUG_CODE)
