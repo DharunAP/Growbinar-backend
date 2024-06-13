@@ -166,3 +166,8 @@ ERROR 2024-06-13 18:09:46,818 profile_details assets.py 19 mentor_details messag
 ERROR 2024-06-13 18:10:39,233 profile_details assets.py 19 mentor_details message - Error while fetching details
 ERROR 2024-06-13 18:11:19,902 profile_details assets.py 19 mentor_details message - Error while fetching details
 ERROR 2024-06-13 22:09:17,608 profile_details assets.py 19 mentor_details message - Error while fetching details
+WARNING 2024-06-13 22:19:55,050 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-13 22:20:32,172 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-13 22:21:06,457 Authentication assets.py 32 user_login message - User Not Found
+ERROR 2024-06-13 23:04:34,312 Sessions assets.py 14 createAvailableSession message - Error in creating available session object of type 'bool' has no len()
+ERROR 2024-06-13 23:05:10,864 Sessions assets.py 14 createAvailableSession message - Error in creating available session object of type 'bool' has no len()

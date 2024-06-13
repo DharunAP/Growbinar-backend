@@ -106,6 +106,8 @@ SESSION_UNAVAILABLE = "Already Session available in this interval"
 
 SESSION_EXISTS = "The required session had exist"
 
+SESSION_UPDATED = "Updates done sucessfully"
+
 INVALID_DATE = 'The Entered date is Invalid'
 
 INVALID_TIME = 'The Entered time is Invalid'

@@ -735,3 +735,54 @@ ERROR 2024-06-13 22:09:17,608 profile_details assets.py 19 mentor_details messag
 DEBUG 2024-06-13 22:10:39,742 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-13 22:10:40,381 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-13 22:10:40,700 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-13 22:17:05,305 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:18:23,148 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 22:19:42,840 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-13 22:19:55,047 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-13 22:19:55,050 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-13 22:20:19,966 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-13 22:20:32,168 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-13 22:20:32,172 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-13 22:20:54,135 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-13 22:21:06,452 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-13 22:21:06,457 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-13 22:21:14,086 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-13 22:21:25,327 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-13 22:21:29,977 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-13 22:21:49,918 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 22:22:12,649 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-13 22:22:31,211 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:39:52,508 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:43:07,769 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:44:40,801 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:45:56,524 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:46:07,260 Sessions assets.py 10 createAvailableSession message - available sessions returned sucessfully
+DEBUG 2024-06-13 22:47:02,594 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 22:47:20,433 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-13 22:47:33,772 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 22:47:42,485 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-13 22:47:48,739 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for GET
+DEBUG 2024-06-13 22:47:55,101 Sessions assets.py 10 createAvailableSession message - available sessions returned sucessfully
+DEBUG 2024-06-13 23:04:30,463 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:04:34,308 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+ERROR 2024-06-13 23:04:34,312 Sessions assets.py 14 createAvailableSession message - Error in creating available session object of type 'bool' has no len()
+DEBUG 2024-06-13 23:05:07,220 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:05:10,861 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+ERROR 2024-06-13 23:05:10,864 Sessions assets.py 14 createAvailableSession message - Error in creating available session object of type 'bool' has no len()
+DEBUG 2024-06-13 23:05:42,229 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:05:46,095 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-13 23:05:50,427 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:05:54,335 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-13 23:07:20,784 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:07:24,828 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-13 23:09:26,822 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-13 23:09:32,357 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-13 23:10:30,946 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 23:10:31,642 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-13 23:10:31,958 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-13 23:11:01,875 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 23:11:02,514 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-13 23:11:02,832 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-13 23:11:17,073 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 23:11:17,635 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-13 23:11:17,864 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully

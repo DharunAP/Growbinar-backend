@@ -2,7 +2,7 @@ from django.shortcuts import render
 from static.models import AvailabeSession,Session,SessionFeedback,BookedSession,RequestedSession
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,ERROR_CREATING_FEEDBACK,FEEDBACK_CREATED,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ERROR_SAVING_USER_DETAILS,ACCESS_DENIED
+from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,SESSION_UPDATED,ERROR_CREATING_FEEDBACK,FEEDBACK_CREATED,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ERROR_SAVING_USER_DETAILS,ACCESS_DENIED
 from .assets import log
 from static.cipher import encryptData,decryptData
 from datetime import datetime
@@ -100,7 +100,9 @@ def createAvailableSession(request):
             # adding the new slots to the table
             availabeSession.update(availableSlots = newSlots)
             log('New slots crated sucessfully ',DEBUG_CODE)
-            return Response({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
+            if len(conflictingSlots)!=0:
+                return Response({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['BAD_REQUEST'])
+            return Response({'message':SESSION_UPDATED},status=STATUSES['SUCCESS'])
 
         # creating new available session for the mentor
         slots = []

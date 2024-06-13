@@ -265,7 +265,10 @@ def mentor_details(request):
         print(userDetails['id'])
 
         # mentor_id = decryptData(id) # decoding of the id 
-        mentor_id = userDetails['id']
+        try:
+            mentor_id = decryptData(request.data['id'])
+        except:
+            mentor_id = userDetails['id']
         print('mentor - id',mentor_id,'----')
 
         log("Entered mentor details",DEBUG_CODE)
