@@ -2,7 +2,7 @@ from django.shortcuts import render
 from static.models import AvailabeSession,Session,SessionFeedback,BookedSession,RequestedSession
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,SESSION_NOT_COMPLETED,SESSION_UPDATED,ERROR_CREATING_FEEDBACK,FEEDBACK_CREATED,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ERROR_SAVING_USER_DETAILS,ACCESS_DENIED
+from static.message_constants import *
 from .assets import log
 from static.cipher import encryptData,decryptData
 from datetime import datetime
@@ -224,7 +224,6 @@ def sessionFeedback(request):
 # @permission_classes([IsAuthenticated])
 def upcoming_sessions(request) :
     log('Entered upcoming session',DEBUG_CODE)
-
     validation_response = validate_token(request)
     if validation_response is not None:
         return validation_response
@@ -259,7 +258,8 @@ def upcoming_sessions(request) :
             for index in session_details:
                 value = dict()
 
-                value['profile-link'] = pyshorteners.Shortener().tinyurl.short(mentor_details.profile_picture_url)
+                # value['profile-link'] = pyshorteners.Shortener().tinyurl.short(mentor_details.profile_picture_url)
+                value['profile-link'] = 'NULL',
                 value['name'] =  mentor_details.first_name + mentor_details.last_name
                 value['role'] = mentor_details.designation
                 value['organisation'] = mentor_details.company

@@ -786,3 +786,6 @@ DEBUG 2024-06-13 23:11:02,832 profile_details assets.py 15 mentor_details messag
 DEBUG 2024-06-13 23:11:17,073 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-13 23:11:17,635 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-13 23:11:17,864 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-13 23:14:31,284 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:15:43,877 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-13 23:15:48,914 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
