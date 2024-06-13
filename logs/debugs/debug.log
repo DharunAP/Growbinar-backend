@@ -712,3 +712,20 @@ DEBUG 2024-06-12 23:44:19,960 Authentication assets.py 30 getMentorDetails messa
 DEBUG 2024-06-12 23:44:27,036 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
 DEBUG 2024-06-12 23:44:29,831 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
 DEBUG 2024-06-12 23:44:30,070 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-13 09:19:23,451 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-13 09:19:26,961 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-13 09:19:27,247 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-13 18:08:01,952 profile_details assets.py 15 mentor_details message - Entered mentor details
+ERROR 2024-06-13 18:08:02,676 profile_details assets.py 19 mentor_details message - Error while fetching details
+DEBUG 2024-06-13 18:09:45,524 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 18:09:46,409 profile_details assets.py 15 mentor_details message - mentor email verified
+ERROR 2024-06-13 18:09:46,818 profile_details assets.py 19 mentor_details message - Error while fetching details
+DEBUG 2024-06-13 18:10:36,632 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 18:10:37,503 profile_details assets.py 15 mentor_details message - mentor email verified
+ERROR 2024-06-13 18:10:39,233 profile_details assets.py 19 mentor_details message - Error while fetching details
+DEBUG 2024-06-13 18:11:18,694 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 18:11:19,557 profile_details assets.py 15 mentor_details message - mentor email verified
+ERROR 2024-06-13 18:11:19,902 profile_details assets.py 19 mentor_details message - Error while fetching details
+DEBUG 2024-06-13 18:11:54,385 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-13 18:11:55,025 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-13 18:11:55,329 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully

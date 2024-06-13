@@ -20,7 +20,7 @@ userLogin = 'login/'
 
 upcomingSesions = 'upcoming-sessions/'
 
-mentorDetails = 'mentor-details/<str:id>/'
+mentorDetails = 'mentor-details/'
 
 userLogout = 'logout/'
 

@@ -256,7 +256,7 @@ def mentor_details(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:
@@ -273,11 +273,14 @@ def mentor_details(request):
         print(request.data)
         
         mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")[0]
-        availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
+        try:
+            availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
+        except:
+            availabeSession = {'availableSlots':[]}
         print('----avai-----',availabeSession)
         # print(mentor.is_email_verified)
         log("mentor email verified",DEBUG_CODE)
-        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id};")[0]
+        # experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id};")[0]
         # availabeSessions_list = list(availabeSession.values('mentor','availableSlots'))
 
         data = {
@@ -285,19 +288,19 @@ def mentor_details(request):
             "location":mentor.city,
             "organisation" : mentor.company,
             "languages" : mentor.languages,
-            "experience" : {
-                'role' : experience.role,
-                'date' : {
-                    'startDate' : experience.from_duration,
-                    'endDate' : experience.to_duration
-                }
-            },
+            # "experience" : {
+            #     'role' : experience.role,
+            #     'date' : {
+            #         'startDate' : experience.from_duration,
+            #         'endDate' : experience.to_duration
+            #     }
+            # },
             "overview":mentor.bio,
             'background' : {
                 'expertise' : mentor.areas_of_expertise,
                 'fluency' : mentor.languages
             },
-            "Available-Sessions" :availabeSession.availableSlots
+            "Available-Sessions" :availabeSession['availableSlots']
         }
         # background languages experience
         log("Mentor details provided sucessfully",DEBUG_CODE)
