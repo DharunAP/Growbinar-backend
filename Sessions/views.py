@@ -127,6 +127,39 @@ def createAvailableSession(request):
         log("Error in creating available session "+str(e),ERROR_CODE)
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
+
+# @api_view(['POST'])
+# def getBookedSession(request):
+#     log('Entered get available session endpoint for '+request.method,DEBUG_CODE)
+#     # to provide all the avalilable sessions of the mentor listed up-next
+#     validation_response = validate_token(request)  # validating the requested user using authorization headder
+#     if validation_response is not None:
+#         return validation_response
+#     try:
+#         userDetails = getUserDetails(request)  # getting the details of the requested user
+#         if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+#             return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+#         userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+#         if(userChecking is not None):
+#             return userChecking
+#         print(userDetails['user'])
+#         # user = Mentee.objects.get(id = userDetails['id'])
+#     except Exception as error:
+#         print(error)
+#         return Response({'message':'Error authorizing the user try logging in again'})
+#     print(userDetails['id'])
+#     try:
+#         try:
+#             id = decryptData(request.data['id'])
+#         except:
+#             id = userDetails['id']
+#         sessions = Session.objects.filter(mentor_id=id, is_booked=True)
+
+
+#         return
+#     except Exception as error:
+#         return
+
 @api_view(['POST'])
 def bookSession(request):
     log('Entered booking a session',DEBUG_CODE)

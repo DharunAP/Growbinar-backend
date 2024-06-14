@@ -108,6 +108,10 @@ SESSION_EXISTS = "The required session had exist"
 
 SESSION_UPDATED = "Updates done sucessfully"
 
+EXPERIENCE_CREATED = 'Experience added sucessfully'
+
+ERROR_CREATING_EXPERIENCE = 'Error creating experience'
+
 INVALID_DATE = 'The Entered date is Invalid'
 
 INVALID_TIME = 'The Entered time is Invalid'

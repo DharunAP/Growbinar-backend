@@ -7,6 +7,7 @@ urlpatterns = [
     path(routes.MENTEE_PROFILE, menteeDetails, name="mentee-details"),
     path(routes.MENTOR_PROFILE, listMentorsOfMentee, name='list-mentors-of-mentee'),
     path(routes.mentorDetails,mentor_details , name= "mentorDetails"),
+    path(routes.EXPERIENCE,experience,name ='experience'),
     # path(routes.availablesession, createAvailableSession, name="availableSessions"),
     path(routes.listMentee,listAllMentees,name = 'ListingAllMentees'),
     path(routes.Query, userQuery , name='User-Query'),

@@ -15,6 +15,7 @@ BOOK_SESSION = 'bookSession/'
 SESSION_CREATION = 'sessionFeedback/'
 RESEND_MAIL = 'resendMail/'
 CommonEndpoint = 'commonEndpoint/'
+EXPERIENCE = 'experience/'
 
 userLogin = 'login/'
 

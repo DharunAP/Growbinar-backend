@@ -1,10 +1,10 @@
 from static.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session,Testimonial
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,ERROR_GETTING_MENTOR_DETAILS,SUCESS,NO_DATA_AVAILABLE,ERROR_SENDING_DETAILS,SESSION_EXISTS,ACCESS_DENIED
+from static.message_constants import *
 from .assets import urlShortner,log
 from static.cipher import encryptData,decryptData
-from .serializers import TestimonialSerializer
+from .serializers import TestimonialSerializer, ExperienceSerializer
 from Authentication.jwtVerification import *
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
@@ -227,6 +227,52 @@ def testimonials(request):
         return Response({'message':'Error creating testimonial','error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
+@api_view(['POST'])
+def experience(request):
+    log('Entered Experience endpoint '+request.method,DEBUG_CODE)
+    # to provide all the avalilable sessions of the mentor listed up-next
+    validation_response = validate_token(request)  # validating the requested user using authorization headder
+    if validation_response is not None:
+        return validation_response
+    try:
+        userDetails = getUserDetails(request)  # getting the details of the requested user
+        if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+            return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+        userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+        if(userChecking is not None):
+            return userChecking
+        print(userDetails['user'])
+        # user = Mentee.objects.get(id = userDetails['id'])
+    except Exception as error:
+        print(error)
+        return Response({'message':'Error authorizing the user try logging in again'})
+    print(userDetails['id'])
+    id = None
+    try:
+        id = decryptData(request.data['id'])
+    except:
+        id = userDetails['id']
+    if request.method=='POST':
+        try:
+            data = request.data
+            data['from_duration'] = datetime.strptime(data['from_duration'], '%Y-%m-%d')
+            data['to_duration'] = datetime.strptime(data['to_duration'], '%Y-%m-%d')
+            data['role_type'] = userDetails['type']
+            data['referenced_id'] = userDetails['id']
+            if userDetails['type']=='mentor':
+                data['mentorRef'] = userDetails['id']
+            else:
+                data['menteeRef'] = userDetails['id']
+            
+            serializer = ExperienceSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'message':EXPERIENCE_CREATED},status=STATUSES['SUCCESS'])
+            print(serializer.errors)
+            return Response({'message':INVALID_CREDENTIALS,'error':serializer.errors},status=STATUSES['BAD_REQUEST'])
+        except Exception as error:
+            print(error)
+            return Response({'message':ERROR_CREATING_EXPERIENCE,'error':error},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 # Guhan code

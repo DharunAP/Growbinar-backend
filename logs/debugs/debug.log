@@ -789,3 +789,17 @@ DEBUG 2024-06-13 23:11:17,864 profile_details assets.py 15 mentor_details messag
 DEBUG 2024-06-13 23:14:31,284 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
 DEBUG 2024-06-13 23:15:43,877 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
 DEBUG 2024-06-13 23:15:48,914 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-14 22:11:56,449 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:12:04,559 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:15:33,103 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:16:53,687 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:17:17,486 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:17:36,808 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:18:15,210 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:18:40,067 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:19:23,536 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:20:13,746 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 22:35:32,213 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-14 22:35:38,373 Authentication assets.py 30 user_login message - User is Mentee
+ERROR 2024-06-14 22:35:38,706 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-14 22:38:46,291 profile_details assets.py 15 experience message - Entered Experience endpoint POST
