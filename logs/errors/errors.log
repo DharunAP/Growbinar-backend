@@ -128,3 +128,7 @@ ERROR 2024-06-13 22:09:17,608 profile_details assets.py 19 mentor_details messag
 ERROR 2024-06-13 23:04:34,312 Sessions assets.py 14 createAvailableSession message - Error in creating available session object of type 'bool' has no len()
 ERROR 2024-06-13 23:05:10,864 Sessions assets.py 14 createAvailableSession message - Error in creating available session object of type 'bool' has no len()
 ERROR 2024-06-14 22:35:38,706 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-15 00:51:33,422 profile_details assets.py 19 experience message - Error getting experience details cannot access local variable 'role' where it is not associated with a value
+ERROR 2024-06-15 00:52:12,639 profile_details assets.py 19 experience message - Error getting experience details cannot access local variable 'role' where it is not associated with a value
+ERROR 2024-06-15 00:54:26,409 profile_details assets.py 19 experience message - Error getting experience details 'dict' object has no attribute 'description'
+ERROR 2024-06-15 00:55:29,749 profile_details assets.py 19 experience message - Error getting experience details 'dict' object has no attribute 'description'

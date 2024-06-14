@@ -227,7 +227,7 @@ def testimonials(request):
         return Response({'message':'Error creating testimonial','error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 
-@api_view(['POST'])
+@api_view(['POST','GET'])
 def experience(request):
     log('Entered Experience endpoint '+request.method,DEBUG_CODE)
     # to provide all the avalilable sessions of the mentor listed up-next
@@ -250,8 +250,13 @@ def experience(request):
     id = None
     try:
         id = decryptData(request.data['id'])
+        if request.data['role'] == 'mentor':
+            role = 'mentor'
+        else:
+            role = 'mentee'
     except:
         id = userDetails['id']
+        role = userDetails['type']
     if request.method=='POST':
         try:
             data = request.data
@@ -273,7 +278,31 @@ def experience(request):
         except Exception as error:
             print(error)
             return Response({'message':ERROR_CREATING_EXPERIENCE,'error':error},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    if request.method=='GET':
+        try:
+            log('getting mentor details',DEBUG_CODE)
+            # getting the proper experiece objects
+            if role == 'mentor':
+                experience = Experience.objects.filter(mentorRef_id=id)
+            else:
+                experience = Experience.objects.filter(menteeRef_id=id)
+            # creating the array of data
+            experienceList = []
+            for index in experience:
+                value = dict()
+                value['id'] = index.id 
+                value['from_duration'] = index.from_duration
+                value['to_duration'] = index.to_duration
+                value['company'] = index.company
+                value['role'] = index.role
+                value['description'] = index.description
+                experienceList.append(value)
 
+            log('Sucessfully got experience details',DEBUG_CODE)
+            return Response({'message':SUCESS,'data':experienceList},status=STATUSES['SUCCESS'])
+        except Exception as error:
+            log('Error getting experience details '+str(error),ERROR_CODE)
+            return Response({'message':'','error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 # Guhan code
 
@@ -331,7 +360,18 @@ def mentor_details(request):
         print('----avai-----',availabeSession)
         # print(mentor.is_email_verified)
         log("mentor email verified",DEBUG_CODE)
-        # experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id};")[0]
+        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id} and role_type=\'mentor\';")
+        experienceList = []
+        for value in experience:
+            index = {
+                'role' : value.role,
+                'date' : {
+                    'startDate' : value.from_duration,
+                    'endDate' : value.to_duration
+                }
+            }
+            experienceList.append(index)
+        
         # availabeSessions_list = list(availabeSession.values('mentor','availableSlots'))
         print(availabeSession)
 
@@ -340,14 +380,8 @@ def mentor_details(request):
             "location":mentor.city,
             "organisation" : mentor.company,
             "languages" : mentor.languages,
-            # "experience" : {
-            #     'role' : experience.role,
-            #     'date' : {
-            #         'startDate' : experience.from_duration,
-            #         'endDate' : experience.to_duration
-            #     }
-            # },
             "overview":mentor.bio,
+            "experience":experienceList,
             'background' : {
                 'expertise' : mentor.areas_of_expertise,
                 'fluency' : mentor.languages

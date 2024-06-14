@@ -803,3 +803,44 @@ DEBUG 2024-06-14 22:35:32,213 Authentication assets.py 30 user_login message - E
 DEBUG 2024-06-14 22:35:38,373 Authentication assets.py 30 user_login message - User is Mentee
 ERROR 2024-06-14 22:35:38,706 Authentication assets.py 34 user_login message - Invalid Credentials
 DEBUG 2024-06-14 22:38:46,291 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 23:28:30,642 Sessions assets.py 10 createAvailableSession message - Entered create available session endpoint for POST
+DEBUG 2024-06-14 23:28:34,412 Sessions assets.py 10 createAvailableSession message - New slots crated sucessfully 
+DEBUG 2024-06-14 23:30:40,816 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-14 23:31:14,216 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-14 23:31:16,363 Authentication assets.py 30 user_login message - User is Mentee
+DEBUG 2024-06-14 23:31:17,607 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-14 23:31:34,082 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-14 23:31:55,339 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-14 23:31:58,445 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-06-14 23:34:59,761 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-14 23:35:03,159 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-06-14 23:40:37,182 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-14 23:40:37,855 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-14 23:40:38,673 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-15 00:51:29,439 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:51:33,414 profile_details assets.py 15 experience message - getting mentor details
+ERROR 2024-06-15 00:51:33,422 profile_details assets.py 19 experience message - Error getting experience details cannot access local variable 'role' where it is not associated with a value
+DEBUG 2024-06-15 00:52:09,230 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:52:12,639 profile_details assets.py 15 experience message - getting mentor details
+ERROR 2024-06-15 00:52:12,639 profile_details assets.py 19 experience message - Error getting experience details cannot access local variable 'role' where it is not associated with a value
+DEBUG 2024-06-15 00:52:51,796 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:52:55,235 profile_details assets.py 15 experience message - getting mentor details
+DEBUG 2024-06-15 00:52:55,541 profile_details assets.py 15 experience message - Sucessfully got experience details
+DEBUG 2024-06-15 00:54:23,273 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:54:26,156 profile_details assets.py 15 experience message - getting mentor details
+ERROR 2024-06-15 00:54:26,409 profile_details assets.py 19 experience message - Error getting experience details 'dict' object has no attribute 'description'
+DEBUG 2024-06-15 00:54:53,512 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:54:56,574 profile_details assets.py 15 experience message - getting mentor details
+DEBUG 2024-06-15 00:54:56,877 profile_details assets.py 15 experience message - Sucessfully got experience details
+DEBUG 2024-06-15 00:55:26,575 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:55:29,418 profile_details assets.py 15 experience message - getting mentor details
+ERROR 2024-06-15 00:55:29,749 profile_details assets.py 19 experience message - Error getting experience details 'dict' object has no attribute 'description'
+DEBUG 2024-06-15 00:56:53,474 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 00:56:56,544 profile_details assets.py 15 experience message - getting mentor details
+DEBUG 2024-06-15 00:56:56,883 profile_details assets.py 15 experience message - Sucessfully got experience details
+DEBUG 2024-06-15 01:12:29,794 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-15 01:12:32,403 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-15 01:12:33,733 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-15 01:12:59,997 profile_details assets.py 15 experience message - Entered Experience endpoint GET
+DEBUG 2024-06-15 01:13:02,917 profile_details assets.py 15 experience message - getting mentor details
+DEBUG 2024-06-15 01:13:03,225 profile_details assets.py 15 experience message - Sucessfully got experience details

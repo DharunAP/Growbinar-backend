@@ -68,6 +68,7 @@ def user_login(request):
             return JsonResponse({
                 'message': LOGIN_SUCCESS,  # Using 'message' key
                 'token' : token,
+                'id':encryptData(user.id)
                 # 'data' : {
                 #     'name' : user.first_name + user.last_name,
                 #     'user_id' : encryptData(user.id),  # encoding the user id
