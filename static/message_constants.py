@@ -112,6 +112,10 @@ EXPERIENCE_CREATED = 'Experience added sucessfully'
 
 ERROR_CREATING_EXPERIENCE = 'Error creating experience'
 
+USER_ID_REQUIRED = 'User id required.'
+
+INVALID_USER_ID = 'Invalid user id'
+
 INVALID_DATE = 'The Entered date is Invalid'
 
 INVALID_TIME = 'The Entered time is Invalid'

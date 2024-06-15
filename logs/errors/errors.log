@@ -132,3 +132,11 @@ ERROR 2024-06-15 00:51:33,422 profile_details assets.py 19 experience message - 
 ERROR 2024-06-15 00:52:12,639 profile_details assets.py 19 experience message - Error getting experience details cannot access local variable 'role' where it is not associated with a value
 ERROR 2024-06-15 00:54:26,409 profile_details assets.py 19 experience message - Error getting experience details 'dict' object has no attribute 'description'
 ERROR 2024-06-15 00:55:29,749 profile_details assets.py 19 experience message - Error getting experience details 'dict' object has no attribute 'description'
+ERROR 2024-06-16 00:15:40,185 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:17:20,390 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:17:43,935 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:17:59,792 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:18:25,524 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:18:48,254 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:19:25,009 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 00:26:27,860 profile_details assets.py 19 mentor_details message - Error while fetching details

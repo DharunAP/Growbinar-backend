@@ -323,33 +323,27 @@ import pyshorteners
 # @permission_classes([IsAuthenticated])
 def mentor_details(request):
     try:
-        # mentor_id = decryptData(id) # decoding of the id 
-        try:
-            mentor_id = decryptData(request.data['id'])
-        except:
-            validation_response = validate_token(request)  # validating the requested user using authorization headder
-            if validation_response is not None:
-                return validation_response
-            try:
-                userDetails = getUserDetails(request)  # getting the details of the requested user
-                if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-                    return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-                userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
-                if(userChecking is not None):
-                    return userChecking
-            except Exception as error:
-                print(error)
-                return Response({'message':'Error authorizing the user try logging in again'})
-            print(userDetails['id'])
+        log("Entered mentor details",DEBUG_CODE)
+        # verifying weather id is in the request 
+        mentor_id = request.GET.get('id')
+        if mentor_id==None:
+            log(USER_ID_REQUIRED,WARNING_CODE)
+            return Response({'message':USER_ID_REQUIRED},status=STATUSES['BAD_REQUEST'])
 
-            mentor_id = userDetails['id']
+        # verifying weather id is decryptable i.e., valid or not
+        try:
+            mentor_id = decryptData(mentor_id)
+        except:
+            log(INVALID_USER_ID,WARNING_CODE)
+            return Response({'message':INVALID_USER_ID},status=STATUSES['BAD_REQUEST'])
         print('mentor - id',mentor_id,'----')
 
-        log("Entered mentor details",DEBUG_CODE)
-        print("Request in mentor_details")
-        print(request.data)
-        
-        mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")[0]
+        mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")
+        if(len(mentor)==0):
+            log(USER_NOT_FOUND,WARNING_CODE)
+            return Response({'message':USER_NOT_FOUND},status=STATUSES['BAD_REQUEST'])
+        else:
+            mentor = mentor[0]
         try:
             availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
             flag=True
