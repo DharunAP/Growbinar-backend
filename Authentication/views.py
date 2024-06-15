@@ -227,7 +227,7 @@ def getMentorDetails(request):
             mentor.areas_of_expertise=request.data['areas_of_expertise']
             mentor.number_of_likes=0
             mentor.languages=request.data['languages']
-            mentor.MentorExperience=request.data['MentorExperience']
+            mentor.mentor_experience=request.data['MentorExperience']
             mentor.designation=request.data['designation']
             mentor.company=request.data['company']
 

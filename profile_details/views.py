@@ -323,26 +323,25 @@ import pyshorteners
 # @permission_classes([IsAuthenticated])
 def mentor_details(request):
     try:
-
-        validation_response = validate_token(request)  # validating the requested user using authorization headder
-        if validation_response is not None:
-            return validation_response
-        try:
-            userDetails = getUserDetails(request)  # getting the details of the requested user
-            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
-            if(userChecking is not None):
-                return userChecking
-        except Exception as error:
-            print(error)
-            return Response({'message':'Error authorizing the user try logging in again'})
-        print(userDetails['id'])
-
         # mentor_id = decryptData(id) # decoding of the id 
         try:
             mentor_id = decryptData(request.data['id'])
         except:
+            validation_response = validate_token(request)  # validating the requested user using authorization headder
+            if validation_response is not None:
+                return validation_response
+            try:
+                userDetails = getUserDetails(request)  # getting the details of the requested user
+                if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+                    return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+                userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+                if(userChecking is not None):
+                    return userChecking
+            except Exception as error:
+                print(error)
+                return Response({'message':'Error authorizing the user try logging in again'})
+            print(userDetails['id'])
+
             mentor_id = userDetails['id']
         print('mentor - id',mentor_id,'----')
 
@@ -382,6 +381,7 @@ def mentor_details(request):
             "languages" : mentor.languages,
             "overview":mentor.bio,
             "experience":experienceList,
+            'years_of_experience':mentor.mentor_experience,
             'background' : {
                 'expertise' : mentor.areas_of_expertise,
                 'fluency' : mentor.languages

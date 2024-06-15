@@ -844,3 +844,18 @@ DEBUG 2024-06-15 01:12:33,733 Authentication assets.py 30 user_login message - U
 DEBUG 2024-06-15 01:12:59,997 profile_details assets.py 15 experience message - Entered Experience endpoint GET
 DEBUG 2024-06-15 01:13:02,917 profile_details assets.py 15 experience message - getting mentor details
 DEBUG 2024-06-15 01:13:03,225 profile_details assets.py 15 experience message - Sucessfully got experience details
+DEBUG 2024-06-15 22:38:52,970 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-15 22:38:53,639 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-15 22:38:54,555 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-15 23:37:35,301 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-15 23:37:37,630 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-15 23:37:38,900 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-15 23:37:58,444 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-15 23:38:01,036 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-15 23:38:01,857 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-15 23:38:16,697 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-15 23:38:17,261 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-15 23:38:18,100 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-15 23:38:25,302 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-15 23:38:25,861 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-15 23:38:26,701 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
