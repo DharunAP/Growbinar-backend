@@ -54,8 +54,8 @@ def user_login(request):
                 log("User Not Found",WARNING_CODE)
                 return JsonResponse({'message' :USER_NOT_FOUND},status = STATUSES['BAD_REQUEST'])
             
-        if check_password(password, user.password):
-        # if (password == user.password):
+        # if check_password(password, user.password):
+        if (password == user.password):
             token = str(get_or_create_jwt(user,user_role,email))
             print(token, " tata printed ")
             log("User Logged In",DEBUG_CODE)

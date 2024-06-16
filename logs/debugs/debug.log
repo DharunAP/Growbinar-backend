@@ -908,3 +908,459 @@ WARNING 2024-06-16 00:29:10,917 profile_details assets.py 17 mentor_details mess
 DEBUG 2024-06-16 00:29:14,823 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-16 00:29:17,578 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-16 00:29:18,701 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-16 12:02:16,387 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:02:16,396 Authentication assets.py 30 user_login message - User is Mentee
+WARNING 2024-06-16 12:02:16,403 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:03:03,663 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:03:03,673 Authentication assets.py 30 user_login message - User is Mentee
+WARNING 2024-06-16 12:03:03,677 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:03:19,032 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:03:19,091 Authentication assets.py 30 user_login message - User is Mentor
+ERROR 2024-06-16 12:03:19,098 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-16 12:03:37,357 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:03:37,409 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 12:03:37,502 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 12:03:47,784 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:03:47,836 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 12:03:47,888 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 12:04:09,281 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:04:09,291 Authentication assets.py 30 user_login message - User is Mentee
+WARNING 2024-06-16 12:04:09,299 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:06:43,318 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:06:43,484 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 12:06:43,538 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 12:06:53,585 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:06:53,595 Authentication assets.py 30 user_login message - User is Mentee
+WARNING 2024-06-16 12:06:53,599 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:07:28,193 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:07:28,202 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:07:28,207 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:08:41,740 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:08:41,747 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:08:41,751 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:10:41,554 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:10:41,564 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:10:41,570 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:13:40,553 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:13:40,562 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:13:40,573 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:14:16,498 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:14:16,505 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:14:16,511 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:14:43,001 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:14:43,050 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 12:14:43,090 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 12:15:00,756 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:15:00,763 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:15:00,769 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:15:34,449 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:15:34,504 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 12:15:34,559 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 12:15:52,507 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:15:52,516 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:15:52,521 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:17:49,442 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:17:49,453 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:17:49,458 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:23:30,131 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:23:30,407 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:24:12,152 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:24:12,162 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:24:12,169 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:24:12,180 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:24:12,467 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:25:04,324 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:25:04,332 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:25:04,337 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:25:04,353 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:25:04,627 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:25:26,642 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:25:26,916 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:26:57,000 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:26:57,254 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:29:47,395 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:29:47,671 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:32:30,563 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:32:30,838 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:34:52,615 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:34:52,893 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:35:47,734 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:35:47,990 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:38:17,863 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:38:17,872 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:38:17,878 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:38:17,888 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:38:18,153 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:41:22,776 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:41:22,790 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:41:22,794 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:41:22,806 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:41:23,076 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:41:33,677 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:41:33,684 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:41:33,688 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:41:33,697 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:41:33,972 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 12:44:33,583 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 12:44:33,592 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 12:44:33,598 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 12:44:33,605 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 12:44:33,876 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 13:08:53,878 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 13:08:53,890 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 13:08:53,896 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 13:08:53,903 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 13:08:54,198 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 13:11:02,502 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 13:11:02,508 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 13:11:02,513 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 13:11:02,529 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 13:11:02,808 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 13:12:20,288 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 13:12:20,297 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 13:12:20,307 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 13:12:20,320 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 13:12:20,583 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 13:24:21,453 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 13:24:21,459 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 13:24:21,494 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 13:25:13,920 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 13:25:13,928 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 13:25:13,967 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 13:25:40,598 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 13:25:40,607 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 13:25:40,653 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:05:11,639 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:05:11,649 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:05:11,716 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:05:11,796 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:05:12,120 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:05:12,127 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:05:12,381 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:05:12,393 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:05:12,654 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:05:43,185 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:05:43,191 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:05:43,229 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:05:43,265 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:05:43,549 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:05:43,556 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:05:43,833 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:05:43,855 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:05:44,172 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:06:25,800 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:06:25,810 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:06:25,862 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:06:25,912 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:06:26,204 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:06:26,216 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:06:26,484 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:06:26,496 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:06:26,742 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:06:57,235 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:06:57,242 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:06:57,269 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:06:57,314 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:06:57,585 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:06:57,592 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:06:57,867 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:06:57,881 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:06:58,150 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:07:12,340 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:07:12,346 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:07:12,410 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:07:12,460 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:07:12,749 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:07:12,756 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:07:13,020 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:07:13,036 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:07:13,288 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:09:11,505 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:09:11,521 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:09:11,575 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:09:11,649 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:09:11,961 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:09:11,967 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:09:12,219 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:09:12,231 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:09:12,498 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:09:48,565 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:09:48,573 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:09:48,600 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:09:48,658 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:09:48,959 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:09:48,970 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:09:49,222 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:09:49,232 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:09:49,482 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:09:49,492 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:09:49,517 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 14:10:07,542 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 14:10:07,549 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 14:10:07,587 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 14:10:07,627 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:10:07,918 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:10:07,928 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:10:08,180 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:10:08,189 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:10:08,457 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:10:08,470 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:10:08,482 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 14:13:52,101 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:13:52,432 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:13:52,440 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:13:52,704 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:13:52,708 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-16 14:13:52,713 Authentication assets.py 34 VerifyMentor message - Error verifying email Mentor matching query does not exist.
+DEBUG 2024-06-16 14:14:12,763 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:14:13,078 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:14:13,084 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:14:13,360 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:14:13,365 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 14:14:13,370 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 2
+DEBUG 2024-06-16 14:22:39,830 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:22:40,112 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:22:40,177 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:22:40,446 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:22:40,456 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:22:40,716 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:22:40,726 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:22:40,731 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 14:23:10,562 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:23:10,840 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:23:51,619 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:23:51,919 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:23:51,977 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:23:51,985 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:23:51,989 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:24:34,119 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:24:34,388 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:24:34,447 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:24:34,458 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:24:34,464 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:24:54,593 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:24:54,872 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:24:54,926 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:24:54,931 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:32:10,928 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:32:11,201 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:32:11,255 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:32:11,266 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:32:11,275 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:33:56,639 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:33:56,920 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:33:56,973 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:33:56,981 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:33:56,997 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:34:30,113 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:34:30,407 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:34:30,479 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:34:30,488 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:34:30,498 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:36:10,162 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:36:10,430 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:36:10,512 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:36:10,519 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:36:10,525 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:36:10,550 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 14:36:26,773 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:36:27,036 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:36:27,094 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:36:27,101 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:36:27,111 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:36:27,124 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 14:37:52,829 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:37:53,126 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:37:53,183 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 14:37:53,188 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 14:37:53,193 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:37:53,210 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 14:54:02,598 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:54:02,872 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:54:02,933 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-06-16 14:54:02,944 Authentication assets.py 34 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-06-16 14:54:02,971 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+WARNING 2024-06-16 14:54:02,985 Authentication assets.py 32 getMentorDetails message - Email not verified
+DEBUG 2024-06-16 14:54:40,994 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 14:54:41,261 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 14:54:41,323 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+ERROR 2024-06-16 14:54:41,328 Authentication assets.py 34 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+DEBUG 2024-06-16 14:54:41,353 Authentication assets.py 30 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:55:19,409 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 14:55:19,737 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 14:55:19,745 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 14:55:19,758 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 1
+DEBUG 2024-06-16 14:55:19,768 Authentication assets.py 30 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 14:55:19,788 Authentication assets.py 30 getMenteeDetails message - success
+DEBUG 2024-06-16 15:00:44,135 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 15:00:44,143 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 15:00:44,173 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 15:00:44,225 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 15:00:44,531 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 15:00:44,538 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 15:00:44,814 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 15:00:44,819 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 15:00:44,825 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 2
+DEBUG 2024-06-16 15:00:44,830 Authentication assets.py 30 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 15:00:44,848 Authentication assets.py 30 getMenteeDetails message - success
+DEBUG 2024-06-16 15:00:44,863 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 15:00:45,140 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 15:00:45,152 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 15:00:45,430 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 15:00:45,446 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 15:00:45,451 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 15:00:45,456 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 15:00:45,474 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 15:00:45,490 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 15:00:45,745 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 15:00:45,749 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 15:00:45,757 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 3
+DEBUG 2024-06-16 16:10:09,607 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 16:10:09,615 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 16:10:09,667 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 16:10:09,781 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 16:10:10,092 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 16:10:10,101 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 16:10:10,371 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 16:10:10,385 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 16:10:10,397 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 2
+DEBUG 2024-06-16 16:10:10,407 Authentication assets.py 30 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 16:10:10,428 Authentication assets.py 30 getMenteeDetails message - success
+DEBUG 2024-06-16 16:10:10,441 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 16:10:10,712 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 16:10:10,716 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 16:10:10,721 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 3
+DEBUG 2024-06-16 16:10:10,784 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 16:10:11,043 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 16:10:11,053 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 16:10:11,326 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 16:10:11,336 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 16:10:11,342 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 16:10:11,346 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 16:10:11,368 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 16:10:11,376 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 16:10:11,631 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 16:10:11,651 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 16:10:11,656 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 4
+DEBUG 2024-06-16 19:29:37,495 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:29:37,505 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 19:29:37,562 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 19:29:37,665 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 19:29:37,929 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 19:29:37,935 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 19:29:38,179 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 19:29:38,183 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 19:29:38,226 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 2
+DEBUG 2024-06-16 19:29:38,230 Authentication assets.py 30 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 19:29:38,241 Authentication assets.py 30 getMenteeDetails message - success
+DEBUG 2024-06-16 19:29:38,249 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-16 19:29:38,494 Authentication assets.py 30 MenteeSignup message - signup successfull
+DEBUG 2024-06-16 19:29:38,499 Authentication assets.py 30 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-06-16 19:29:38,508 Authentication assets.py 30 VerifyMentee message - Email verification sucess for 3
+DEBUG 2024-06-16 19:29:38,556 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:29:38,798 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:29:38,812 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:29:39,051 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:29:39,062 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:29:39,067 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 19:29:39,072 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 19:29:39,099 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 19:29:39,105 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:29:39,345 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:29:39,356 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:29:39,362 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 4
+DEBUG 2024-06-16 19:39:44,720 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:39:44,978 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:39:45,071 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:39:45,318 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:39:45,328 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:39:45,343 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 2
+DEBUG 2024-06-16 19:39:45,348 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 19:39:45,368 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 19:39:45,379 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:39:45,625 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:39:45,634 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:39:45,640 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 3
+DEBUG 2024-06-16 19:41:43,059 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-16 19:41:43,069 Authentication assets.py 32 MentorSignup message - invalid credentails for signup
+DEBUG 2024-06-16 19:43:12,232 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-16 19:43:12,241 Authentication assets.py 32 MentorSignup message - invalid credentails for signup
+DEBUG 2024-06-16 19:44:30,209 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:44:30,469 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:48:39,728 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:48:40,033 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:48:40,089 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:48:40,098 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 19:49:57,949 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:49:58,249 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:49:58,311 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-16 19:49:58,318 Authentication assets.py 34 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-16 19:50:19,448 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:50:19,732 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:50:19,787 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-16 19:50:19,793 Authentication assets.py 34 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-16 19:52:51,662 Authentication assets.py 30 user_login message - Entered User-Login 
+ERROR 2024-06-16 19:52:51,666 Authentication assets.py 34 user_login message - Invalid user_role
+DEBUG 2024-06-16 19:52:51,673 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:52:51,972 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:53:23,065 Authentication assets.py 30 user_login message - Entered User-Login 
+ERROR 2024-06-16 19:53:23,072 Authentication assets.py 34 user_login message - Invalid user_role
+DEBUG 2024-06-16 19:53:23,085 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:53:23,348 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:53:59,125 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:53:59,136 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 19:53:59,142 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 19:53:59,152 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:53:59,458 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:55:22,598 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:55:22,610 Authentication assets.py 30 user_login message - User is Mentor
+ERROR 2024-06-16 19:55:22,613 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-16 19:58:34,842 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:58:35,148 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:58:35,221 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:58:35,227 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 19:58:35,232 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 19:58:35,247 Authentication assets.py 30 getMentorDetails message - success
+DEBUG 2024-06-16 19:59:26,893 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:59:27,182 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:59:27,253 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:59:27,258 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 19:59:27,266 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-06-16 19:59:27,290 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+DEBUG 2024-06-16 19:59:55,615 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 19:59:55,894 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 19:59:55,955 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 19:59:55,964 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 19:59:55,970 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-06-16 19:59:55,979 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+DEBUG 2024-06-16 20:01:21,786 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 20:01:22,102 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 20:01:22,174 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 20:01:22,181 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 20:01:22,188 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+ERROR 2024-06-16 20:01:22,209 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+DEBUG 2024-06-16 20:02:26,531 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 20:02:26,824 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 20:02:26,883 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 20:02:26,890 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 20:02:26,895 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 20:02:43,178 Authentication assets.py 30 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-16 20:02:43,459 Authentication assets.py 30 MentorSignup message - signup successfull
+DEBUG 2024-06-16 20:02:43,519 Authentication assets.py 30 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-16 20:02:43,525 Authentication assets.py 30 VerifyMentor message - Email verification sucess for 1
+DEBUG 2024-06-16 20:02:43,531 Authentication assets.py 30 getMentorDetails message - Entered mentor details endpoint
+DEBUG 2024-06-16 20:05:36,660 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+WARNING 2024-06-16 20:05:36,665 Authentication assets.py 32 MenteeSignup message - invalid credentails for signup {'email_id': [ErrorDetail(string='Enter a valid email address.', code='invalid')]}
+DEBUG 2024-06-16 20:06:26,404 Authentication assets.py 30 MenteeSignup message - Entered mentee-signup
+WARNING 2024-06-16 20:06:26,412 Authentication assets.py 32 MenteeSignup message - invalid credentails for signup {'email_id': [ErrorDetail(string='Enter a valid email address.', code='invalid')], 'password': [ErrorDetail(string='This field may not be blank.', code='blank')]}
+DEBUG 2024-06-16 20:07:27,657 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 20:07:27,664 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 20:07:27,690 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 20:08:00,462 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 20:08:00,469 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 20:08:00,472 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 20:08:18,725 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 20:08:18,733 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 20:08:18,740 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 20:08:48,042 Authentication assets.py 30 user_login message - Entered User-Login 
+ERROR 2024-06-16 20:08:48,048 Authentication assets.py 34 user_login message - Invalid user_role

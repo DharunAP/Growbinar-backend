@@ -186,3 +186,45 @@ ERROR 2024-06-16 00:19:25,009 profile_details assets.py 19 mentor_details messag
 ERROR 2024-06-16 00:26:27,860 profile_details assets.py 19 mentor_details message - Error while fetching details
 WARNING 2024-06-16 00:28:55,383 profile_details assets.py 17 mentor_details message - User id required.
 WARNING 2024-06-16 00:29:10,917 profile_details assets.py 17 mentor_details message - Invalid user id
+WARNING 2024-06-16 12:02:16,403 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:03:03,677 Authentication assets.py 32 user_login message - User Not Found
+ERROR 2024-06-16 12:03:19,098 Authentication assets.py 34 user_login message - Invalid Credentials
+WARNING 2024-06-16 12:04:09,299 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:06:53,599 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:07:28,207 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:08:41,751 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:10:41,570 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:13:40,573 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:14:16,511 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:15:00,769 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:15:52,521 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:17:49,458 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:24:12,169 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:25:04,337 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:38:17,878 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:41:22,794 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:41:33,688 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 12:44:33,598 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 13:08:53,896 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 13:11:02,513 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 13:12:20,307 Authentication assets.py 32 user_login message - User Not Found
+ERROR 2024-06-16 14:13:52,713 Authentication assets.py 34 VerifyMentor message - Error verifying email Mentor matching query does not exist.
+ERROR 2024-06-16 14:54:02,944 Authentication assets.py 34 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+WARNING 2024-06-16 14:54:02,985 Authentication assets.py 32 getMentorDetails message - Email not verified
+ERROR 2024-06-16 14:54:41,328 Authentication assets.py 34 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+WARNING 2024-06-16 19:41:43,069 Authentication assets.py 32 MentorSignup message - invalid credentails for signup
+WARNING 2024-06-16 19:43:12,241 Authentication assets.py 32 MentorSignup message - invalid credentails for signup
+ERROR 2024-06-16 19:49:58,318 Authentication assets.py 34 VerifyMentor message - Error verifying email 
+ERROR 2024-06-16 19:50:19,793 Authentication assets.py 34 VerifyMentor message - Error verifying email 
+ERROR 2024-06-16 19:52:51,666 Authentication assets.py 34 user_login message - Invalid user_role
+ERROR 2024-06-16 19:53:23,072 Authentication assets.py 34 user_login message - Invalid user_role
+WARNING 2024-06-16 19:53:59,142 Authentication assets.py 32 user_login message - User Not Found
+ERROR 2024-06-16 19:55:22,613 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 19:59:27,290 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+ERROR 2024-06-16 19:59:55,979 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+ERROR 2024-06-16 20:01:22,209 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+WARNING 2024-06-16 20:05:36,665 Authentication assets.py 32 MenteeSignup message - invalid credentails for signup {'email_id': [ErrorDetail(string='Enter a valid email address.', code='invalid')]}
+WARNING 2024-06-16 20:06:26,412 Authentication assets.py 32 MenteeSignup message - invalid credentails for signup {'email_id': [ErrorDetail(string='Enter a valid email address.', code='invalid')], 'password': [ErrorDetail(string='This field may not be blank.', code='blank')]}
+WARNING 2024-06-16 20:08:00,472 Authentication assets.py 32 user_login message - User Not Found
+WARNING 2024-06-16 20:08:18,740 Authentication assets.py 32 user_login message - User Not Found
+ERROR 2024-06-16 20:08:48,048 Authentication assets.py 34 user_login message - Invalid user_role
