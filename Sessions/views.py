@@ -412,15 +412,15 @@ def upcoming_sessions_mentor(request) :
             # if the mentor Exists
             log("Mentor Exists",DEBUG_CODE)
             # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
-            session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE id={mentor_id};")
+            session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE mentor_id={mentor_id};")
             
-            print('entered the loop --')
+            print('entered the loop --',session_details)
             sessions = []  # list to store the upcoming sessions
             for index in session_details:
                 value = dict()
 
                 requested_details = RequestedSession.objects.filter(session = index.id)[0]
-                # print('before if')
+                print('before if',requested_details.is_accepted)
                 if requested_details.is_accepted :
                     log('meeting is accepted',DEBUG_CODE)
                     booked_details = BookedSession.objects.filter(requested_session = requested_details)[0]
@@ -514,7 +514,7 @@ def new_sessions_booking(request):
             log('Enter the valid time',ERROR_CODE)
             return JsonResponse({'message': INVALID_TIME}, status= STATUSES['INTERNAL_SERVER_ERROR'])
 
-    #taking the mentor instance
+    # taking the mentor instance
         mentor_ins = Mentor.objects.filter(id=mentor_id)[0]
         print(mentor_ins,"--mentor ins--")
     # checking with available sessions
