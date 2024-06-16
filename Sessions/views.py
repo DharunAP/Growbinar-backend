@@ -518,7 +518,10 @@ def new_sessions_booking(request):
         mentor_ins = Mentor.objects.filter(id=mentor_id)[0]
         print(mentor_ins,"--mentor ins--")
     # checking with available sessions
-        available_sessions = AvailabeSession.objects.filter(mentor_id=mentor_id)[0]
+        available_sessions = AvailabeSession.objects.filter(mentor_id=mentor_id)
+        if not available_sessions.exists():
+            return Response({'message':'No available sessions'},status= STATUSES['BAD_REQUEST'])
+        available_sessions = available_sessions[0]
         free_slots = [slot for slot in available_sessions.availableSlots if slot['date'] == start_date]  # for taking list for that date
         print(free_slots, "--ithu summa trial tha")
 
