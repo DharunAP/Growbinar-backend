@@ -210,7 +210,7 @@ def testimonials(request):
         print(userDetails['id'])
         # request.data['mentor'] = r
         request.data['mentor'] = int(decryptData(request.data['mentor']))
-        request.data['mentee'] = int(decryptData(request.data['mentee']))
+        request.data['mentee'] = userDetails['id']
         serializer = TestimonialSerializer(data=request.data)
         if(serializer.is_valid()):
             instance = Testimonial.objects.create(
