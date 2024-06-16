@@ -8,6 +8,8 @@ from static.cipher import encryptData,decryptData
 from datetime import datetime
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
+from .zoom_meet import create_meeting_view
+
 from django.http import JsonResponse
 from django.utils import timezone
 from datetime import date,datetime
@@ -190,9 +192,17 @@ def bookSession(request):
         requested_session.is_accepted = True
         requested_session.save()
 
+        try:
+            meet = create_meeting_view({'start_time':session_instance.from_slot_time.strftime('%m/%d/%Y'),'duration':30})
+            print(meet)
+        except Exception as e:
+            return Response({'message':'Error creating zoom ','Error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
+
         # creating a bookedSession object
         booked_session = BookedSession.objects.create(
             requested_session = requested_session,
+            hosting_url = meet['start_url'],
+            join_url=meet['join_url']
         )
         booked_session.save()
         log('session booked',DEBUG_CODE)
@@ -314,7 +324,7 @@ def upcoming_sessions_mentee(request) :
                 value = dict()
                 session = index.session
                 # value['profile-link'] = pyshorteners.Shortener().tinyurl.short(mentor_details.profile_picture_url)
-                value['profile-link'] = session.mentor.profile_picture_url,
+                # value['profile-link'] = session.mentor.profile_picture_url,
                 value['name'] =  session.mentor.first_name + session.mentor.last_name
                 value['role'] = session.mentor.designation
                 value['organisation'] = session.mentor.company
@@ -332,6 +342,7 @@ def upcoming_sessions_mentee(request) :
                     if bookedSession.is_completed:
                         value['status'] = MEET_STATUS[202]
                     else:
+                        value['url'] = bookedSession.join_url
                         value['status'] = MEET_STATUS[201]
 
                 else :
@@ -413,10 +424,10 @@ def upcoming_sessions_mentor(request) :
                 if requested_details.is_accepted :
                     log('meeting is accepted',DEBUG_CODE)
                     booked_details = BookedSession.objects.filter(requested_session = requested_details)[0]
-                    url = booked_details.hosting_url
                     if booked_details.is_completed :
                         stat = MEET_STATUS[202]
                     else :
+                        value['meet_url'] = booked_details.hosting_url
                         stat = MEET_STATUS[201]
 
                 else :
@@ -429,7 +440,6 @@ def upcoming_sessions_mentor(request) :
                 value['role'] = mentor_details.designation
                 value['organisation'] = mentor_details.company
                 value['time'] = index.from_slot_time
-                value['link'] = url
                 value['date'] = index.slot_date
                 value['status'] = stat
                 value['meet_type'] = MEET_TYPE[101]

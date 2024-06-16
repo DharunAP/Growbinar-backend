@@ -217,3 +217,6 @@ ERROR 2024-06-16 23:26:11,878 Sessions assets.py 14 bookSession message - Error 
 ERROR 2024-06-16 23:27:50,482 Sessions assets.py 14 bookSession message - Error booking a session The QuerySet value for an exact lookup must be limited to one result using slicing.
 ERROR 2024-06-17 00:25:26,535 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
 ERROR 2024-06-17 00:27:19,183 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+ERROR 2024-06-17 00:42:04,433 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(16) already exists.
+

@@ -17,9 +17,8 @@ def encode_client_credentials():
     encoded_credentials = base64.b64encode(credentials.encode()).decode()
     return encoded_credentials
 
-@csrf_exempt
-@require_POST
-def get_access_token_view(request):
+
+def get_access_token_view():
     url = "https://zoom.us/oauth/token"
     data = {
         "grant_type": "account_credentials",
@@ -36,15 +35,14 @@ def get_access_token_view(request):
     else:
         return JsonResponse(response.json(), status=response.status_code)
 
-@csrf_exempt
-@require_POST
+
 def create_meeting_view(request):
-    access_token = get_access_token_view(request)
+    access_token = get_access_token_view()
     # access_token = "eyJzdiI6IjAwMDAwMSIsImFsZyI6IkhTNTEyIiwidiI6IjIuMCIsImtpZCI6ImUzMTdlMDQyLTA0ZWQtNGFjNC05YjU0LTZlZWU2ZTNjNjBiMyJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnpvb20udXMiLCJ1aWQiOiI1bHZOYk1PWlQ2bVlaYUVIUGI5dVNnIiwidmVyIjo5LCJhdWlkIjoiNDYxZDYxNGQxZDRiOTNhNTA1MzY1NTU0ODYwZDBkMGMiLCJuYmYiOjE3MTgxMzQ4MzMsImNvZGUiOiIxNndiNHk0QlRwdUJIMGZVZV8yYmZBakVIR1g2ZG5MNkIiLCJpc3MiOiJ6bTpjaWQ6QlZYZ1NmNmpRYmlwMHhBSU9JcE9nIiwiZ25vIjowLCJleHAiOjE3MTgxMzg0MzMsInR5cGUiOjMsImlhdCI6MTcxODEzNDgzMywiYWlkIjoiQTNRX3FKMlhTMjY5ZTlKSUQ5SzNodyJ9.0SBcUoTE6pV8BugVfcxfZdUrUp1jd_tTvhkUTjzgws7JtZC6P_jbITYDO2AibzcBda6Oa5D8LscH97nIyoKQ3A"
-    topic = request.POST.get('topic', 'Default Topic')
-    start_time = request.POST.get('start_time')
-    duration = int(request.POST.get('duration', 30))
-    timezone = request.POST.get('timezone', 'UTC')
+    topic = 'Default Topic'
+    start_time = request['start_time']
+    duration = int(30)
+    timezone = 'UTC'
 
     meeting_url = 'https://api.zoom.us/v2/users/me/meetings'
     headers = {
@@ -60,6 +58,6 @@ def create_meeting_view(request):
     }
     response = requests.post(meeting_url, headers=headers, json=meeting_data)
     if response.status_code == 201:
-        return JsonResponse(response.json())
+        return response.json()
     else:
-        return JsonResponse(response.json(), status=response.status_code)
+        return None

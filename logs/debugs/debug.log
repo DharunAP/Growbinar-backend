@@ -1137,3 +1137,27 @@ DEBUG 2024-06-17 00:27:59,939 Sessions assets.py 10 upcoming_sessions_mentor mes
 DEBUG 2024-06-17 00:28:04,010 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
 DEBUG 2024-06-17 00:28:04,579 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
 DEBUG 2024-06-17 00:28:05,247 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-17 00:34:48,724 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 00:37:43,900 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 00:38:31,658 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 00:39:53,321 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 00:41:56,374 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 00:42:04,433 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(16) already exists.
+
+DEBUG 2024-06-17 00:46:13,779 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 00:46:20,837 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-17 00:48:41,362 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-17 00:49:01,587 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-17 00:49:05,115 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-17 00:49:06,791 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-17 00:49:07,391 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-17 00:49:07,396 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
+DEBUG 2024-06-17 00:49:29,875 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-17 00:49:30,509 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-17 00:49:31,072 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-17 00:51:02,930 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-17 00:51:21,123 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-17 00:51:22,910 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-17 00:51:23,470 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-17 00:51:23,473 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
