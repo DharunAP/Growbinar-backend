@@ -255,7 +255,7 @@ def sessionFeedback(request):
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
-def upcoming_sessions(request) :
+def upcoming_sessions_mentor(request) :
     log('Entered upcoming session',DEBUG_CODE)
     validation_response = validate_token(request)
     if validation_response is not None:
@@ -306,7 +306,7 @@ def upcoming_sessions(request) :
                     log('meeting is not accepted',DEBUG_CODE)
                     url = "NULL"
                     stat = MEET_STATUS[203]
-               
+                value['session_id'] = index.id
                 value['mentee'] = requested_details.mentee.first_name + requested_details.mentee.last_name
                 # value['profile-link'] = 'NULL',
                 value['role'] = mentor_details.designation

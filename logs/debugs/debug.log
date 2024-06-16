@@ -1079,3 +1079,7 @@ DEBUG 2024-06-16 22:22:59,373 Sessions assets.py 10 upcoming_sessions message - 
 DEBUG 2024-06-16 22:25:03,794 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
 DEBUG 2024-06-16 22:25:07,577 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
 DEBUG 2024-06-16 22:25:08,707 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-16 22:28:55,105 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-16 22:28:59,308 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-16 22:28:59,922 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is not accepted
+DEBUG 2024-06-16 22:29:00,231 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
