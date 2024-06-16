@@ -180,6 +180,8 @@ def bookSession(request):
         print(userDetails['id'])
         # changeing is_booked to true in sessions table
         session_instance = Session.objects.get(id = request.data['session_id'])
+        if session_instance.mentor != userDetails['user']:
+            return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
         session_instance.is_booked = True
         session_instance.save()
 
@@ -202,7 +204,32 @@ def bookSession(request):
 @api_view(['POST'])
 def sessionCompleted(request):
     try:
-        booked_session = BookedSession.objects.get(id=request.data['id'])
+        validation_response = validate_token(request)  # validating the requested user using authorization headder
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+            if(userChecking is not None):
+                return userChecking
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        print(userDetails['id'])
+
+        session = Session.objects.get(id = request.data['id']) # getting the session object
+
+        if session.mentor != userDetails['user']: # checking weather requested mentor and session's mentor are same
+            return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+
+        session.mentor.count_of_sessions = session.mentor.count_of_sessions+1 # increasing the count of sessions handled by the mentor
+        session.mentor.save()
+
+        requested_session = RequestedSession.objects.get(session=session) 
+
+        booked_session = BookedSession.objects.get(requested_session=requested_session) # getting the booked session object to toggle is completed to true 
         booked_session.is_completed = True
         booked_session.save()
         return Response({"message":'success'},status=STATUSES['SUCCESS'])

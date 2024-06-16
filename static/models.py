@@ -45,6 +45,7 @@ class Mentor(models.Model):
     mentor_experience = models.FloatField(null=True,blank=True)
     designation = models.CharField(max_length=100,null=True,blank=True)
     company = models.CharField(max_length=100,null=True,blank=True)
+    count_of_sessions = models.IntegerField(default=0)
     is_top_rated = models.BooleanField(default=False) #remove
     is_experience = models.BooleanField(default=False) #remove
     created_at = models.DateTimeField(null=False, auto_now_add=True)
@@ -80,7 +81,6 @@ class Session(models.Model):
     slot_date = models.DateField()
     from_slot_time = models.TimeField()
     to_slot_time = models.TimeField()
-    count_of_sessions = models.IntegerField(default=0)
     is_booked = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

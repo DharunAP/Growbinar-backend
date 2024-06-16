@@ -209,3 +209,9 @@ ERROR 2024-06-16 21:48:23,566 Sessions assets.py 14 upcoming_sessions_mentee mes
 ERROR 2024-06-16 22:43:13,581 Authentication assets.py 34 user_login message - Invalid Credentials
 ERROR 2024-06-16 22:43:32,105 Authentication assets.py 34 user_login message - Invalid Credentials
 WARNING 2024-06-16 22:44:56,212 Authentication assets.py 32 getMenteeDetails message - Email not verified
+ERROR 2024-06-16 23:19:08,776 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 23:19:18,512 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 23:19:37,857 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 23:20:25,982 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 23:26:11,878 Sessions assets.py 14 bookSession message - Error booking a session 'QuerySet' object has no attribute 'save'
+ERROR 2024-06-16 23:27:50,482 Sessions assets.py 14 bookSession message - Error booking a session The QuerySet value for an exact lookup must be limited to one result using slicing.

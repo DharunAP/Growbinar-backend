@@ -83,25 +83,19 @@ def menteeDetails(request):
     log("Entered mentee details",DEBUG_CODE)
     try:
         # getting the requested mentee details from the table
-        validation_response = validate_token(request)  # validating the requested user using authorization headder
-        if validation_response is not None:
-            return validation_response
-        
-        try:
-            userDetails = getUserDetails(request)  # getting the details of the requested user
-            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
-            if(userChecking is not None):
-                return userChecking
-        except Exception as error:
-            print(error)
-            return Response({'message':'Error authorizing the user try logging in again'})   
-        print(userDetails['id'])
+        mentee_id = request.GET.get('id')
+        if mentee_id==None:
+            log(USER_ID_REQUIRED,WARNING_CODE)
+            return Response({'message':USER_ID_REQUIRED},status=STATUSES['BAD_REQUEST'])
 
-        try :
-            id = decryptData(request.data['id'])
+        # verifying weather id is decryptable i.e., valid or not
+        try:
+            mentee_id = decryptData(mentee_id)
         except:
-            id = userDetails['id']
-        mentee = Mentee.objects.raw(f"SELECT id,is_experience,first_name,last_name,languages,role,organization,profile_picture_url,city,is_experience,description,areas_of_interest FROM static_mentee WHERE id={id};")[0]
+            log(INVALID_USER_ID,WARNING_CODE)
+            return Response({'message':INVALID_USER_ID},status=STATUSES['BAD_REQUEST'])
+
+        mentee = Mentee.objects.raw(f"SELECT id,is_experience,first_name,last_name,languages,role,organization,profile_picture_url,city,is_experience,description,areas_of_interest FROM static_mentee WHERE id={mentee_id};")[0]
         
         # urlShortner(mentee.profile_picture_url) # implementing url shortner
         experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration FROM static_Experience WHERE referenced_id={mentee.id} and role_type=\'mentee\'")

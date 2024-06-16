@@ -1072,3 +1072,56 @@ DEBUG 2024-06-16 22:46:44,951 Authentication assets.py 30 getMenteeDetails messa
 DEBUG 2024-06-16 22:47:04,987 Authentication assets.py 30 user_login message - Entered User-Login 
 DEBUG 2024-06-16 22:47:07,695 Authentication assets.py 30 user_login message - User is Mentee
 DEBUG 2024-06-16 22:47:08,912 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 22:56:25,487 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-16 22:56:29,196 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-16 22:56:30,278 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-16 22:56:30,875 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-16 22:56:31,690 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-16 22:56:31,690 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
+DEBUG 2024-06-16 22:58:17,385 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-16 22:58:21,157 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-16 22:58:21,772 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is not accepted
+DEBUG 2024-06-16 22:58:22,076 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-16 22:58:39,689 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-16 22:58:43,151 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-16 22:58:44,094 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-16 22:58:44,912 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-16 22:58:45,629 Sessions assets.py 10 upcoming_sessions_mentee message - session not accepted by mentor
+DEBUG 2024-06-16 22:58:45,629 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
+DEBUG 2024-06-16 23:19:06,154 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:19:08,768 Authentication assets.py 30 user_login message - User is Mentee
+ERROR 2024-06-16 23:19:08,776 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-16 23:19:15,965 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:19:18,504 Authentication assets.py 30 user_login message - User is Mentee
+ERROR 2024-06-16 23:19:18,512 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-16 23:19:35,124 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:19:37,857 Authentication assets.py 30 user_login message - User is Mentee
+ERROR 2024-06-16 23:19:37,857 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-16 23:20:08,497 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:20:25,974 Authentication assets.py 30 user_login message - User is Mentee
+ERROR 2024-06-16 23:20:25,982 Authentication assets.py 34 user_login message - Invalid Credentials
+DEBUG 2024-06-16 23:21:07,989 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:21:10,411 Authentication assets.py 30 user_login message - User is Mentee
+DEBUG 2024-06-16 23:21:11,748 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 23:21:22,962 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-16 23:21:25,678 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-06-16 23:23:54,308 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-16 23:24:12,890 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-16 23:24:13,480 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is not accepted
+DEBUG 2024-06-16 23:24:13,807 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-16 23:25:32,312 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:25:34,915 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 23:25:36,248 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 23:25:52,448 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-16 23:25:56,009 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-16 23:25:56,638 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is not accepted
+DEBUG 2024-06-16 23:25:56,960 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-16 23:26:07,932 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-16 23:26:11,878 Sessions assets.py 14 bookSession message - Error booking a session 'QuerySet' object has no attribute 'save'
+DEBUG 2024-06-16 23:27:46,495 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-16 23:27:50,482 Sessions assets.py 14 bookSession message - Error booking a session The QuerySet value for an exact lookup must be limited to one result using slicing.
+DEBUG 2024-06-16 23:29:40,172 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 23:29:57,659 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 23:29:58,991 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 23:30:59,637 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-16 23:31:05,039 Sessions assets.py 10 bookSession message - session booked
