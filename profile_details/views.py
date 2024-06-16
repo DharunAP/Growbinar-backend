@@ -361,10 +361,8 @@ def mentor_details(request):
         for value in experience:
             index = {
                 'role' : value.role,
-                'date' : {
-                    'startDate' : value.from_duration,
-                    'endDate' : value.to_duration
-                },
+                'startDate' : value.from_duration,
+                'endDate' : value.to_duration,
                 'organization':value.company,
                 'description':value.description
                 # org and desc
