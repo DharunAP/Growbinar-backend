@@ -200,9 +200,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'verceldb',
         'USER': 'default',
-        'PASSWORD': 'pJihmtHYq91v',
-        'HOST': 'ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech',
-        'PORT': '5432',  # Default PostgreSQL port is 5432
+        'PASSWORD': os.environ['db_password'],
+        'HOST': os.environ['db_host_id'],
+        'PORT': '5432', 
         'OPTIONS': {
             'sslmode': 'require',
             'connect_timeout': 15,
@@ -216,8 +216,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dharunpalanisamy5256@gmail.com'
-EMAIL_HOST_PASSWORD = 'gqruvarabwlkddgq'
+EMAIL_HOST_USER = os.environ['email_host_id']
+EMAIL_HOST_PASSWORD = os.environ['email_host_password']
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Password validation
@@ -266,33 +266,3 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# import os
-
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# DATABASES_AVAILABLE = {
-#     'main': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'GrowbinarDB',
-#         'USER': 'Django',
-#         'PASSWORD': 'django',
-#         'TEST': {
-#             'NAME': 'testing_Growbinar',  # Name of the existing test database
-#         },
-#     },
-#     'test': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'testing_Growbinar',
-#         'USER': 'Django',
-#         'PASSWORD': 'django',
-#         'TEST': {
-#             'NAME': 'testing_Growbinar',  # Name of the existing test database
-#         },
-#     }
-# }
-
-# # Use 'test' database configuration for tests
-# DATABASES = {
-#     'default': DATABASES_AVAILABLE['main']
-# }
