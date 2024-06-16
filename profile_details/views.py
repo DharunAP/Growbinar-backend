@@ -261,7 +261,10 @@ def experience(request):
         try:
             data = request.data
             data['from_duration'] = datetime.strptime(data['from_duration'], '%Y-%m-%d')
-            data['to_duration'] = datetime.strptime(data['to_duration'], '%Y-%m-%d')
+            if data['to_duration'] == '':
+                data['to_duration']=None
+            else:
+                data['to_duration'] = datetime.strptime(data['to_duration'], '%Y-%m-%d')
             data['role_type'] = userDetails['type']
             data['referenced_id'] = userDetails['id']
             if userDetails['type']=='mentor':
@@ -277,7 +280,7 @@ def experience(request):
             return Response({'message':INVALID_CREDENTIALS,'error':serializer.errors},status=STATUSES['BAD_REQUEST'])
         except Exception as error:
             print(error)
-            return Response({'message':ERROR_CREATING_EXPERIENCE,'error':error},status=STATUSES['INTERNAL_SERVER_ERROR'])
+            return Response({'message':ERROR_CREATING_EXPERIENCE,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
     if request.method=='GET':
         try:
             log('getting mentor details',DEBUG_CODE)

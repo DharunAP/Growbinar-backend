@@ -911,3 +911,7 @@ DEBUG 2024-06-16 00:29:18,701 profile_details assets.py 15 mentor_details messag
 DEBUG 2024-06-16 15:01:35,373 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-16 15:01:38,385 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-16 15:01:39,818 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-16 15:56:25,715 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-16 15:59:07,729 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-16 16:00:34,857 profile_details assets.py 15 experience message - Entered Experience endpoint POST
+DEBUG 2024-06-16 16:01:50,134 profile_details assets.py 15 experience message - Entered Experience endpoint POST
