@@ -977,3 +977,40 @@ DEBUG 2024-06-16 17:16:44,294 profile_details assets.py 15 testimonials message 
 DEBUG 2024-06-16 18:32:38,361 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
 DEBUG 2024-06-16 18:32:50,579 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
 DEBUG 2024-06-16 18:34:39,422 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 19:33:00,096 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-16 19:33:49,990 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:33:52,903 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 19:33:54,747 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 19:34:21,428 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-16 19:34:26,192 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-16 19:34:26,589 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-16 19:36:35,336 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:36:38,366 Authentication assets.py 30 user_login message - User is Mentor
+WARNING 2024-06-16 19:36:38,366 Authentication assets.py 32 user_login message - User Not Found
+DEBUG 2024-06-16 19:37:04,531 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:37:07,666 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 19:37:09,502 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 19:37:25,538 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-16 19:37:34,283 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-16 19:37:35,007 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-16 19:37:53,104 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 19:38:09,470 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:38:12,793 Authentication assets.py 30 user_login message - User is Mentee
+DEBUG 2024-06-16 19:38:14,625 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 19:38:28,014 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 19:39:49,821 Authentication assets.py 30 user_login message - Entered User-Login 
+DEBUG 2024-06-16 19:39:54,057 Authentication assets.py 30 user_login message - User is Mentor
+DEBUG 2024-06-16 19:39:55,595 Authentication assets.py 30 user_login message - User Logged In
+DEBUG 2024-06-16 19:40:08,195 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 19:40:20,260 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 19:46:33,872 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-16 19:46:41,597 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-16 19:46:43,855 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-16 19:48:45,757 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-16 19:49:06,503 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-16 19:49:08,454 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-16 19:49:42,799 Sessions assets.py 10 upcoming_sessions message - Entered upcoming session
+DEBUG 2024-06-16 19:50:18,189 Sessions assets.py 10 upcoming_sessions message - Mentor Exists
+DEBUG 2024-06-16 19:50:19,412 Sessions assets.py 10 upcoming_sessions message - Upcoming session displayed
+DEBUG 2024-06-16 21:16:44,069 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 21:17:00,476 profile_details assets.py 15 testimonials message - Entered testimonials endpoint

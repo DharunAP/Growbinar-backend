@@ -301,6 +301,7 @@ def upcoming_sessions(request) :
                 value['date'] = index.slot_date
 
                 requested_details = RequestedSession.objects.filter(session = index.id)[0]
+                print('=-=-=-=-=-=-=-',requested_details.mentee.first_name)
 
                 if requested_details.is_accepted is True :
                         # session is accepted by the mentor

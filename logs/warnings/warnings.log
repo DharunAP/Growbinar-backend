@@ -200,3 +200,4 @@ WARNING 2024-06-16 16:58:53,473 Sessions assets.py 12 new_sessions_booking messa
 ERROR 2024-06-16 16:59:06,367 Sessions assets.py 14 new_sessions_booking message - Start and End time are same
 ERROR 2024-06-16 16:59:23,959 Sessions assets.py 14 new_sessions_booking message - Some error occurred
 WARNING 2024-06-16 17:14:51,893 Sessions assets.py 12 new_sessions_booking message - Session already available
+WARNING 2024-06-16 19:36:38,366 Authentication assets.py 32 user_login message - User Not Found
