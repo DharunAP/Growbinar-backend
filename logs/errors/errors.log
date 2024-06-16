@@ -163,3 +163,5 @@ ERROR 2024-06-16 23:19:37,857 Authentication assets.py 34 user_login message - I
 ERROR 2024-06-16 23:20:25,982 Authentication assets.py 34 user_login message - Invalid Credentials
 ERROR 2024-06-16 23:26:11,878 Sessions assets.py 14 bookSession message - Error booking a session 'QuerySet' object has no attribute 'save'
 ERROR 2024-06-16 23:27:50,482 Sessions assets.py 14 bookSession message - Error booking a session The QuerySet value for an exact lookup must be limited to one result using slicing.
+ERROR 2024-06-17 00:25:26,535 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+ERROR 2024-06-17 00:27:19,183 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session

@@ -1125,3 +1125,15 @@ DEBUG 2024-06-16 23:29:57,659 Authentication assets.py 30 user_login message - U
 DEBUG 2024-06-16 23:29:58,991 Authentication assets.py 30 user_login message - User Logged In
 DEBUG 2024-06-16 23:30:59,637 Sessions assets.py 10 bookSession message - Entered booking a session
 DEBUG 2024-06-16 23:31:05,039 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-17 00:25:21,659 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-17 00:25:25,909 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-17 00:25:26,527 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+ERROR 2024-06-17 00:25:26,535 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+DEBUG 2024-06-17 00:27:13,890 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-17 00:27:18,347 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-17 00:27:19,175 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+ERROR 2024-06-17 00:27:19,183 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+DEBUG 2024-06-17 00:27:59,939 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-17 00:28:04,010 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-17 00:28:04,579 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-17 00:28:05,247 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed

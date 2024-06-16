@@ -409,9 +409,10 @@ def upcoming_sessions_mentor(request) :
                 value = dict()
 
                 requested_details = RequestedSession.objects.filter(session = index.id)[0]
+                # print('before if')
                 if requested_details.is_accepted :
                     log('meeting is accepted',DEBUG_CODE)
-                    booked_details = BookedSession.objects.filter(requested_session = requested_details.id)[0]
+                    booked_details = BookedSession.objects.filter(requested_session = requested_details)[0]
                     url = booked_details.hosting_url
                     if booked_details.is_completed :
                         stat = MEET_STATUS[202]
