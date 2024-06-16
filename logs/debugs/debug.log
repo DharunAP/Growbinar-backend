@@ -974,3 +974,6 @@ DEBUG 2024-06-16 17:12:17,507 Sessions assets.py 10 new_sessions_booking message
 DEBUG 2024-06-16 17:12:18,472 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
 WARNING 2024-06-16 17:14:51,893 Sessions assets.py 12 new_sessions_booking message - Session already available
 DEBUG 2024-06-16 17:16:44,294 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 18:32:38,361 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 18:32:50,579 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-16 18:34:39,422 profile_details assets.py 15 testimonials message - Entered testimonials endpoint

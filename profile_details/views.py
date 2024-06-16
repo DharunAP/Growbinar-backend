@@ -215,7 +215,7 @@ def testimonials(request):
         if(serializer.is_valid()):
             instance = Testimonial.objects.create(
                 mentor_id= request.data['mentor'],
-                mentee_id= request.data['mentee'],
+                mentee_id= userDetails['id'],
                 content= request.data['content']
             )
             instance.save()
