@@ -908,3 +908,6 @@ WARNING 2024-06-16 00:29:10,917 profile_details assets.py 17 mentor_details mess
 DEBUG 2024-06-16 00:29:14,823 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-16 00:29:17,578 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-16 00:29:18,701 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-16 15:01:35,373 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-16 15:01:38,385 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-16 15:01:39,818 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully

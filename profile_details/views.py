@@ -361,7 +361,10 @@ def mentor_details(request):
                 'date' : {
                     'startDate' : value.from_duration,
                     'endDate' : value.to_duration
-                }
+                },
+                'organization':value.company,
+                'description':value.description
+                # org and desc
             }
             experienceList.append(index)
         
