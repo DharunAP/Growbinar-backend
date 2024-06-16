@@ -25,7 +25,7 @@ mentorDetails = 'mentor-details/'
 
 userLogout = 'logout/'
 
-newsession = 'new-sessions/<str:mentee_id>'
+newsession = 'new-sessions/'
 
 availablesession = 'available-sessions/'
 

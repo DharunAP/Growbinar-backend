@@ -140,3 +140,12 @@ ERROR 2024-06-16 00:18:25,524 profile_details assets.py 19 mentor_details messag
 ERROR 2024-06-16 00:18:48,254 profile_details assets.py 19 mentor_details message - Error while fetching details
 ERROR 2024-06-16 00:19:25,009 profile_details assets.py 19 mentor_details message - Error while fetching details
 ERROR 2024-06-16 00:26:27,860 profile_details assets.py 19 mentor_details message - Error while fetching details
+ERROR 2024-06-16 16:36:59,173 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:38:17,192 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:40:41,382 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:41:07,331 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:45:21,980 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:48:02,376 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:56:08,868 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-16 16:59:06,367 Sessions assets.py 14 new_sessions_booking message - Start and End time are same
+ERROR 2024-06-16 16:59:23,959 Sessions assets.py 14 new_sessions_booking message - Some error occurred
