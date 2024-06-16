@@ -201,3 +201,11 @@ ERROR 2024-06-16 16:59:06,367 Sessions assets.py 14 new_sessions_booking message
 ERROR 2024-06-16 16:59:23,959 Sessions assets.py 14 new_sessions_booking message - Some error occurred
 WARNING 2024-06-16 17:14:51,893 Sessions assets.py 12 new_sessions_booking message - Session already available
 WARNING 2024-06-16 19:36:38,366 Authentication assets.py 32 user_login message - User Not Found
+ERROR 2024-06-16 21:44:16,262 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+ERROR 2024-06-16 21:45:01,610 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+ERROR 2024-06-16 21:46:16,556 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+ERROR 2024-06-16 21:46:44,056 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+ERROR 2024-06-16 21:48:23,566 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+ERROR 2024-06-16 22:43:13,581 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 22:43:32,105 Authentication assets.py 34 user_login message - Invalid Credentials
+WARNING 2024-06-16 22:44:56,212 Authentication assets.py 32 getMenteeDetails message - Email not verified

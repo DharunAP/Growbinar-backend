@@ -16,7 +16,7 @@ SESSION_CREATION = 'sessionFeedback/'
 RESEND_MAIL = 'resendMail/'
 CommonEndpoint = 'commonEndpoint/'
 EXPERIENCE = 'experience/'
-
+UPCOMMING_SESSION_MENTEE = 'upcomming-sessions-mentee/'
 userLogin = 'login/'
 
 upcomingSesions = 'upcoming-sessions/'

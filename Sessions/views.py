@@ -249,6 +249,95 @@ def sessionFeedback(request):
         log('Error creating session feedback '+str(e),ERROR_CODE)
         return Response({'message':ERROR_CREATING_FEEDBACK},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
+@api_view(['GET'])
+def upcoming_sessions_mentee(request) :
+    log('Entered upcoming session',DEBUG_CODE)
+    validation_response = validate_token(request)
+    if validation_response is not None:
+        return validation_response
+    try:
+        userDetails = getUserDetails(request)  # getting the details of the requested user
+        if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+            return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+        userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+        if(userChecking is not None):
+            return userChecking
+    except Exception as error:
+        print(error)
+        return Response({'message':'Error authorizing the user try logging in again'})
+    mentee_id = userDetails['id'] # decoding the data
+
+    current_date = date.today()           # current date
+    current_time = datetime.now().time()  # current time
+ 
+    try :
+        # mentor_details = Mentor.objects.filter(id = mentor_id)
+        mentee_details = Mentee.objects.get(id = mentee_id)
+        print(mentee_details)
+
+        # if mentor_details.exists() :
+        if mentee_details :
+            # if the mentor Exists
+            log("Mentee Exists",DEBUG_CODE)
+            # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
+            requestedSession_details = RequestedSession.objects.filter(mentee_id = mentee_id)
+                 
+            sessions = []  # list to store the upcoming sessions
+            for index in requestedSession_details:
+                value = dict()
+                session = index.session
+                # value['profile-link'] = pyshorteners.Shortener().tinyurl.short(mentor_details.profile_picture_url)
+                value['profile-link'] = session.mentor.profile_picture_url,
+                value['name'] =  session.mentor.first_name + session.mentor.last_name
+                value['role'] = session.mentor.designation
+                value['organisation'] = session.mentor.company
+                value['time'] = session.from_slot_time
+                value['link'] = None
+                value['date'] = session.slot_date
+                value['session_id'] = session.id
+
+                # requested_details = RequestedSession.objects.filter(session = index.mentor.id)[0]
+                # print('=-=-=-=-=-=-=-',requested_details.mentee.first_name)
+
+                if index.is_accepted is True :
+                        # session is accepted by the mentor
+                    bookedSession = BookedSession.objects.get(requested_session = index)
+                    if bookedSession.is_completed:
+                        value['status'] = MEET_STATUS[202]
+                    else:
+                        value['status'] = MEET_STATUS[201]
+
+                else :
+                    # session is not acceted by mentor and the date also before current date
+                    log('session not accepted by mentor',DEBUG_CODE)
+                    value['status'] = MEET_STATUS[203]
+                    
+
+                value['meet_type'] = MEET_TYPE[101]
+                
+                sessions.append(value)
+
+            log("Upcoming session displayed",DEBUG_CODE)
+            print(request.auth," === ", "this is the auth token")
+            return JsonResponse({
+                "message" : "The details of upcoming session",
+                'data' : sessions
+            }, status= STATUSES['SUCCESS'])
+        
+        else :
+                # User not found with the id
+            log("User not Found",WARNING_CODE)
+            return JsonResponse({
+                'message' : USER_NOT_FOUND
+            }, status = STATUSES['NOT_FOUND'])
+        
+    except Exception as ex :
+        print(ex,"in catch")
+            # Error while fetching the details
+        log("Error while displaying upcoming session",ERROR_CODE)
+        return JsonResponse({
+                'message' : FETCHING_ERROR
+            }, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
 
 # Guhan code

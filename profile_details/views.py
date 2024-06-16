@@ -184,8 +184,8 @@ def testimonials(request):
             data = []
             for index in testimonial_data:
                 value = dict()
-                value['mentor'] = {'name':index.mentor.first_name+" "+index.mentor.last_name,'role':index.mentor.designation,'organization':index.mentor.company}
-                value['mentee'] = {'name':index.mentee.first_name+" "+index.mentee.last_name,'role':index.mentee.role}
+                value['mentor'] = {'name':index.mentor.first_name+" "+index.mentor.last_name,'role':index.mentor.designation,'organization':index.mentor.company,'profile':index.mentor.profile_picture_url}
+                value['mentee'] = {'name':index.mentee.first_name+" "+index.mentee.last_name,'role':index.mentee.role,'profile':index.mentee.profile_picture_url}
                 value['content'] = index.content
                 data.append(value)
             return Response({'data':data},status=STATUSES['SUCCESS'])
