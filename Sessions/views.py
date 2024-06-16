@@ -344,7 +344,7 @@ def upcoming_sessions_mentee(request) :
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
-def upcoming_sessions(request) :
+def upcoming_sessions_mentor(request) :
     log('Entered upcoming session',DEBUG_CODE)
     validation_response = validate_token(request)
     if validation_response is not None:
@@ -375,51 +375,35 @@ def upcoming_sessions(request) :
             log("Mentor Exists",DEBUG_CODE)
             # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
             session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE id={mentor_id};")
-                 
+            
+            print('entered the loop --')
             sessions = []  # list to store the upcoming sessions
             for index in session_details:
                 value = dict()
 
-                # value['profile-link'] = pyshorteners.Shortener().tinyurl.short(mentor_details.profile_picture_url)
-                value['profile-link'] = 'NULL',
-                value['name'] =  mentor_details.first_name + mentor_details.last_name
+                requested_details = RequestedSession.objects.filter(session = index.id)[0]
+                if requested_details.is_accepted :
+                    log('meeting is accepted',DEBUG_CODE)
+                    booked_details = BookedSession.objects.filter(requested_session = requested_details.id)[0]
+                    url = booked_details.hosting_url
+                    if booked_details.is_completed :
+                        stat = MEET_STATUS[202]
+                    else :
+                        stat = MEET_STATUS[201]
+
+                else :
+                    log('meeting is not accepted',DEBUG_CODE)
+                    url = "NULL"
+                    stat = MEET_STATUS[203]
+                value['session_id'] = index.id
+                value['mentee'] = requested_details.mentee.first_name + requested_details.mentee.last_name
+                # value['profile-link'] = 'NULL',
                 value['role'] = mentor_details.designation
                 value['organisation'] = mentor_details.company
                 value['time'] = index.from_slot_time
-                value['link'] = None
+                value['link'] = url
                 value['date'] = index.slot_date
-
-                requested_details = RequestedSession.objects.filter(session = index.id)[0]
-                print('=-=-=-=-=-=-=-',requested_details.mentee.first_name)
-
-                if requested_details.is_accepted is True :
-                        # session is accepted by the mentor
-                    if (index.slot_date - current_date).days == 0:
-                        if index.from_slot_time > current_time :
-                                # days are same but time of meeting is after than current time
-                            log('same day but session time in upcoming time',DEBUG_CODE)
-                            value['status'] = MEET_STATUS[201]
-                        else :
-                                # days are same but time of meeting is before the current time
-                            log('same day but session time has completed',DEBUG_CODE)
-                            value['status'] = MEET_STATUS[202]
-                    
-                    elif (index.slot_date - current_date).days > 0:
-                            # session date is before the current date
-                        log('date of session in upcoming days',DEBUG_CODE)
-                        value['status'] = MEET_STATUS[201]
-
-                    else :
-                            # session date is after current date
-                        log("Date of the session completed",DEBUG_CODE)
-                        value['status'] = MEET_STATUS[202]
-
-                else :
-                    if (index.slot_date - current_date).days < 0 :
-                            # session is not acceted by mentor and the date also before current date
-                        log('session not accepted by mentor',DEBUG_CODE)
-                        value['status'] = MEET_STATUS[203]
-
+                value['status'] = stat
                 value['meet_type'] = MEET_TYPE[101]
                 
                 sessions.append(value)

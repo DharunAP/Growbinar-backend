@@ -140,19 +140,20 @@ ERROR 2024-06-16 00:18:25,524 profile_details assets.py 19 mentor_details messag
 ERROR 2024-06-16 00:18:48,254 profile_details assets.py 19 mentor_details message - Error while fetching details
 ERROR 2024-06-16 00:19:25,009 profile_details assets.py 19 mentor_details message - Error while fetching details
 ERROR 2024-06-16 00:26:27,860 profile_details assets.py 19 mentor_details message - Error while fetching details
-ERROR 2024-06-16 16:36:59,173 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:38:17,192 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:40:41,382 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:41:07,331 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:45:21,980 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:48:02,376 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:56:08,868 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 16:59:06,367 Sessions assets.py 14 new_sessions_booking message - Start and End time are same
-ERROR 2024-06-16 16:59:23,959 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-16 21:44:16,262 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
-ERROR 2024-06-16 21:45:01,610 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
-ERROR 2024-06-16 21:46:16,556 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
-ERROR 2024-06-16 21:46:44,056 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
-ERROR 2024-06-16 21:48:23,566 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
-ERROR 2024-06-16 22:43:13,581 Authentication assets.py 34 user_login message - Invalid Credentials
-ERROR 2024-06-16 22:43:32,105 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 12:03:19,098 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 14:13:52,713 Authentication assets.py 34 VerifyMentor message - Error verifying email Mentor matching query does not exist.
+ERROR 2024-06-16 14:54:02,944 Authentication assets.py 34 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-06-16 14:54:41,328 Authentication assets.py 34 VerifyMentee message - Error verifying email Mentee matching query does not exist.
+ERROR 2024-06-16 19:49:58,318 Authentication assets.py 34 VerifyMentor message - Error verifying email 
+ERROR 2024-06-16 19:50:19,793 Authentication assets.py 34 VerifyMentor message - Error verifying email 
+ERROR 2024-06-16 19:52:51,666 Authentication assets.py 34 user_login message - Invalid user_role
+ERROR 2024-06-16 19:53:23,072 Authentication assets.py 34 user_login message - Invalid user_role
+ERROR 2024-06-16 19:55:22,613 Authentication assets.py 34 user_login message - Invalid Credentials
+ERROR 2024-06-16 19:59:27,290 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+ERROR 2024-06-16 19:59:55,979 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+ERROR 2024-06-16 20:01:22,209 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
+ERROR 2024-06-16 20:08:48,048 Authentication assets.py 34 user_login message - Invalid user_role
+ERROR 2024-06-16 21:37:32,194 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 21:44:53,385 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 22:10:16,388 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 22:21:59,175 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session

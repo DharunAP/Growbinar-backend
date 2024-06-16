@@ -41,8 +41,8 @@ INSTALLED_APPS = [
 
 # Django project settings.py
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=16),    # timne for access token to expire
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=20),      # time for refrewsh token to get expire
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),    # timne for access token to expire
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=15),      # time for refrewsh token to get expire
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "UPDATE_LAST_LOGIN": False,
@@ -185,7 +185,6 @@ WSGI_APPLICATION = 'Growbinar_Backend.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {
@@ -193,7 +192,7 @@ WSGI_APPLICATION = 'Growbinar_Backend.wsgi.application'
 #         'NAME':'GrowbinarDB',
 #         'USER':'Django',
 #         'PASSWORD':'django',
-#     }
+#  }
 # }
 
 DATABASES = {
@@ -201,9 +200,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'verceldb',
         'USER': 'default',
-        'PASSWORD': 'pJihmtHYq91v',
-        'HOST': 'ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech',
-        'PORT': '5432',  # Default PostgreSQL port is 5432
+        'PASSWORD': os.environ['db_password'],
+        'HOST': os.environ['db_host_id'],
+        'PORT': '5432', 
         'OPTIONS': {
             'sslmode': 'require',
             'connect_timeout': 15,
@@ -217,8 +216,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dharunpalanisamy5256@gmail.com'
-EMAIL_HOST_PASSWORD = 'gqruvarabwlkddgq'
+EMAIL_HOST_USER = os.environ['email_host_id']
+EMAIL_HOST_PASSWORD = os.environ['email_host_password']
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Password validation
@@ -266,3 +265,4 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

@@ -88,7 +88,6 @@ class RequestedSession(models.Model):
     session = models.OneToOneField(Session, on_delete=models.CASCADE, primary_key=True)
     mentee = models.ForeignKey(Mentee, on_delete=models.CASCADE)
     is_accepted = models.BooleanField(default=False)
-    # is_accepted = models.BooleanField(null=True,blank=True)
     created_at = models.DateTimeField(null=False, auto_now_add=True)
 
 class BookedSession(models.Model):
@@ -96,6 +95,8 @@ class BookedSession(models.Model):
     requested_session = models.OneToOneField(RequestedSession, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(null=False, auto_now_add=True)
+    hosting_url = models.TextField()
+    join_url = models.TextField()
 
 class SessionFeedback(models.Model):
     id = models.AutoField(primary_key=True)

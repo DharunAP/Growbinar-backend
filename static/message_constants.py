@@ -22,7 +22,7 @@ EMAIL_NOT_VERIFIED = 'Verify email before entering user details'
 
 USER_DETAILS_SAVED = 'User details saved successfully'
 
-ERROR_SAVING_USER_DETAILS = 'Error saving user details'
+ERROR_SAVING_USER_DETAILS = 'Missing details'
 
 ERROR_SENDING_DETAILS = "Error sending details"
 
