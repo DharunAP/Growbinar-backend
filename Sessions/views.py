@@ -171,7 +171,7 @@ def bookSession(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:
@@ -224,7 +224,7 @@ def sessionFeedback(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:
@@ -286,50 +286,35 @@ def upcoming_sessions(request) :
             log("Mentor Exists",DEBUG_CODE)
             # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
             session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE id={mentor_id};")
-                 
+            
+            print('entered the loop --')
             sessions = []  # list to store the upcoming sessions
             for index in session_details:
                 value = dict()
 
-                # value['profile-link'] = pyshorteners.Shortener().tinyurl.short(mentor_details.profile_picture_url)
-                value['profile-link'] = 'NULL',
-                value['name'] =  mentor_details.first_name + mentor_details.last_name
+                requested_details = RequestedSession.objects.filter(session = index.id)[0]
+                if requested_details.is_accepted :
+                    log('meeting is accepted',DEBUG_CODE)
+                    booked_details = BookedSession.objects.filter(requested_session = requested_details.id)[0]
+                    url = booked_details.hosting_url
+                    if booked_details.is_completed :
+                        stat = MEET_STATUS[202]
+                    else :
+                        stat = MEET_STATUS[201]
+
+                else :
+                    log('meeting is not accepted',DEBUG_CODE)
+                    url = "NULL"
+                    stat = MEET_STATUS[203]
+               
+                value['mentee'] = requested_details.mentee.first_name + requested_details.mentee.last_name
+                # value['profile-link'] = 'NULL',
                 value['role'] = mentor_details.designation
                 value['organisation'] = mentor_details.company
                 value['time'] = index.from_slot_time
-                value['link'] = None
+                value['link'] = url
                 value['date'] = index.slot_date
-
-                requested_details = RequestedSession.objects.filter(session = index.id)[0]
-
-                if requested_details.is_accepted is True :
-                        # session is accepted by the mentor
-                    if (index.slot_date - current_date).days == 0:
-                        if index.from_slot_time > current_time :
-                                # days are same but time of meeting is after than current time
-                            log('same day but session time in upcoming time',DEBUG_CODE)
-                            value['status'] = MEET_STATUS[201]
-                        else :
-                                # days are same but time of meeting is before the current time
-                            log('same day but session time has completed',DEBUG_CODE)
-                            value['status'] = MEET_STATUS[202]
-                    
-                    elif (index.slot_date - current_date).days > 0:
-                            # session date is before the current date
-                        log('date of session in upcoming days',DEBUG_CODE)
-                        value['status'] = MEET_STATUS[201]
-
-                    else :
-                            # session date is after current date
-                        log("Date of the session completed",DEBUG_CODE)
-                        value['status'] = MEET_STATUS[202]
-
-                else :
-                    if (index.slot_date - current_date).days < 0 :
-                            # session is not acceted by mentor and the date also before current date
-                        log('session not accepted by mentor',DEBUG_CODE)
-                        value['status'] = MEET_STATUS[203]
-
+                value['status'] = stat
                 value['meet_type'] = MEET_TYPE[101]
                 
                 sessions.append(value)
@@ -360,8 +345,8 @@ def upcoming_sessions(request) :
 # View for creating new Session
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def new_sessions_booking(request, mentee_id):
+# @permission_classes([IsAuthenticated])
+def new_sessions_booking(request):
     try:
         print("hello")
 
@@ -373,7 +358,7 @@ def new_sessions_booking(request, mentee_id):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:
@@ -384,8 +369,9 @@ def new_sessions_booking(request, mentee_id):
         start_date = request.data['start_date']
         start_time = request.data['start_time']
         end_time = request.data['end_time']
-        mentor_id = request.data['mentor_id']  # preferred mentor of the mentee
-        mentor_id = userDetails['id']
+        mentor_id = decryptData(request.data['mentor_id'])
+        # mentor_id = request.data['mentor_id']  # preferred mentor of the mentee
+        mentee_id = userDetails['id']
         print(mentor_id, " --- in decrypted format -- ")
 
     # Validating the time and date
@@ -434,7 +420,7 @@ def new_sessions_booking(request, mentee_id):
             if users_start_time >= present_start_time and users_end_time <= present_end_time:
 
                 session_details = Session.objects.filter(mentor=mentor_id, slot_date=start_date)
-                print(session_details, "-- the session setails --")
+                print(session_details, "-- the session details --")
 
                 if not session_details :
                     log('No already session available ',DEBUG_CODE)
@@ -448,7 +434,7 @@ def new_sessions_booking(request, mentee_id):
                     new_session.save()
                     log('New session created',DEBUG_CODE)
 
-                    mentee_ins = Mentee.objects.filter(id=decryptData(mentee_id))[0]
+                    mentee_ins = Mentee.objects.filter(id=mentee_id)[0]
                     
                     requested_session = RequestedSession.objects.create(
                         session=new_session,  # This will store the ID of the new_session in the requested session
@@ -458,44 +444,54 @@ def new_sessions_booking(request, mentee_id):
                     requested_session.save()
                     log('Requestedsession created successfully',DEBUG_CODE)
                     return JsonResponse({'message': NEW_SESSION,
-                                         'session_id' : new_session}, status=STATUSES['SUCCESS'])
-
+                                         'session_id' : new_session.id}, status=STATUSES['SUCCESS'])
+                                        
+                flag =False
                 for available_time in session_details:
+
                     print("Entered into the loop of session_details")
                     available_from_time = convert_to_hms(available_time.from_slot_time)
+                    print(available_from_time,' 00000 ',users_start_time)
                     available_to_time = convert_to_hms(available_time.to_slot_time)
+                    print(available_to_time,' 8888 ',users_end_time)
 
                     if (users_start_time <= datetime.strptime(available_to_time, '%H:%M:%S').time() and 
-                        users_end_time >= datetime.strptime(available_from_time, '%H:%M:%S').time() or 
+                        users_end_time >= datetime.strptime(available_from_time, '%H:%M:%S').time() and 
+
                         users_start_time >= datetime.strptime(available_from_time, '%H:%M:%S').time() and
-                        users_end_time <= datetime.strptime(available_to_time, '%H:%M:%S').time()) :
-
-                        log('Session already available',WARNING_CODE)
-                        return JsonResponse({'message': BOOKED_SESSION}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+                        users_end_time <= datetime.strptime(available_to_time, '%H:%M:%S').time()  and
                         
-                    else :
+                        users_start_time == datetime.strptime(available_from_time, '%H:%M:%S').time() and
+                        users_end_time == datetime.strptime(available_to_time, '%H:%M:%S').time()) :
+                        flag = True
 
-                        new_session = Session.objects.create(
+                if flag:
+                    log('Session already available',WARNING_CODE)
+                    return JsonResponse({'message': BOOKED_SESSION}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+                        
+                else :
+
+                    new_session = Session.objects.create(
                             mentor=mentor_ins,
                             slot_date=start_date,
                             from_slot_time=users_start_time,
                             to_slot_time=users_end_time
                         )
 
-                        new_session.save()
-                        log('Session created successfully',DEBUG_CODE)
+                    new_session.save()
+                    log('Session created successfully',DEBUG_CODE)
 
-                        mentee_ins = Mentee.objects.filter(id=decryptData(mentee_id))[0]
+                    mentee_ins = Mentee.objects.filter(id=mentee_id)[0]
                     
-                        requested_session = RequestedSession.objects.create(
+                    requested_session = RequestedSession.objects.create(
                             session=new_session,  # This will store the ID of the new_session in the requested session
                             mentee=mentee_ins,
                             is_accepted=False
                         )
-                        requested_session.save()
-                        log('Requestedsession created successfully',DEBUG_CODE)
-                        return JsonResponse({'message': NEW_SESSION,
-                                             'session_id' : new_session}, status=STATUSES['SUCCESS'])
+                    requested_session.save()
+                    print(new_session.id)
+                    log('Requestedsession created successfully',DEBUG_CODE)
+                    return Response({'message': NEW_SESSION,'session_id' : new_session.id}, status=STATUSES['SUCCESS'])
 
             else:
                 log('Enter the wrong time',WARNING_CODE)
@@ -529,7 +525,7 @@ def session_cancellation(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:

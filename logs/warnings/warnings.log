@@ -228,3 +228,7 @@ WARNING 2024-06-16 20:06:26,412 Authentication assets.py 32 MenteeSignup message
 WARNING 2024-06-16 20:08:00,472 Authentication assets.py 32 user_login message - User Not Found
 WARNING 2024-06-16 20:08:18,740 Authentication assets.py 32 user_login message - User Not Found
 ERROR 2024-06-16 20:08:48,048 Authentication assets.py 34 user_login message - Invalid user_role
+ERROR 2024-06-16 21:37:32,194 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 21:44:53,385 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 22:10:16,388 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 22:21:59,175 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session

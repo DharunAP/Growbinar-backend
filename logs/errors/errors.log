@@ -153,3 +153,7 @@ ERROR 2024-06-16 19:59:27,290 Authentication assets.py 34 getMentorDetails messa
 ERROR 2024-06-16 19:59:55,979 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
 ERROR 2024-06-16 20:01:22,209 Authentication assets.py 34 getMentorDetails message - Error saving mentor details - 'first_name'
 ERROR 2024-06-16 20:08:48,048 Authentication assets.py 34 user_login message - Invalid user_role
+ERROR 2024-06-16 21:37:32,194 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 21:44:53,385 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 22:10:16,388 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session
+ERROR 2024-06-16 22:21:59,175 Sessions assets.py 14 upcoming_sessions message - Error while displaying upcoming session

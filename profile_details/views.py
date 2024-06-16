@@ -184,7 +184,7 @@ def testimonials(request):
             data = []
             for index in testimonial_data:
                 value = dict()
-                value['mentor'] = {'name':index.mentor.first_name+" "+index.mentor.last_name,'role':index.mentor.designation}
+                value['mentor'] = {'name':index.mentor.first_name+" "+index.mentor.last_name,'role':index.mentor.designation,'organization':index.mentor.company}
                 value['mentee'] = {'name':index.mentee.first_name+" "+index.mentee.last_name,'role':index.mentee.role}
                 value['content'] = index.content
                 data.append(value)
@@ -201,7 +201,7 @@ def testimonials(request):
             userDetails = getUserDetails(request)  # getting the details of the requested user
             if userDetails['type']!='mentee':  # chekking weather he is allowed inside this endpoint or not
                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-            userChecking = checkUserStatus(userDetails['user'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
             if(userChecking is not None):
                 return userChecking
         except Exception as error:
@@ -210,12 +210,12 @@ def testimonials(request):
         print(userDetails['id'])
         # request.data['mentor'] = r
         request.data['mentor'] = int(decryptData(request.data['mentor']))
-        request.data['mentee'] = int(decryptData(request.data['mentee']))
+        request.data['mentee'] = userDetails['id']
         serializer = TestimonialSerializer(data=request.data)
         if(serializer.is_valid()):
             instance = Testimonial.objects.create(
                 mentor_id= request.data['mentor'],
-                mentee_id= request.data['mentee'],
+                mentee_id= userDetails['id'],
                 content= request.data['content']
             )
             instance.save()
@@ -261,7 +261,10 @@ def experience(request):
         try:
             data = request.data
             data['from_duration'] = datetime.strptime(data['from_duration'], '%Y-%m-%d')
-            data['to_duration'] = datetime.strptime(data['to_duration'], '%Y-%m-%d')
+            if data['to_duration'] == '':
+                data['to_duration']=None
+            else:
+                data['to_duration'] = datetime.strptime(data['to_duration'], '%Y-%m-%d')
             data['role_type'] = userDetails['type']
             data['referenced_id'] = userDetails['id']
             if userDetails['type']=='mentor':
@@ -277,7 +280,7 @@ def experience(request):
             return Response({'message':INVALID_CREDENTIALS,'error':serializer.errors},status=STATUSES['BAD_REQUEST'])
         except Exception as error:
             print(error)
-            return Response({'message':ERROR_CREATING_EXPERIENCE,'error':error},status=STATUSES['INTERNAL_SERVER_ERROR'])
+            return Response({'message':ERROR_CREATING_EXPERIENCE,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
     if request.method=='GET':
         try:
             log('getting mentor details',DEBUG_CODE)
@@ -358,10 +361,11 @@ def mentor_details(request):
         for value in experience:
             index = {
                 'role' : value.role,
-                'date' : {
-                    'startDate' : value.from_duration,
-                    'endDate' : value.to_duration
-                }
+                'startDate' : value.from_duration,
+                'endDate' : value.to_duration,
+                'organization':value.company,
+                'description':value.description
+                # org and desc
             }
             experienceList.append(index)
         
@@ -391,6 +395,84 @@ def mentor_details(request):
         log('Error while fetching details',ERROR_CODE)
         return JsonResponse({'message' : FETCHING_ERROR,'error':str(e)},status = STATUSES['INTERNAL_SERVER_ERROR'])
 
+
+
+# @api_view(['POST'])
+# # @permission_classes([IsAuthenticated])
+# def createAvailableSession(request):
+#     log('Entered create available session endpoint ',DEBUG_CODE)
+#     try:
+#         print(decryptData(request.data['id']),"---------")
+
+#         #for verifying the token
+#         validation_response = validate_token(request)  # validating the requested user using authorization headder
+#         if validation_response is not None:
+#             return validation_response
+#         try:
+#             userDetails = getUserDetails(request)  # getting the details of the requested user
+#             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+#                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+#             userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+#             if(userChecking is not None):
+#                 return userChecking
+#         except Exception as error:
+#             print(error)
+#             return Response({'message':'Error authorizing the user try logging in again'})
+#         print(userDetails['id'])
+
+
+#         availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
+#         print(availabeSession)
+#         if availabeSession.exists():
+#             # update code
+#             conflictingSlots = []
+#             newSlots = availabeSession[0].availableSlots
+#             # checking weather the slot already exists in the table
+#             for slot in request.data['availableSlots']:
+#                 print(slot)
+#                 if slot in newSlots:
+#                     conflictingSlots.append(slot)
+#                     continue
+#                 # adding the slot to the array
+#                 date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
+#                 from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
+#                 to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
+#                 newSlots.append({
+#                     "date":str(date),
+#                     "from":str(from_time),
+#                     "to":str(to_time)
+#                 })
+            
+#             # adding the new slots to the table
+#             availabeSession.update(availableSlots = newSlots)
+#             log('New slots crated sucessfully ',DEBUG_CODE)
+#             return JsonResponse({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
+
+#         # creating new available session for the mentor
+#         print('hi')
+#         slots = []
+#         for slot in request.data['availableSlots']:
+#             date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
+#             from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
+#             to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
+#             slots.append({
+#                 "date":str(date),
+#                 "from":str(from_time),
+#                 "to":str(to_time)
+#             })
+#         print(slots)
+#         instance = AvailabeSession.objects.create(
+#             mentor_id = decryptData(request.data['id']),
+#             availableSlots = slots
+#         )
+#         instance.save()
+#         log("New session created sucessfully ",DEBUG_CODE)
+#         return JsonResponse({"message":"Successfully created","slots":slots},status=STATUSES['SUCCESS'])
+#     except Exception as e:
+#         print(e)
+#         log("Error in creating available session "+str(e),ERROR_CODE)
+#         return JsonResponse({'message':""},status=STATUSES['INTERNAL_SERVER_ERROR'])
+    
 
 @api_view(['GET'])
 def listAllMentees(request):
