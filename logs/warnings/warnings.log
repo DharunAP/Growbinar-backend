@@ -222,3 +222,5 @@ DETAIL:  Key (requested_session_id)=(16) already exists.
 
 ERROR 2024-06-17 01:44:39,007 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
 ERROR 2024-06-17 01:46:08,247 Sessions assets.py 14 bookSession message - Error booking a session Session matching query does not exist.
+ERROR 2024-06-17 13:27:29,314 Sessions assets.py 14 session_cancellation message - Error had occured
+ERROR 2024-06-17 13:27:44,243 Sessions assets.py 14 session_cancellation message - Error had occured

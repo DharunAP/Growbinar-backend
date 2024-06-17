@@ -642,10 +642,10 @@ def session_cancellation(request):
     
     try:
         session_id = request.data['session_id']
-        user_type = request.data['user_role']
-        user_ids = request.data['id']
-        user_id = decryptData(user_ids)
-        print(type(user_id), '-- the decrypted id is ---')
+        # user_type = request.data['user_role']
+        # user_ids = request.data['id']
+        # user_id = decryptData(user_ids)
+        # print(type(user_id), '-- the decrypted id is ---')
 
         
         validation_response = validate_token(request)  # validating the requested user using authorization headder
@@ -662,6 +662,9 @@ def session_cancellation(request):
             print(error)
             return Response({'message':'Error authorizing the user try logging in again'})
 
+        user_id = userDetails['id']
+        user_type = userDetails['type']
+        
             
         #taking current date and time for checking
         current_datetime = datetime.now().replace(microsecond=0)
