@@ -224,3 +224,24 @@ ERROR 2024-06-17 01:44:39,007 Sessions assets.py 14 upcoming_sessions_mentor mes
 ERROR 2024-06-17 01:46:08,247 Sessions assets.py 14 bookSession message - Error booking a session Session matching query does not exist.
 ERROR 2024-06-17 13:27:29,314 Sessions assets.py 14 session_cancellation message - Error had occured
 ERROR 2024-06-17 13:27:44,243 Sessions assets.py 14 session_cancellation message - Error had occured
+ERROR 2024-06-17 14:00:30,699 Authentication assets.py 34 user_login message - Error while Login  connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (2600:1f18:240c:5421:acd1:6284:5a8a:d6e9), port 5432 failed: timeout expired
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (2600:1f18:240c:540b:c14a:4d57:1251:234d), port 5432 failed: timeout expired
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (2600:1f18:240c:5419:4ecf:2a7c:cf52:31ae), port 5432 failed: timeout expired
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (2600:1f18:240c:543b:a8aa:14fb:d008:11fe), port 5432 failed: timeout expired
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (2600:1f18:240c:5454:82a4:8209:20f8:a5c1), port 5432 failed: Software caused connection abort (0x00002745/10053)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (2600:1f18:240c:544d:621b:957c:81:5e5b), port 5432 failed: Network is unreachable (0x00002743/10051)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (44.207.148.149), port 5432 failed: No route to host (0x00002751/10065)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (23.23.229.9), port 5432 failed: No route to host (0x00002751/10065)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (44.199.59.172), port 5432 failed: No route to host (0x00002751/10065)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (100.26.116.133), port 5432 failed: No route to host (0x00002751/10065)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (34.194.100.28), port 5432 failed: No route to host (0x00002751/10065)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "ep-summer-poetry-a46p88qe-pooler.us-east-1.aws.neon.tech" (52.20.107.131), port 5432 failed: No route to host (0x00002751/10065)
+	Is the server running on that host and accepting TCP/IP connections?
+
