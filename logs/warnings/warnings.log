@@ -257,3 +257,12 @@ ERROR 2024-06-17 19:09:31,324 Sessions assets.py 14 sessionCompleted message - E
 ERROR 2024-06-17 19:38:55,898 Sessions assets.py 14 bookSession message - Error booking a session 'Session' object has no attribute 'email_id'
 ERROR 2024-06-17 19:40:19,511 Sessions assets.py 14 bookSession message - Error booking a session name 'useDetails' is not defined
 ERROR 2024-06-17 19:42:56,704 Sessions assets.py 14 bookSession message - Error booking a session name 'useDetails' is not defined
+ERROR 2024-06-17 23:45:16,353 Sessions assets.py 14 bookSession message - Error booking a session 'Session' object has no attribute 'slot_datestrftime'
+ERROR 2024-06-17 23:52:20,343 Sessions assets.py 14 bookSession message - Error booking a session name 'url' is not defined
+ERROR 2024-06-18 00:11:41,947 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+ERROR 2024-06-18 00:24:22,801 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
+ERROR 2024-06-18 00:25:14,046 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
+ERROR 2024-06-18 00:25:29,361 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
+ERROR 2024-06-18 00:25:56,909 profile_details assets.py 19 menteeDetails message - Error fetching mentee details'Mentee' object has no attribute 'profile_image_url'

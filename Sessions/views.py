@@ -173,8 +173,24 @@ def bookSession(request):
             join_url=meet['join_url']
         )
         booked_session.save()
-        sessionBookedMail(session_instance.mentor.email_id, 'mentor', {'name':requested_session.mentee.first_name + ' ' + requested_session.mentee.last_name, 'date':session_instance.slot_date})
-        sessionBookedMail(requested_session.mentee.email_id, 'mentee', {'name':session_instance.mentor.first_name + ' ' + session_instance.mentor.last_name, 'date':session_instance.slot_date})
+        sessionBookedMail(session_instance.mentor.email_id, 'mentor', 
+            {
+                'name':requested_session.mentee.first_name + ' ' + requested_session.mentee.last_name, 
+                'date':session_instance.slot_date.strftime("%a %b %d, %Y"),
+                'time':f'{session_instance.from_slot_time.strftime("%I:%M %p")} - {session_instance.to_slot_time.strftime("%I:%M %p")}',
+                'link':booked_session.hosting_url,
+                'user':f'https://growbinar.com/mentee/{encryptData(requested_session.mentee.id)}'
+            }
+        )
+        sessionBookedMail(requested_session.mentee.email_id, 'mentee', 
+            {
+                'name':session_instance.mentor.first_name + ' ' + session_instance.mentor.last_name, 
+                'date':session_instance.slot_date.strftime("%a %b %d, %Y"),
+                'time':f'{session_instance.from_slot_time.strftime("%I:%M %p")} - {session_instance.to_slot_time.strftime("%I:%M %p")}',
+                'link':booked_session.join_url,
+                'user':f'https://growbinar.com/mentor/{encryptData(session_instance.mentor.id)}'
+            }
+        )
         data = {
             'sessio_id':session_instance.id,
             'mentee':requested_session.mentee.first_name + ' ' + requested_session.mentee.last_name,

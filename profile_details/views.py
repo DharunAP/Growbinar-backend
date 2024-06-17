@@ -111,6 +111,7 @@ def menteeDetails(request):
             experience_list.append(value)
         data = {
             "name":mentee.first_name+" "+mentee.last_name,
+            'profile_image_url':mentee.profile_picture_url,
             "languages":mentee.languages,
             "location":mentee.city,
             "overview":mentee.description,
@@ -370,6 +371,7 @@ def mentor_details(request):
             "name":mentor.first_name+" "+mentor.last_name,
             "location":mentor.city,
             "organisation" : mentor.company,
+            'profile_image_url':mentor.profile_picture_url,
             "languages" : mentor.languages,
             "overview":mentor.bio,
             "experience":experienceList,

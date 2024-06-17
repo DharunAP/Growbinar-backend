@@ -1292,3 +1292,33 @@ ERROR 2024-06-17 19:42:56,704 Sessions assets.py 14 bookSession message - Error 
 DEBUG 2024-06-17 19:45:50,529 Sessions assets.py 10 bookSession message - Entered booking a session
 DEBUG 2024-06-17 19:49:22,579 Sessions assets.py 10 bookSession message - Entered booking a session
 DEBUG 2024-06-17 19:49:43,009 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-17 23:45:07,848 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 23:45:16,353 Sessions assets.py 14 bookSession message - Error booking a session 'Session' object has no attribute 'slot_datestrftime'
+DEBUG 2024-06-17 23:47:07,442 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 23:47:25,475 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-17 23:52:11,973 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 23:52:20,343 Sessions assets.py 14 bookSession message - Error booking a session name 'url' is not defined
+DEBUG 2024-06-17 23:55:08,673 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 23:55:16,909 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 00:07:12,356 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 00:07:20,189 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 00:09:39,486 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 00:09:47,330 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 00:11:34,106 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-18 00:11:41,947 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+DEBUG 2024-06-18 00:12:28,840 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 00:12:46,685 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 00:17:46,286 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 00:18:02,394 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 00:24:20,005 profile_details assets.py 15 menteeDetails message - Entered mentee details
+ERROR 2024-06-18 00:24:22,801 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
+DEBUG 2024-06-18 00:25:11,273 profile_details assets.py 15 menteeDetails message - Entered mentee details
+ERROR 2024-06-18 00:25:14,046 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
+DEBUG 2024-06-18 00:25:26,632 profile_details assets.py 15 menteeDetails message - Entered mentee details
+ERROR 2024-06-18 00:25:29,361 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
+DEBUG 2024-06-18 00:25:54,127 profile_details assets.py 15 menteeDetails message - Entered mentee details
+ERROR 2024-06-18 00:25:56,909 profile_details assets.py 19 menteeDetails message - Error fetching mentee details'Mentee' object has no attribute 'profile_image_url'
+DEBUG 2024-06-18 00:27:42,851 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-18 00:27:45,853 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully

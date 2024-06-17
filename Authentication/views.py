@@ -338,7 +338,8 @@ def resendMail(request):
         print(error)
         return Response({'message':'Error sending mail','error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
-
+# def verifyMailSampleTemplate(request):
+#     return render(request, 'template/index.html',{'BASE_URL':'http://localhost:8000/'})
 
 
 # log("Invalid user_role",ERROR_CODE)

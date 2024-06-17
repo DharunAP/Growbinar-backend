@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e0f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* margin: 1px; */
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .logo img {
+            width: 70px;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+        }
+
+        .detail img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn {
+            background: #6366f1;
+            width: 60%;
+            margin: auto;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn a{
+            color: white;
+        }
+
+        .btn:hover {
+            background: #4f51e5;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            margin: 20px 0;
+            color: #777;
+        }
+
+        .social-icons a {
+            margin: 0 5px;
+        }
+
+        .social-icons img {
+            width: 20px;
+        }
+
+        .footer-logo {
+            margin-top: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+        }
+
+        .footer-logo p {
+            font-size: 10px;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .details {
+                flex-direction: column;
+            }
+
+            .detail {
+                margin-bottom: 10px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+     </style>
+</head>
+<body>
+    
+    <div class="container">
+        <img style="width: 100px;" src="https://drive.google.com/thumbnail?id=1Y6l_jBB22qKfS4eub6W10OODag8BxBil" alt=""/>
+        <h1>Booking Confirmed!</h1>
+        <p style="font-size: 13px;">{{before}}<a href="{{user}}">{{name}}</a>{{end}}</p>
+        <div class="details">
+            <div class="detail">
+                <img src="https://drive.google.com/thumbnail?id=1tUr1IbJxuqQocYuSAZ4Tml5O7WRkD04j" alt="Calendar Icon">
+                <p style="font-size: 13px;">{{date}}</p>
+            </div>
+            <div class="detail">
+                <img src="https://drive.google.com/thumbnail?id=1ukesfs6ovmO-kBoyKpmab3seGpE23Xne" alt="Time Icon">
+                <p style="font-size: 13px;">{{time}}</p>
+            </div>
+        </div>
+        <div class="btn"><a href="{{link}}">JOIN THE SESSION</a> </div>
+        <p style="font-size: 10px;" class="footer-text">"You're now on the path to greatness! Seize this opportunity, push your boundaries, and make an impact with your unique ideas."</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/company/growbinar"><img src="https://drive.google.com/thumbnail?id=1nlskrN5Dx078VqVP3ILQiE9EGSSI70os" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com/growbinar"><img src="https://drive.google.com/thumbnail?id=1r0sMeip07AgEC_HlejyUvjii3AiNG3a4" alt="Instagram"></a>
+            <a href="https://twitter.com/growbinar"><img src="https://drive.google.com/thumbnail?id=1QZWucfKum5mFvAyTLzZTP4cdAlmkjD4W" alt="Twitter"></a>
+        </div>
+        <div class="footer-logo">
+            <img src="https://drive.google.com/thumbnail?id=15bOMUVC6KF2HaICcFc3_P7uMqkNTQJ4e" alt="Growbinar">
+            <p>Grow smarter, not harder</p>
+        </div>
+    </div>
+</body>
+</html>
