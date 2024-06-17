@@ -1268,3 +1268,27 @@ DEBUG 2024-06-17 14:03:43,417 profile_details assets.py 15 mentor_details messag
 DEBUG 2024-06-17 14:04:24,784 profile_details assets.py 15 mentor_details message - Entered mentor details
 DEBUG 2024-06-17 14:04:27,690 profile_details assets.py 15 mentor_details message - mentor email verified
 DEBUG 2024-06-17 14:04:28,608 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-17 18:59:20,023 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 18:59:26,853 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+DEBUG 2024-06-17 19:01:58,347 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 19:02:05,564 Sessions assets.py 14 bookSession message - Error booking a session name 'mentee' is not defined
+DEBUG 2024-06-17 19:02:49,924 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 19:02:56,124 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+DEBUG 2024-06-17 19:03:38,413 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 19:03:45,440 Sessions assets.py 14 bookSession message - Error booking a session 'Session' object has no attribute 'date'
+DEBUG 2024-06-17 19:05:15,172 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 19:05:22,280 Sessions assets.py 10 bookSession message - session booked
+ERROR 2024-06-17 19:09:31,324 Sessions assets.py 14 sessionCompleted message - Error in marking completed Session name 'session_instance' is not defined
+DEBUG 2024-06-17 19:38:41,515 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 19:38:55,898 Sessions assets.py 14 bookSession message - Error booking a session 'Session' object has no attribute 'email_id'
+DEBUG 2024-06-17 19:40:12,119 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 19:40:19,511 Sessions assets.py 14 bookSession message - Error booking a session name 'useDetails' is not defined
+DEBUG 2024-06-17 19:42:43,495 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-17 19:42:56,704 Sessions assets.py 14 bookSession message - Error booking a session name 'useDetails' is not defined
+DEBUG 2024-06-17 19:45:50,529 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 19:49:22,579 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-17 19:49:43,009 Sessions assets.py 10 bookSession message - session booked

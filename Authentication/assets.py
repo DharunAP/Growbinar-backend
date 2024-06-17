@@ -21,6 +21,19 @@ def sendVerificationMail(url, email_id):
     )
     print("mail sent")
 
+def sessionBookedMail(email_id,role,userDetails):
+    if role=='mentor':
+        template = f"You accepted the session of mentee {userDetails['name']} on {userDetails['date']}"
+    else:
+        template = f"Mentor {userDetails['name']} accepted your request for the session on {userDetails['date']}"
+    send_mail(
+        subject="Your session has been sucessfully booked",  # subject in the sending mail
+        from_email="admin@growbinar.com",                       # sender mail
+        # html_message= template,                                 # html template
+        message=template,# message in the mail
+        recipient_list=[email_id,]                              # recipient mail id
+    )
+    print("mail sent")
 
 def log(message,code):
     logger = logging.getLogger("Authentication")

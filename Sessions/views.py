@@ -9,6 +9,7 @@ from datetime import datetime
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 from .zoom_meet import create_meeting_view
+from Authentication.assets import sessionBookedMail
 
 from django.http import JsonResponse
 from django.utils import timezone
@@ -129,39 +130,6 @@ def createAvailableSession(request):
         log("Error in creating available session "+str(e),ERROR_CODE)
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
-
-# @api_view(['POST'])
-# def getBookedSession(request):
-#     log('Entered get available session endpoint for '+request.method,DEBUG_CODE)
-#     # to provide all the avalilable sessions of the mentor listed up-next
-#     validation_response = validate_token(request)  # validating the requested user using authorization headder
-#     if validation_response is not None:
-#         return validation_response
-#     try:
-#         userDetails = getUserDetails(request)  # getting the details of the requested user
-#         if userDetails['type']!='mentor' and userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
-#             return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-#         userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
-#         if(userChecking is not None):
-#             return userChecking
-#         print(userDetails['user'])
-#         # user = Mentee.objects.get(id = userDetails['id'])
-#     except Exception as error:
-#         print(error)
-#         return Response({'message':'Error authorizing the user try logging in again'})
-#     print(userDetails['id'])
-#     try:
-#         try:
-#             id = decryptData(request.data['id'])
-#         except:
-#             id = userDetails['id']
-#         sessions = Session.objects.filter(mentor_id=id, is_booked=True)
-
-
-#         return
-#     except Exception as error:
-#         return
-
 @api_view(['POST'])
 def bookSession(request):
     log('Entered booking a session',DEBUG_CODE)
@@ -205,8 +173,21 @@ def bookSession(request):
             join_url=meet['join_url']
         )
         booked_session.save()
+        sessionBookedMail(session_instance.mentor.email_id, 'mentor', {'name':requested_session.mentee.first_name + ' ' + requested_session.mentee.last_name, 'date':session_instance.slot_date})
+        sessionBookedMail(requested_session.mentee.email_id, 'mentee', {'name':session_instance.mentor.first_name + ' ' + session_instance.mentor.last_name, 'date':session_instance.slot_date})
+        data = {
+            'sessio_id':session_instance.id,
+            'mentee':requested_session.mentee.first_name + ' ' + requested_session.mentee.last_name,
+            'role':requested_session.mentee.role,
+            'organisation':requested_session.mentee.organization,
+            'time':session_instance.from_slot_time,
+            'link':booked_session.hosting_url,
+            'date':session_instance.slot_date,
+            'status':MEET_STATUS[203],
+            'meet_type':MEET_TYPE[101]
+        }
         log('session booked',DEBUG_CODE)
-        return Response({'message':'Session booked sucessfully','id':booked_session.id},status=STATUSES['SUCCESS'])
+        return Response({'message':'Session booked sucessfully','data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
         log('Error booking a session '+str(e),ERROR_CODE)
         return Response({'message':"Error booking a session"},status=STATUSES['INTERNAL_SERVER_ERROR'])
@@ -242,9 +223,24 @@ def sessionCompleted(request):
         booked_session = BookedSession.objects.get(requested_session=requested_session) # getting the booked session object to toggle is completed to true 
         booked_session.is_completed = True
         booked_session.save()
-        return Response({"message":'success'},status=STATUSES['SUCCESS'])
+
+
+
+        data = {
+            'sessio_id':session.id,
+            'mentee':requested_session.mentee.first_name + ' ' + requested_session.mentee.last_name,
+            'role':requested_session.mentee.role,
+            'organisation':requested_session.mentee.organization,
+            'time':session.from_slot_time,
+            'link':booked_session.hosting_url,
+            'date':session.slot_date,
+            'status':MEET_STATUS[202],
+            'meet_type':MEET_TYPE[101]
+        }
+        return Response({"message":'success','data':data},status=STATUSES['SUCCESS'])
     except Exception as e:
-        return Response({'message':"error in marking"},status=STATUSES['INTERNAL_SERVER_ERROR'])
+        log('Error in marking completed Session '+str(e),ERROR_CODE)
+        return Response({'message':"error in marking",'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
 def sessionFeedback(request):
@@ -437,8 +433,8 @@ def upcoming_sessions_mentor(request) :
                 value['session_id'] = index.id
                 value['mentee'] = requested_details.mentee.first_name + requested_details.mentee.last_name
                 # value['profile-link'] = 'NULL',
-                value['role'] = mentor_details.designation
-                value['organisation'] = mentor_details.company
+                value['role'] = requested_details.mentee.role
+                value['organisation'] = requested_details.mentee.organization
                 value['time'] = index.from_slot_time
                 value['date'] = index.slot_date
                 value['status'] = stat
