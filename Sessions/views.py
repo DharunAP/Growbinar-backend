@@ -350,7 +350,10 @@ def upcoming_sessions_mentee(request) :
 
                 if index.is_accepted is True :
                         # session is accepted by the mentor
-                    bookedSession = BookedSession.objects.get(requested_session = index)
+                    bookedSession = BookedSession.objects.filter(requested_session = index)
+                    if not bookedSession.exists():
+                        continue
+                    bookedSession = bookedSession[0]
                     if bookedSession.is_completed:
                         value['status'] = MEET_STATUS[202]
                     else:
@@ -435,7 +438,10 @@ def upcoming_sessions_mentor(request) :
                 print('before if',requested_details.is_accepted)
                 if requested_details.is_accepted :
                     log('meeting is accepted',DEBUG_CODE)
-                    booked_details = BookedSession.objects.filter(requested_session = requested_details)[0]
+                    booked_details = BookedSession.objects.filter(requested_session = requested_details)
+                    if not booked_details.exists():
+                        continue
+                    booked_details = booked_details[0]
                     if booked_details.is_completed :
                         stat = MEET_STATUS[202]
                     else :

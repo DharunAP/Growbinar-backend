@@ -1322,3 +1322,104 @@ DEBUG 2024-06-18 00:25:54,127 profile_details assets.py 15 menteeDetails message
 ERROR 2024-06-18 00:25:56,909 profile_details assets.py 19 menteeDetails message - Error fetching mentee details'Mentee' object has no attribute 'profile_image_url'
 DEBUG 2024-06-18 00:27:42,851 profile_details assets.py 15 menteeDetails message - Entered mentee details
 DEBUG 2024-06-18 00:27:45,853 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-06-18 00:36:30,947 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 00:38:23,097 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 00:38:40,651 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 01:41:59,884 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-18 01:42:04,071 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-18 01:42:04,777 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 01:42:06,009 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 01:42:06,928 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 01:42:07,951 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 01:42:08,565 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-18 01:46:34,672 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-18 01:46:38,454 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-18 01:46:39,204 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+ERROR 2024-06-18 01:46:39,617 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+DEBUG 2024-06-18 01:47:07,028 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 01:47:25,349 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 01:49:47,174 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 01:49:54,545 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 01:52:50,875 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-18 01:52:58,385 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+DEBUG 2024-06-18 02:06:20,258 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 02:06:27,260 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 02:08:41,188 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 02:08:58,881 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 11:21:16,783 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-18 11:21:20,964 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-18 11:21:21,599 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+ERROR 2024-06-18 11:21:21,993 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+DEBUG 2024-06-18 11:23:06,991 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-18 11:23:12,190 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-18 11:23:12,826 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:23:13,645 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:23:14,873 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:23:16,306 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:23:17,942 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-18 11:23:43,907 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-18 11:23:48,472 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+ERROR 2024-06-18 11:23:50,817 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+DEBUG 2024-06-18 11:24:39,322 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-18 11:24:44,794 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-18 11:24:47,227 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
+DEBUG 2024-06-18 11:26:34,548 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-18 11:26:39,878 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-18 11:27:54,601 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-18 11:28:00,168 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-18 11:29:11,786 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-18 11:29:15,832 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-18 11:29:16,526 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:29:17,333 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:29:18,662 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:29:20,011 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-18 11:29:21,891 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-18 11:30:18,983 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-18 11:30:26,517 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+DEBUG 2024-06-18 11:39:05,012 profile_details assets.py 15 menteeDetails message - Entered mentee details
+ERROR 2024-06-18 11:39:05,081 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsField 'id' expected a number but got {'17'}.
+DEBUG 2024-06-18 11:39:39,532 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-18 11:39:42,618 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-06-18 11:40:44,529 profile_details assets.py 15 mentor_details message - Entered mentor details
+DEBUG 2024-06-18 11:40:47,382 profile_details assets.py 15 mentor_details message - mentor email verified
+DEBUG 2024-06-18 11:40:48,725 profile_details assets.py 15 mentor_details message - Mentor details provided sucessfully
+DEBUG 2024-06-18 11:52:53,611 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 11:53:08,498 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 11:56:00,439 Authentication assets.py 48 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-18 11:56:02,987 Authentication assets.py 50 MentorSignup message - Email already exists
+DEBUG 2024-06-18 11:56:21,740 Authentication assets.py 48 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-18 11:56:24,686 Authentication assets.py 50 MentorSignup message - Email already exists
+DEBUG 2024-06-18 11:57:20,609 Authentication assets.py 48 MentorSignup message - Entered mentor-signup
+WARNING 2024-06-18 11:57:23,583 Authentication assets.py 50 MentorSignup message - Email already exists
+DEBUG 2024-06-18 11:57:28,679 Authentication assets.py 48 MentorSignup message - Entered mentor-signup
+DEBUG 2024-06-18 11:57:31,964 Authentication assets.py 48 MentorSignup message - signup successfull
+DEBUG 2024-06-18 11:58:29,117 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:58:29,119 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:58:41,287 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:58:41,290 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:26,491 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:26,495 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:28,519 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:28,522 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:29,908 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:29,912 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:31,039 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:31,044 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:32,272 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:32,275 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:33,172 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:33,175 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:33,823 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:33,827 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:34,223 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:34,226 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:51,426 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:51,429 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 11:59:52,209 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+ERROR 2024-06-18 11:59:52,212 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+DEBUG 2024-06-18 12:00:52,181 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
+DEBUG 2024-06-18 12:00:54,921 Authentication assets.py 48 VerifyMentor message - Email verification sucess for 21

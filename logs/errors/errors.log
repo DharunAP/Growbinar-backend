@@ -214,3 +214,25 @@ ERROR 2024-06-18 00:24:22,801 profile_details assets.py 19 menteeDetails message
 ERROR 2024-06-18 00:25:14,046 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
 ERROR 2024-06-18 00:25:29,361 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsname 'mentor' is not defined
 ERROR 2024-06-18 00:25:56,909 profile_details assets.py 19 menteeDetails message - Error fetching mentee details'Mentee' object has no attribute 'profile_image_url'
+ERROR 2024-06-18 01:46:39,617 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+ERROR 2024-06-18 01:52:58,385 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+ERROR 2024-06-18 11:21:21,993 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+ERROR 2024-06-18 11:23:50,817 Sessions assets.py 14 upcoming_sessions_mentee message - Error while displaying upcoming session
+ERROR 2024-06-18 11:30:26,517 Sessions assets.py 14 bookSession message - Error booking a session duplicate key value violates unique constraint "static_bookedsession_requested_session_id_key"
+DETAIL:  Key (requested_session_id)=(25) already exists.
+
+ERROR 2024-06-18 11:39:05,081 profile_details assets.py 19 menteeDetails message - Error fetching mentee detailsField 'id' expected a number but got {'17'}.
+ERROR 2024-06-18 11:58:29,119 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:58:41,290 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:26,495 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:28,522 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:29,912 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:31,044 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:32,275 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:33,175 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:33,827 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:34,226 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:51,429 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+ERROR 2024-06-18 11:59:52,212 Authentication assets.py 52 VerifyMentor message - Error verifying email 

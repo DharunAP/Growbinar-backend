@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from static.models import Mentee,Mentor,Experience
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from static.cipher import encryptData,decryptData
@@ -166,7 +166,7 @@ def VerifyMentee(request):
         mentee.is_email_verified = True
         mentee.save()
         log('Email verification sucess for '+menteeID,DEBUG_CODE)
-        return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
+        return redirect('https://growbinar.com/mentee')
     except Exception as error:
         log("Error verifying email "+str(error),ERROR_CODE)
         print(error)
@@ -182,6 +182,7 @@ def VerifyMentor(request):
         mentor.is_email_verified = True
         mentor.save()
         log('Email verification sucess for '+mentorID,DEBUG_CODE)
+        return redirect('https://growbinar.com/mentor')
         return Response({'message':VERIFIED_USER_EMAIL},status=STATUSES['SUCCESS'])
     except Exception as error:
         log("Error verifying email "+str(error),ERROR_CODE)

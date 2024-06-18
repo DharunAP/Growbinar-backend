@@ -43,17 +43,18 @@
             color: #555;
         }
 
-        .details {
+        /* .details {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
             margin: 20px 0;
-        }
+        } */
 
         .detail {
             display: flex;
             align-items: center;
+            justify-content: center;
+            /* margin: auto; */
         }
 
         .detail img {
@@ -118,7 +119,7 @@
             }
 
             .btn {
-                width: 100%;
+                width: 60%;
             }
         }
 
@@ -130,7 +131,7 @@
         <img style="width: 100px;" src="https://drive.google.com/thumbnail?id=1Y6l_jBB22qKfS4eub6W10OODag8BxBil" alt=""/>
         <h1>Booking Confirmed!</h1>
         <p style="font-size: 13px;">{{before}}<a href="{{user}}">{{name}}</a>{{end}}</p>
-        <div class="details">
+        <!-- <div class="details"> -->
             <div class="detail">
                 <img src="https://drive.google.com/thumbnail?id=1tUr1IbJxuqQocYuSAZ4Tml5O7WRkD04j" alt="Calendar Icon">
                 <p style="font-size: 13px;">{{date}}</p>
@@ -139,8 +140,8 @@
                 <img src="https://drive.google.com/thumbnail?id=1ukesfs6ovmO-kBoyKpmab3seGpE23Xne" alt="Time Icon">
                 <p style="font-size: 13px;">{{time}}</p>
             </div>
-        </div>
-        <div class="btn"><a href="{{link}}">JOIN THE SESSION</a> </div>
+        <!-- </div> -->
+        <div class="btn"><a href={{link}} >JOIN THE SESSION</a> </div>
         <p style="font-size: 10px;" class="footer-text">"You're now on the path to greatness! Seize this opportunity, push your boundaries, and make an impact with your unique ideas."</p>
         <div class="social-icons">
             <a href="https://www.linkedin.com/company/growbinar"><img src="https://drive.google.com/thumbnail?id=1nlskrN5Dx078VqVP3ILQiE9EGSSI70os" alt="LinkedIn"></a>

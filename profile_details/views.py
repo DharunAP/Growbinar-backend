@@ -321,6 +321,7 @@ import pyshorteners
 # @permission_classes([IsAuthenticated])
 def mentor_details(request):
     try:
+        print('hello')
         log("Entered mentor details",DEBUG_CODE)
         # verifying weather id is in the request 
         mentor_id = request.GET.get('id')
