@@ -1423,3 +1423,30 @@ DEBUG 2024-06-18 11:59:52,209 Authentication assets.py 48 VerifyMentor message -
 ERROR 2024-06-18 11:59:52,212 Authentication assets.py 52 VerifyMentor message - Error verifying email 
 DEBUG 2024-06-18 12:00:52,181 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
 DEBUG 2024-06-18 12:00:54,921 Authentication assets.py 48 VerifyMentor message - Email verification sucess for 21
+DEBUG 2024-06-18 15:04:42,686 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-18 15:04:42,863 Authentication assets.py 48 user_login message - User is Mentor
+DEBUG 2024-06-18 15:04:43,285 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-18 15:05:04,843 Sessions assets.py 10 bookSession message - Entered booking a session
+ERROR 2024-06-18 15:05:28,127 Sessions assets.py 14 bookSession message - Error booking a session [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+DEBUG 2024-06-18 15:16:29,414 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:16:39,834 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:18:18,999 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:18:22,175 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:32:45,611 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:32:56,004 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:36:31,824 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:36:43,440 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:51:03,948 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:51:14,920 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:53:47,851 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:54:03,072 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:55:17,769 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:55:28,843 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 15:58:04,000 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 15:58:13,683 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 16:05:08,423 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 16:05:17,033 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-18 16:07:54,000 Sessions assets.py 10 bookSession message - Entered booking a session
+DEBUG 2024-06-18 16:08:02,792 Sessions assets.py 10 bookSession message - session booked
+DEBUG 2024-06-24 19:44:36,651 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-24 19:44:39,218 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully

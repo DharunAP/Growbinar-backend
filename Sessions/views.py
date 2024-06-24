@@ -340,6 +340,7 @@ def upcoming_sessions_mentee(request) :
                 value['name'] =  session.mentor.first_name + session.mentor.last_name
                 value['role'] = session.mentor.designation
                 value['organisation'] = session.mentor.company
+                value['profile_pic'] = session.mentor.profile_picture_url
                 value['time'] = session.from_slot_time
                 value['link'] = None
                 value['date'] = session.slot_date
@@ -457,6 +458,7 @@ def upcoming_sessions_mentor(request) :
                 # value['profile-link'] = 'NULL',
                 value['role'] = requested_details.mentee.role
                 value['organisation'] = requested_details.mentee.organization
+                value['profile_pic'] = requested_details.mentor.profile_picture_url
                 value['time'] = index.from_slot_time
                 value['date'] = index.slot_date
                 value['status'] = stat
