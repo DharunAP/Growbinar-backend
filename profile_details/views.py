@@ -103,11 +103,11 @@ def menteeDetails(request):
         # iterating through the experience to list it
         for i in experience:
             value = dict()
-            value['institution_name'] = i.company
-            value['Date'] = {
-                'startDate':i.from_duration,
-                'endDate':i.to_duration
-            }
+            value['organization'] = i.company
+            value['startDate']=i.from_duration,
+            value['endDate']=i.to_duration
+            value['designation'] = i.role
+            value['description'] = i.description
             experience_list.append(value)
         data = {
             "name":mentee.first_name+" "+mentee.last_name,
