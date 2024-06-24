@@ -1465,3 +1465,38 @@ ERROR 2024-06-24 22:04:47,300 Sessions assets.py 14 availabeSessionDeletion mess
 DEBUG 2024-06-24 22:05:43,028 Sessions assets.py 10 availabeSessionDeletion message - Entered available session deletion
 ERROR 2024-06-24 22:05:46,271 Sessions assets.py 14 availabeSessionDeletion message - Error deleting available session name 'slots' is not defined
 DEBUG 2024-06-24 22:06:13,015 Sessions assets.py 10 availabeSessionDeletion message - Entered available session deletion
+DEBUG 2024-06-25 01:25:47,161 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-25 01:25:49,614 Authentication assets.py 48 user_login message - User is Mentor
+DEBUG 2024-06-25 01:25:51,018 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-25 01:27:49,300 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-25 01:27:51,696 Authentication assets.py 48 user_login message - User is Mentee
+WARNING 2024-06-25 01:27:51,700 Authentication assets.py 50 user_login message - User Not Found
+DEBUG 2024-06-25 01:28:18,687 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-25 01:28:21,018 Authentication assets.py 48 user_login message - User is Mentee
+WARNING 2024-06-25 01:28:21,023 Authentication assets.py 50 user_login message - User Not Found
+DEBUG 2024-06-25 01:29:52,972 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-25 01:29:55,346 Authentication assets.py 48 user_login message - User is Mentee
+WARNING 2024-06-25 01:29:55,353 Authentication assets.py 50 user_login message - User Not Found
+DEBUG 2024-06-25 01:33:04,932 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-25 01:33:07,197 Authentication assets.py 48 user_login message - User is Mentee
+DEBUG 2024-06-25 01:33:08,465 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-25 01:46:40,490 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-25 01:46:43,878 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-25 01:46:48,991 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
+DEBUG 2024-06-25 01:47:15,048 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-25 01:47:35,836 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-25 01:47:38,036 Authentication assets.py 48 user_login message - User is Mentor
+DEBUG 2024-06-25 01:47:39,872 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-25 01:47:58,569 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-25 01:48:02,204 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-25 01:48:02,783 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-25 01:48:03,442 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+ERROR 2024-06-25 01:48:04,251 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
+DEBUG 2024-06-25 01:49:23,126 Sessions assets.py 10 upcoming_sessions_mentor message - Entered upcoming session
+DEBUG 2024-06-25 01:49:26,740 Sessions assets.py 10 upcoming_sessions_mentor message - Mentor Exists
+DEBUG 2024-06-25 01:49:27,401 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-25 01:49:28,013 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-25 01:49:29,242 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-25 01:49:30,478 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-25 01:49:31,803 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
+DEBUG 2024-06-25 01:49:33,441 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
