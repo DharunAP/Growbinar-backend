@@ -292,3 +292,6 @@ ERROR 2024-06-18 11:59:34,226 Authentication assets.py 52 VerifyMentor message -
 ERROR 2024-06-18 11:59:51,429 Authentication assets.py 52 VerifyMentor message - Error verifying email 
 ERROR 2024-06-18 11:59:52,212 Authentication assets.py 52 VerifyMentor message - Error verifying email 
 ERROR 2024-06-18 15:05:28,127 Sessions assets.py 14 bookSession message - Error booking a session [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+ERROR 2024-06-24 21:43:05,108 profile_details assets.py 19 userQuery message - Error in query
+ERROR 2024-06-24 22:04:47,300 Sessions assets.py 14 availabeSessionDeletion message - Error deleting available session name 'AvailableSession' is not defined
+ERROR 2024-06-24 22:05:46,271 Sessions assets.py 14 availabeSessionDeletion message - Error deleting available session name 'slots' is not defined

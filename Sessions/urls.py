@@ -8,6 +8,7 @@ urlpatterns = [
     path(routes.BOOK_SESSION,bookSession,name='book-session'),
     path(routes.SESSION_CREATION,sessionFeedback,name='session-feedback'),
     path(routes.SESSION_COMPLETE,sessionCompleted,name='session-completed'),
+    path(routes.DELETE_AVAILABLE_SESSION,availabeSessionDeletion,name='available-session-deletion'),
     path(routes.UPCOMMING_SESSION_MENTEE,upcoming_sessions_mentee,name='upcomming-session-mentee'),
     path(routes.upcomingSesions,upcoming_sessions_mentor,name='upcomming-sessions'),
     path(routes.newsession, new_sessions_booking, name = 'new-session-bboking'),

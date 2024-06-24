@@ -393,7 +393,38 @@ def upcoming_sessions_mentee(request) :
                 'message' : FETCHING_ERROR
             }, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
+@api_view(['POST'])
+def availabeSessionDeletion(request):
+    try:
+        log('Entered available session deletion',DEBUG_CODE)
+        validation_response = validate_token(request)
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+            if(userChecking is not None):
+                return userChecking
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        mentor_id = userDetails['id'] # decoding the data
 
+        availableSession = AvailabeSession.objects.get(mentor=userDetails['user'])
+
+        slot = availableSession.availableSlots
+
+        slot.remove(request.data['session'])
+
+        availableSession.availableSlots = slot
+        availableSession.save()
+
+        return Response({'message':'Available session deleted successfully'},status = STATUSES['SUCCESS'])
+    except Exception as e:
+        log('Error deleting available session '+str(e),ERROR_CODE)
+        return Response({'message':'Error delteing available session','error':str(e)},status = STATUSES['INTERNAL_SERVER_ERROR'])
 # Guhan code
 
 @api_view(['GET'])
