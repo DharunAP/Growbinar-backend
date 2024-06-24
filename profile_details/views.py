@@ -318,7 +318,6 @@ from rest_framework.permissions import IsAuthenticated
 import pyshorteners
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def mentor_details(request):
     try:
         print('hello')
