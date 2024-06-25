@@ -116,7 +116,9 @@ def menteeDetails(request):
             "location":mentee.city,
             "overview":mentee.description,
             "areas_of_interest":mentee.areas_of_interest,
-            "experience":experience_list
+            "experience":experience_list,
+            "role":mentee.role,
+            "organization":mentee.organization
         }
         # background languages experience
         log("Mentee details provided sucessfully",DEBUG_CODE)

@@ -266,6 +266,7 @@ def getMenteeDetails(request):
             return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
         serializer = MenteeSerializer(data=request.data)
         valid = serializer.is_valid()
+        print(request.data['organization'])
         if(valid):
             mentee.first_name=request.data['first_name']
             mentee.last_name=request.data['last_name']
@@ -279,7 +280,7 @@ def getMenteeDetails(request):
             mentee.profile_picture_url=request.data['profile_picture_url']
             mentee.description=request.data['description']
             mentee.role=request.data['role']
-            mentee.organization=request.data['organization'],
+            mentee.organization=request.data['organization']
             mentee.is_experience=request.data['is_experience']
 
             mentee.save()

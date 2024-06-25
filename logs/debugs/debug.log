@@ -1500,3 +1500,13 @@ DEBUG 2024-06-25 01:49:29,242 Sessions assets.py 10 upcoming_sessions_mentor mes
 DEBUG 2024-06-25 01:49:30,478 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
 DEBUG 2024-06-25 01:49:31,803 Sessions assets.py 10 upcoming_sessions_mentor message - meeting is accepted
 DEBUG 2024-06-25 01:49:33,441 Sessions assets.py 10 upcoming_sessions_mentor message - Upcoming session displayed
+DEBUG 2024-06-25 21:01:26,982 Authentication assets.py 48 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-06-25 21:01:36,340 Authentication assets.py 48 MenteeSignup message - signup successfull
+DEBUG 2024-06-25 21:12:17,755 Authentication assets.py 48 getMenteeDetails message - Entered mentor details endpoint
+ERROR 2024-06-25 21:12:22,282 Authentication assets.py 52 getMenteeDetails message - Error saving mentor details - 'organisation'
+DEBUG 2024-06-25 21:13:02,162 Authentication assets.py 48 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-25 21:13:05,898 Authentication assets.py 48 getMenteeDetails message - success
+DEBUG 2024-06-25 21:15:19,699 Authentication assets.py 48 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-25 21:15:23,489 Authentication assets.py 48 getMenteeDetails message - success
+DEBUG 2024-06-25 21:16:26,931 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-06-25 21:16:29,768 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
