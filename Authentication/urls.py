@@ -13,5 +13,6 @@ urlpatterns = [
     path(routes.LOGIN_ROUTE,user_login,name="login-route"),
     path(routes.RESEND_MAIL,resendMail,name = 'resend-mail'),
     path(routes.CommonEndpoint,checkUserDetails, name="common-endpoint"),
+    path(routes.userLogout,user_logout,name='logout'),
     path('verifyMailSampleTemplate/',verifyMailSampleTemplate)
 ]

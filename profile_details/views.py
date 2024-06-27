@@ -104,7 +104,7 @@ def menteeDetails(request):
         for i in experience:
             value = dict()
             value['organization'] = i.company
-            value['startDate']=i.from_duration,
+            value['startDate']=i.from_duration
             value['endDate']=i.to_duration
             value['designation'] = i.role
             value['description'] = i.description

@@ -1510,3 +1510,13 @@ DEBUG 2024-06-25 21:15:19,699 Authentication assets.py 48 getMenteeDetails messa
 DEBUG 2024-06-25 21:15:23,489 Authentication assets.py 48 getMenteeDetails message - success
 DEBUG 2024-06-25 21:16:26,931 profile_details assets.py 15 menteeDetails message - Entered mentee details
 DEBUG 2024-06-25 21:16:29,768 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-06-27 20:44:59,858 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-27 20:45:02,636 Authentication assets.py 48 user_login message - User is Mentee
+WARNING 2024-06-27 20:45:02,640 Authentication assets.py 50 user_login message - User Not Found
+DEBUG 2024-06-27 20:45:37,283 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-27 20:45:39,918 Authentication assets.py 48 user_login message - User is Mentee
+WARNING 2024-06-27 20:45:39,922 Authentication assets.py 50 user_login message - User Not Found
+DEBUG 2024-06-27 20:46:05,231 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-27 20:46:07,772 Authentication assets.py 48 user_login message - User is Mentee
+DEBUG 2024-06-27 20:46:09,203 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-27 20:47:42,329 Authentication assets.py 48 getMenteeDetails message - Entered mentor details endpoint

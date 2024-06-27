@@ -300,3 +300,5 @@ WARNING 2024-06-25 01:28:21,023 Authentication assets.py 50 user_login message -
 WARNING 2024-06-25 01:29:55,353 Authentication assets.py 50 user_login message - User Not Found
 ERROR 2024-06-25 01:48:04,251 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
 ERROR 2024-06-25 21:12:22,282 Authentication assets.py 52 getMenteeDetails message - Error saving mentor details - 'organisation'
+WARNING 2024-06-27 20:45:02,640 Authentication assets.py 50 user_login message - User Not Found
+WARNING 2024-06-27 20:45:39,922 Authentication assets.py 50 user_login message - User Not Found
