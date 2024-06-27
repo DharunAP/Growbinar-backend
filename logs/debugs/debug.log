@@ -1520,3 +1520,6 @@ DEBUG 2024-06-27 20:46:05,231 Authentication assets.py 48 user_login message - E
 DEBUG 2024-06-27 20:46:07,772 Authentication assets.py 48 user_login message - User is Mentee
 DEBUG 2024-06-27 20:46:09,203 Authentication assets.py 48 user_login message - User Logged In
 DEBUG 2024-06-27 20:47:42,329 Authentication assets.py 48 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-06-27 21:01:21,739 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
+DEBUG 2024-06-27 21:01:25,255 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
+DEBUG 2024-06-27 21:01:32,834 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed

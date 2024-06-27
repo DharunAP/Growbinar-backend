@@ -623,7 +623,8 @@ def new_sessions_booking(request):
                     requested_session = RequestedSession.objects.create(
                         session=new_session,  # This will store the ID of the new_session in the requested session
                         mentee=mentee_ins,
-                        is_accepted=False
+                        is_accepted=False,
+                        reason= reason
                     )
                     requested_session.save()
                     log('Requestedsession created successfully',DEBUG_CODE)
