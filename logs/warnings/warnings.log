@@ -291,3 +291,5 @@ ERROR 2024-06-18 11:59:33,827 Authentication assets.py 52 VerifyMentor message -
 ERROR 2024-06-18 11:59:34,226 Authentication assets.py 52 VerifyMentor message - Error verifying email 
 ERROR 2024-06-18 11:59:51,429 Authentication assets.py 52 VerifyMentor message - Error verifying email 
 ERROR 2024-06-18 11:59:52,212 Authentication assets.py 52 VerifyMentor message - Error verifying email 
+WARNING 2024-06-20 04:21:30,448 profile_details assets.py 17 mentor_details message - User id required.
+WARNING 2024-06-20 04:23:41,366 profile_details assets.py 17 menteeDetails message - User id required.

@@ -7,7 +7,8 @@ from static.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer, ExperienceSerializer
 from Authentication.jwtVerification import *
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
-
+from django.views.decorators.cache import cache_page
+from django_ratelimit.decorators import ratelimit
 from datetime import datetime
 
 def get_datetime(entry):
@@ -15,6 +16,7 @@ def get_datetime(entry):
     time_str = entry["from"]
     datetime_str = f"{date_str} {time_str}"
     return datetime.strptime(datetime_str, "%Y-%m-%d %H:%M:%S")
+
 
 def getAvailableSessions(id):
     availabeSession = AvailabeSession.objects.filter(mentor_id = id)
@@ -35,6 +37,7 @@ def getAvailableSessions(id):
     return sorted_data
 
 @api_view(['GET'])
+@ratelimit(key='ip', rate='2/1m', method='GET', block=True)
 def listAllMentors(request):
     log("Entered list Mentors",DEBUG_CODE)
     try:
@@ -317,6 +320,7 @@ from Authentication.jwtVerification import validate_token
 from rest_framework.permissions import IsAuthenticated
 import pyshorteners
 
+
 @api_view(['GET'])
 def mentor_details(request):
     try:
@@ -390,84 +394,6 @@ def mentor_details(request):
         print(e)
         log('Error while fetching details',ERROR_CODE)
         return JsonResponse({'message' : FETCHING_ERROR,'error':str(e)},status = STATUSES['INTERNAL_SERVER_ERROR'])
-
-
-
-# @api_view(['POST'])
-# # @permission_classes([IsAuthenticated])
-# def createAvailableSession(request):
-#     log('Entered create available session endpoint ',DEBUG_CODE)
-#     try:
-#         print(decryptData(request.data['id']),"---------")
-
-#         #for verifying the token
-#         validation_response = validate_token(request)  # validating the requested user using authorization headder
-#         if validation_response is not None:
-#             return validation_response
-#         try:
-#             userDetails = getUserDetails(request)  # getting the details of the requested user
-#             if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
-#                 return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
-#             userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
-#             if(userChecking is not None):
-#                 return userChecking
-#         except Exception as error:
-#             print(error)
-#             return Response({'message':'Error authorizing the user try logging in again'})
-#         print(userDetails['id'])
-
-
-#         availabeSession = AvailabeSession.objects.filter(mentor_id = userDetails['id'])
-#         print(availabeSession)
-#         if availabeSession.exists():
-#             # update code
-#             conflictingSlots = []
-#             newSlots = availabeSession[0].availableSlots
-#             # checking weather the slot already exists in the table
-#             for slot in request.data['availableSlots']:
-#                 print(slot)
-#                 if slot in newSlots:
-#                     conflictingSlots.append(slot)
-#                     continue
-#                 # adding the slot to the array
-#                 date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
-#                 from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
-#                 to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
-#                 newSlots.append({
-#                     "date":str(date),
-#                     "from":str(from_time),
-#                     "to":str(to_time)
-#                 })
-            
-#             # adding the new slots to the table
-#             availabeSession.update(availableSlots = newSlots)
-#             log('New slots crated sucessfully ',DEBUG_CODE)
-#             return JsonResponse({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['SUCCESS'])
-
-#         # creating new available session for the mentor
-#         print('hi')
-#         slots = []
-#         for slot in request.data['availableSlots']:
-#             date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
-#             from_time = datetime.strptime(slot['from'], '%H:%M:%S').time()
-#             to_time = datetime.strptime(slot['to'], '%H:%M:%S').time()
-#             slots.append({
-#                 "date":str(date),
-#                 "from":str(from_time),
-#                 "to":str(to_time)
-#             })
-#         print(slots)
-#         instance = AvailabeSession.objects.create(
-#             mentor_id = decryptData(request.data['id']),
-#             availableSlots = slots
-#         )
-#         instance.save()
-#         log("New session created sucessfully ",DEBUG_CODE)
-#         return JsonResponse({"message":"Successfully created","slots":slots},status=STATUSES['SUCCESS'])
-#     except Exception as e:
-#         print(e)
-#         log("Error in creating available session "+str(e),ERROR_CODE)
-#         return JsonResponse({'message':""},status=STATUSES['INTERNAL_SERVER_ERROR'])
     
 
 @api_view(['GET'])

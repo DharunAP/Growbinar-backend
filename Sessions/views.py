@@ -75,7 +75,9 @@ def createAvailableSession(request):
             log('Error returing the available sessions '+str(e),ERROR_CODE)
             return Response({'message':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
-    # for post method to strore data
+    # 
+    # --- POST --- method 👇🏻
+    # 
     try:
         # getting the available session object
         availabeSession = AvailabeSession.objects.filter(mentor = userDetails['user'])
@@ -107,7 +109,7 @@ def createAvailableSession(request):
                 return Response({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['BAD_REQUEST'])
             return Response({'message':SESSION_UPDATED},status=STATUSES['SUCCESS'])
 
-        # creating new available session for the mentor
+        # -- creating new available session for the mentor --
         slots = []
         for slot in request.data['availableSlots']:
             date = datetime.strptime(slot['date'], '%Y-%m-%d').date()

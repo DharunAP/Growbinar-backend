@@ -1423,3 +1423,44 @@ DEBUG 2024-06-18 11:59:52,209 Authentication assets.py 48 VerifyMentor message -
 ERROR 2024-06-18 11:59:52,212 Authentication assets.py 52 VerifyMentor message - Error verifying email 
 DEBUG 2024-06-18 12:00:52,181 Authentication assets.py 48 VerifyMentor message - Entered email verification mentor
 DEBUG 2024-06-18 12:00:54,921 Authentication assets.py 48 VerifyMentor message - Email verification sucess for 21
+DEBUG 2024-06-20 04:21:07,374 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-20 04:21:10,115 Authentication assets.py 48 user_login message - User is Mentor
+DEBUG 2024-06-20 04:21:11,455 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-20 04:21:30,445 profile_details assets.py 15 mentor_details message - Entered mentor details
+WARNING 2024-06-20 04:21:30,448 profile_details assets.py 17 mentor_details message - User id required.
+DEBUG 2024-06-20 04:23:41,363 profile_details assets.py 15 menteeDetails message - Entered mentee details
+WARNING 2024-06-20 04:23:41,366 profile_details assets.py 17 menteeDetails message - User id required.
+DEBUG 2024-06-20 04:24:28,771 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:24:33,793 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:25:07,593 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:25:12,396 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:25:35,319 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:25:40,352 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:25:50,213 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:25:55,094 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:25:57,678 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:26:02,467 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:26:19,776 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:26:24,489 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:27:02,398 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:27:07,602 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:27:30,573 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:27:35,549 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:27:38,528 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:27:43,537 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 04:27:54,312 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 04:27:59,894 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:50:22,767 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:50:28,932 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:50:35,956 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:50:43,695 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:52:15,649 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:52:20,383 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:55:09,935 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:55:15,286 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:55:27,453 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:55:33,477 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:55:36,022 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:55:41,358 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-20 14:55:43,209 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-06-20 14:55:48,768 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
