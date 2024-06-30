@@ -578,7 +578,11 @@ def new_sessions_booking(request):
             return JsonResponse({'message': INVALID_TIME}, status= STATUSES['INTERNAL_SERVER_ERROR'])
 
     # taking the mentor instance
-        mentor_ins = Mentor.objects.filter(id=mentor_id)[0]
+        mentor_ins = Mentor.objects.filter(id=mentor_id)
+        if not mentee_ins.exists() :
+            return Response({'message' : 'Mentor not exits'},status= STATUSES['INTERNAL_SERVER_ERROR'])
+        
+        mentee_ins = mentee_ins[0]
         print(mentor_ins,"--mentor ins--")
     # checking with available sessions
         available_sessions = AvailabeSession.objects.filter(mentor_id=mentor_id)
@@ -614,30 +618,37 @@ def new_sessions_booking(request):
 
                 session_details = Session.objects.filter(mentor=mentor_id, slot_date=start_date)
                 print(session_details, "-- the session details --")
+# changes are madde here
+                for point in session_details :
+                    if not point.is_booked :
+                        continue
 
-                if not session_details :
-                    log('No already session available ',DEBUG_CODE)
-                    new_session = Session.objects.create(
-                            mentor=mentor_ins,
-                            slot_date=start_date,
-                            from_slot_time=users_start_time,
-                            to_slot_time=users_end_time,
-                        )
+                    if point.from_slot_time <= users_start_time and point.to_slot_time >= users_end_time :
+                        return Response({"message " : "Slot booked already"},status=STATUSES['BAD_REQUEST']) 
 
-                    new_session.save()
-                    log('New session created',DEBUG_CODE)
+                # if not session_details :
+                log('No already session available ',DEBUG_CODE)
+                new_session = Session.objects.create(
+                        mentor=mentor_ins,
+                        slot_date=start_date,
+                        from_slot_time=users_start_time,
+                        to_slot_time=users_end_time,
+                    )
 
-                    mentee_ins = Mentee.objects.filter(id=mentee_id)[0]
+                new_session.save()
+                log('New session created',DEBUG_CODE)
+
+                mentee_ins = Mentee.objects.filter(id=mentee_id)[0]
                     
-                    requested_session = RequestedSession.objects.create(
+                requested_session = RequestedSession.objects.create(
                         session=new_session,  # This will store the ID of the new_session in the requested session
                         mentee=mentee_ins,
                         is_accepted=False,
                         reason= reason
                     )
-                    requested_session.save()
-                    log('Requestedsession created successfully',DEBUG_CODE)
-                    return JsonResponse({'message': NEW_SESSION,
+                requested_session.save()
+                log('Requestedsession created successfully',DEBUG_CODE)
+                return JsonResponse({'message': NEW_SESSION,
                                          'session_id' : new_session.id}, status=STATUSES['SUCCESS'])
                                         
                 flag =False
