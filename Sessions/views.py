@@ -585,7 +585,7 @@ def new_sessions_booking(request):
             converted_start_time = convert_to_hms(start_time)
             converted_end_time = convert_to_hms(end_time)
         except ValueError as e:
-            return JsonResponse({'message': str(e)}, status=400)
+            return JsonResponse({'Error': str(e),"message" : "Some Error has Occured"}, status=400)
 
         users_start_time = datetime.strptime(converted_start_time, '%H:%M:%S').time()
         users_end_time = datetime.strptime(converted_end_time, '%H:%M:%S').time()
