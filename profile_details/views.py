@@ -178,6 +178,8 @@ def listMentorsOfMentee(request):
         return Response({"message":ERROR_SENDING_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET','POST'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def testimonials(request):
     log('Entered testimonials endpoint',DEBUG_CODE)
     if(request.method=='GET'):
@@ -230,6 +232,8 @@ def testimonials(request):
 
 
 @api_view(['POST','GET'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def experience(request):
     log('Entered Experience endpoint '+request.method,DEBUG_CODE)
     # to provide all the avalilable sessions of the mentor listed up-next

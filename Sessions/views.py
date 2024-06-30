@@ -29,6 +29,8 @@ def get_datetime(entry):
 
 
 @api_view(['GET','POST'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def createAvailableSession(request):
     log('Entered create available session endpoint for '+request.method,DEBUG_CODE)
     # to provide all the avalilable sessions of the mentor listed up-next
