@@ -37,7 +37,7 @@ def getAvailableSessions(id):
     return sorted_data
 
 @api_view(['GET'])
-@ratelimit(key='ip', rate='2/1m', method='GET', block=True)
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
 def listAllMentors(request):
     log("Entered list Mentors",DEBUG_CODE)
     try:
@@ -82,6 +82,7 @@ def listAllMentors(request):
         return Response({'message':ERROR_GETTING_MENTOR_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
 def menteeDetails(request):
     log("Entered mentee details",DEBUG_CODE)
     try:
@@ -132,6 +133,7 @@ def menteeDetails(request):
         return Response({'message':ERROR_SENDING_DETAILS,'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def listMentorsOfMentee(request):
     try:
         validation_response = validate_token(request)  # validating the requested user using authorization headder
@@ -324,6 +326,7 @@ import pyshorteners
 
 
 @api_view(['GET'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
 def mentor_details(request):
     try:
         print('hello')
@@ -399,6 +402,7 @@ def mentor_details(request):
     
 
 @api_view(['GET'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
 def listAllMentees(request):
     log("Entered list Mentee",DEBUG_CODE)
     try:
@@ -433,6 +437,7 @@ def listAllMentees(request):
     
 
 @api_view(['POST'])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def userQuery (request):
     print('In query View')
     try :
