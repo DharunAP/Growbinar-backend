@@ -615,7 +615,6 @@ def new_sessions_booking(request):
                             slot_date=start_date,
                             from_slot_time=users_start_time,
                             to_slot_time=users_end_time,
-                            reason = reason
                         )
 
                     new_session.save()
