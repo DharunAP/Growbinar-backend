@@ -117,6 +117,11 @@ class UserQuery(models.Model) :
 
 class Testimonial(models.Model):
     id = models.AutoField(primary_key=True)
-    mentor = models.ForeignKey(Mentor,on_delete=models.CASCADE)
-    mentee = models.ForeignKey(Mentee,on_delete=models.CASCADE)
+    mentor_name = models.TextField(max_length=150,default="Mentor name")
+    mentor_role = models.TextField(max_length=150,default="Mentor role")
+    mentor_organization = models.TextField(max_length=150,default="Mentor org")
+    mentee_name = models.TextField(max_length=150,default="Mentee name")
+    mentee_role = models.TextField(max_length=150,default="Mentee role")
+    mentor_profile = models.TextField(max_length=150,default="Mentor profile")
+    mentee_profile = models.TextField(max_length=150,default="Mentee profile")
     content = models.TextField()

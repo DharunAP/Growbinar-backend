@@ -1,0 +1,5 @@
+ERROR 2024-06-30 21:12:10,133 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-30 21:12:49,464 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+WARNING 2024-06-30 21:13:41,394 Sessions assets.py 12 new_sessions_booking message - Enter the wrong time
+ERROR 2024-06-30 21:25:13,495 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-30 21:25:42,423 Sessions assets.py 14 new_sessions_booking message - Some error occurred

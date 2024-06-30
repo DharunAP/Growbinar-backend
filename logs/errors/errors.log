@@ -245,3 +245,7 @@ ERROR 2024-06-25 21:12:22,282 Authentication assets.py 52 getMenteeDetails messa
 ERROR 2024-06-30 19:38:55,427 Authentication assets.py 52 home_page_count message - Error name 'mentee_id' is not defined
 ERROR 2024-06-30 19:39:56,717 Authentication assets.py 52 home_page_count message - Error name 'RequestedSession' is not defined
 ERROR 2024-06-30 19:43:16,306 Authentication assets.py 52 home_page_count message - Error cannot access local variable 'booked_details' where it is not associated with a value
+ERROR 2024-06-30 21:12:10,133 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-30 21:12:49,464 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-30 21:25:13,495 Sessions assets.py 14 new_sessions_booking message - Some error occurred
+ERROR 2024-06-30 21:25:42,423 Sessions assets.py 14 new_sessions_booking message - Some error occurred

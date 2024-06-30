@@ -579,10 +579,10 @@ def new_sessions_booking(request):
 
     # taking the mentor instance
         mentor_ins = Mentor.objects.filter(id=mentor_id)
-        if not mentee_ins.exists() :
+        if not mentor_ins.exists() :
             return Response({'message' : 'Mentor not exits'},status= STATUSES['INTERNAL_SERVER_ERROR'])
         
-        mentee_ins = mentee_ins[0]
+        mentor_ins = mentor_ins[0]
         print(mentor_ins,"--mentor ins--")
     # checking with available sessions
         available_sessions = AvailabeSession.objects.filter(mentor_id=mentor_id)
@@ -618,9 +618,12 @@ def new_sessions_booking(request):
 
                 session_details = Session.objects.filter(mentor=mentor_id, slot_date=start_date)
                 print(session_details, "-- the session details --")
-# changes are madde here
+                # changes are made here
                 for point in session_details :
                     if not point.is_booked :
+                        req_session = RequestedSession.objects.get(session = point)
+                        if userDetails['user']==req_session.mentee and point.from_slot_time <= users_start_time and point.to_slot_time >= users_end_time :
+                            return Response({'message':'You already have an session at this time'},status = STATUSES['BAD_REQUEST'])
                         continue
 
                     if point.from_slot_time <= users_start_time and point.to_slot_time >= users_end_time :
