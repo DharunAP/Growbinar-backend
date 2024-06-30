@@ -1,15 +1,6 @@
-ERROR 2024-06-30 21:12:10,133 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-30 21:12:49,464 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-WARNING 2024-06-30 21:13:41,394 Sessions assets.py 12 new_sessions_booking message - Enter the wrong time
-DEBUG 2024-06-30 21:17:08,554 Sessions assets.py 10 new_sessions_booking message - No already session available 
-DEBUG 2024-06-30 21:17:09,168 Sessions assets.py 10 new_sessions_booking message - New session created
-DEBUG 2024-06-30 21:17:10,119 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
-DEBUG 2024-06-30 21:17:21,387 Sessions assets.py 10 new_sessions_booking message - No already session available 
-DEBUG 2024-06-30 21:17:21,983 Sessions assets.py 10 new_sessions_booking message - New session created
-DEBUG 2024-06-30 21:17:22,989 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
-ERROR 2024-06-30 21:25:13,495 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-ERROR 2024-06-30 21:25:42,423 Sessions assets.py 14 new_sessions_booking message - Some error occurred
-DEBUG 2024-06-30 21:27:46,595 Sessions assets.py 10 new_sessions_booking message - No already session available 
-DEBUG 2024-06-30 21:27:47,548 Sessions assets.py 10 new_sessions_booking message - New session created
-DEBUG 2024-06-30 21:27:49,051 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
-DEBUG 2024-06-30 22:20:48,014 profile_details assets.py 15 testimonials message - Entered testimonials endpoint
+DEBUG 2024-06-30 23:30:51,289 Sessions assets.py 10 new_sessions_booking message - No already session available 
+DEBUG 2024-06-30 23:30:51,947 Sessions assets.py 10 new_sessions_booking message - New session created
+DEBUG 2024-06-30 23:30:52,899 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
+DEBUG 2024-06-30 23:31:08,104 Sessions assets.py 10 new_sessions_booking message - No already session available 
+DEBUG 2024-06-30 23:31:08,774 Sessions assets.py 10 new_sessions_booking message - New session created
+DEBUG 2024-06-30 23:31:09,779 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully

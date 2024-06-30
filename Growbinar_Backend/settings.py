@@ -190,10 +190,16 @@ WSGI_APPLICATION = 'Growbinar_Backend.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME':'GrowbinarDB',
-#         'USER':'Django',
-#         'PASSWORD':'django',
-#  }
+#         'NAME': 'verceldb',
+#         'USER': 'default',
+#         'PASSWORD': 'axhRmdTw6y8K',
+#         'HOST': 'ep-gentle-lab-a4so1tpa-pooler.us-east-1.aws.neon.tech',
+#         'PORT': '5432',
+#         'OPTIONS': {
+#             'sslmode': 'require',
+#             'connect_timeout': 15,
+#         }
+#     }
 # }
 
 DATABASES = {
@@ -210,6 +216,8 @@ DATABASES = {
         }
     }
 }
+
+
 
 
 # Email Settings
