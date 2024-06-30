@@ -342,10 +342,12 @@ def upcoming_sessions_mentee(request) :
                 value['name'] =  session.mentor.first_name + session.mentor.last_name
                 value['role'] = session.mentor.designation
                 value['organisation'] = session.mentor.company
+                value['profile_pic'] = session.mentor.profile_picture_url
                 value['time'] = session.from_slot_time
                 value['link'] = None
                 value['date'] = session.slot_date
                 value['session_id'] = session.id
+                value['Reasons'] = index.reason
 
                 # requested_details = RequestedSession.objects.filter(session = index.mentor.id)[0]
                 # print('=-=-=-=-=-=-=-',requested_details.mentee.first_name)
@@ -394,7 +396,38 @@ def upcoming_sessions_mentee(request) :
                 'message' : FETCHING_ERROR
             }, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
+@api_view(['POST'])
+def availabeSessionDeletion(request):
+    try:
+        log('Entered available session deletion',DEBUG_CODE)
+        validation_response = validate_token(request)
+        if validation_response is not None:
+            return validation_response
+        try:
+            userDetails = getUserDetails(request)  # getting the details of the requested user
+            if userDetails['type']!='mentor':      # chekking weather he is allowed inside this endpoint or not
+                return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+            userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+            if(userChecking is not None):
+                return userChecking
+        except Exception as error:
+            print(error)
+            return Response({'message':'Error authorizing the user try logging in again'})
+        mentor_id = userDetails['id'] # decoding the data
 
+        availableSession = AvailabeSession.objects.get(mentor=userDetails['user'])
+
+        slot = availableSession.availableSlots
+
+        slot.remove(request.data['session'])
+
+        availableSession.availableSlots = slot
+        availableSession.save()
+
+        return Response({'message':'Available session deleted successfully'},status = STATUSES['SUCCESS'])
+    except Exception as e:
+        log('Error deleting available session '+str(e),ERROR_CODE)
+        return Response({'message':'Error delteing available session','error':str(e)},status = STATUSES['INTERNAL_SERVER_ERROR'])
 # Guhan code
 
 @api_view(['GET'])
@@ -459,10 +492,12 @@ def upcoming_sessions_mentor(request) :
                 # value['profile-link'] = 'NULL',
                 value['role'] = requested_details.mentee.role
                 value['organisation'] = requested_details.mentee.organization
+                value['profile_pic'] = requested_details.mentee.profile_picture_url
                 value['time'] = index.from_slot_time
                 value['date'] = index.slot_date
                 value['status'] = stat
                 value['meet_type'] = MEET_TYPE[101]
+                value['reason'] = requested_details.reason
                 
                 sessions.append(value)
 
@@ -516,6 +551,7 @@ def new_sessions_booking(request):
         start_date = request.data['start_date']
         start_time = request.data['start_time']
         end_time = request.data['end_time']
+        reason = request.data['Reasons']
         mentor_id = decryptData(request.data['mentor_id'])
         # mentor_id = request.data['mentor_id']  # preferred mentor of the mentee
         mentee_id = userDetails['id']
@@ -589,7 +625,8 @@ def new_sessions_booking(request):
                     requested_session = RequestedSession.objects.create(
                         session=new_session,  # This will store the ID of the new_session in the requested session
                         mentee=mentee_ins,
-                        is_accepted=False
+                        is_accepted=False,
+                        reason= reason
                     )
                     requested_session.save()
                     log('Requestedsession created successfully',DEBUG_CODE)

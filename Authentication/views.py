@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from static.models import Mentee,Mentor,Experience
+from static.models import Mentee,Mentor,Experience,AuthToken
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from static.cipher import encryptData,decryptData
 from static.message_constants import LOGIN_SUCCESS,INVALID_ROLE,LOGIN_ERROR,INVALID_CREDENTIALS,STATUSES,USER_NOT_FOUND
@@ -266,6 +266,7 @@ def getMenteeDetails(request):
             return Response({'message':EMAIL_NOT_VERIFIFED},status=STATUSES['BAD_REQUEST'])
         serializer = MenteeSerializer(data=request.data)
         valid = serializer.is_valid()
+        print(request.data['organization'])
         if(valid):
             mentee.first_name=request.data['first_name']
             mentee.last_name=request.data['last_name']
@@ -279,7 +280,7 @@ def getMenteeDetails(request):
             mentee.profile_picture_url=request.data['profile_picture_url']
             mentee.description=request.data['description']
             mentee.role=request.data['role']
-            mentee.organization=request.data['organization'],
+            mentee.organization=request.data['organization']
             mentee.is_experience=request.data['is_experience']
 
             mentee.save()
@@ -292,6 +293,33 @@ def getMenteeDetails(request):
         log("Error saving mentor details - "+str(error),ERROR_CODE)
         print(error)
         return Response({'message':ERROR_SAVING_USER_DETAILS,'error':str(error)},status=STATUSES['INTERNAL_SERVER_ERROR'])
+
+@api_view(['GET'])
+def user_logout(request):
+    try:
+        authorization_header = request.headers.get('Authorization')
+        if authorization_header:
+            if authorization_header.startswith('Bearer '):
+                access_token = authorization_header.split(' ')[1]
+            else:
+                access_token = authorization_header
+
+            print("The access token that we need", access_token)
+
+            # Delete the token from the database
+            auth_token = AuthToken.objects.filter(jwt_token=access_token).first()
+            if auth_token:
+                auth_token.delete()
+                # Return a success response
+                return JsonResponse({'message': 'Logout successful'}, status=STATUSES['SUCCESS'])
+            else:
+                return JsonResponse({'message': 'Token not found'}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+        else:
+            # If no token is provided in the request headers, return an error response
+            return JsonResponse({'message': 'Token is required 👎🏻'}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+    except Exception as e:
+        # If an exception occurs, return an error response
+        return JsonResponse({'error': str(e)}, status=400)
 
 @api_view(['GET'])
 def checkUserDetails(request):

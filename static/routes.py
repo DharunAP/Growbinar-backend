@@ -18,6 +18,7 @@ CommonEndpoint = 'commonEndpoint/'
 EXPERIENCE = 'experience/'
 SESSION_COMPLETE = 'sessionComplete/'
 UPCOMMING_SESSION_MENTEE = 'upcomming-sessions-mentee/'
+DELETE_AVAILABLE_SESSION = 'delete-available-session/'
 
 userLogin = 'login/'
 

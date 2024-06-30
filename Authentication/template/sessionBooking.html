@@ -51,10 +51,10 @@
         } */
 
         .detail {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* margin: auto; */
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            /* margin: auto;  */
         }
 
         .detail img {
@@ -131,15 +131,33 @@
         <img style="width: 100px;" src="https://drive.google.com/thumbnail?id=1Y6l_jBB22qKfS4eub6W10OODag8BxBil" alt=""/>
         <h1>Booking Confirmed!</h1>
         <p style="font-size: 13px;">{{before}}<a href="{{user}}">{{name}}</a>{{end}}</p>
+        <table style="margin: auto;">
+            <tr>
+                <td>
+                    <img style="height: 30px;" src="https://drive.google.com/thumbnail?id=1tUr1IbJxuqQocYuSAZ4Tml5O7WRkD04j" alt="Calendar Icon">    
+                </td>
+                <td>
+                    <p style="font-size: 13px;">{{date}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img style="height: 30px;" src="https://drive.google.com/thumbnail?id=1ukesfs6ovmO-kBoyKpmab3seGpE23Xne" alt="Time Icon">
+                </td>
+                <td>
+                    <p style="font-size: 13px;">{{time}}</p>
+                </td>
+            </tr>
+        </table>
         <!-- <div class="details"> -->
-            <div class="detail">
+            <!-- <div class="details">
                 <img src="https://drive.google.com/thumbnail?id=1tUr1IbJxuqQocYuSAZ4Tml5O7WRkD04j" alt="Calendar Icon">
                 <p style="font-size: 13px;">{{date}}</p>
             </div>
-            <div class="detail">
+            <div class="details">
                 <img src="https://drive.google.com/thumbnail?id=1ukesfs6ovmO-kBoyKpmab3seGpE23Xne" alt="Time Icon">
                 <p style="font-size: 13px;">{{time}}</p>
-            </div>
+            </div> -->
         <!-- </div> -->
         <div class="btn"><a href={{link}} >JOIN THE SESSION</a> </div>
         <p style="font-size: 10px;" class="footer-text">"You're now on the path to greatness! Seize this opportunity, push your boundaries, and make an impact with your unique ideas."</p>
