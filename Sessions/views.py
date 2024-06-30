@@ -702,9 +702,9 @@ def new_sessions_booking(request):
                     log('Requestedsession created successfully',DEBUG_CODE)
                     return Response({'message': NEW_SESSION,'session_id' : new_session.id}, status=STATUSES['SUCCESS'])
 
-            else:
-                log('Enter the wrong time',WARNING_CODE)
-                return JsonResponse({'message': WRONG_TIME}, status=STATUSES['INTERNAL_SERVER_ERROR'])
+            # else:
+            #     log('Enter the wrong time',WARNING_CODE)
+            #     return JsonResponse({'message': WRONG_TIME}, status=STATUSES['INTERNAL_SERVER_ERROR'])
 
         log('No free slots available',DEBUG_CODE)
         return JsonResponse({'message': UNAVAILABLE_SLOTS}, status=STATUSES['INTERNAL_SERVER_ERROR'])
