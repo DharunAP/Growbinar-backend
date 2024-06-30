@@ -1523,3 +1523,32 @@ DEBUG 2024-06-27 20:47:42,329 Authentication assets.py 48 getMenteeDetails messa
 DEBUG 2024-06-27 21:01:21,739 Sessions assets.py 10 upcoming_sessions_mentee message - Entered upcoming session
 DEBUG 2024-06-27 21:01:25,255 Sessions assets.py 10 upcoming_sessions_mentee message - Mentee Exists
 DEBUG 2024-06-27 21:01:32,834 Sessions assets.py 10 upcoming_sessions_mentee message - Upcoming session displayed
+DEBUG 2024-06-30 15:51:16,841 Authentication assets.py 48 user_login message - Entered User-Login 
+DEBUG 2024-06-30 15:51:20,229 Authentication assets.py 48 user_login message - User is Mentee
+DEBUG 2024-06-30 15:51:21,556 Authentication assets.py 48 user_login message - User Logged In
+DEBUG 2024-06-30 19:38:52,455 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+ERROR 2024-06-30 19:38:55,427 Authentication assets.py 52 home_page_count message - Error name 'mentee_id' is not defined
+DEBUG 2024-06-30 19:39:53,443 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 19:39:56,714 Authentication assets.py 48 home_page_count message - Mentee Exists
+ERROR 2024-06-30 19:39:56,717 Authentication assets.py 52 home_page_count message - Error name 'RequestedSession' is not defined
+DEBUG 2024-06-30 19:40:26,748 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 19:40:29,966 Authentication assets.py 48 home_page_count message - Mentee Exists
+DEBUG 2024-06-30 19:41:05,462 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 19:41:08,797 Authentication assets.py 48 home_page_count message - Mentee Exists
+DEBUG 2024-06-30 19:43:12,226 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 19:43:15,686 Authentication assets.py 48 home_page_count message - Mentee Exists
+ERROR 2024-06-30 19:43:16,306 Authentication assets.py 52 home_page_count message - Error cannot access local variable 'booked_details' where it is not associated with a value
+DEBUG 2024-06-30 19:53:02,281 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 19:53:05,564 Authentication assets.py 48 home_page_count message - Mentee Exists
+DEBUG 2024-06-30 19:58:46,419 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 20:00:23,358 Authentication assets.py 48 home_page_count message - Entered home page count sessions
+DEBUG 2024-06-30 20:00:26,898 Authentication assets.py 48 home_page_count message - Mentor Exists
+DEBUG 2024-06-30 20:00:27,491 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:28,368 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:29,262 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:30,185 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:30,785 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:31,698 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:32,584 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:33,482 Authentication assets.py 48 home_page_count message - meeting is accepted
+DEBUG 2024-06-30 20:00:34,384 Authentication assets.py 48 home_page_count message - meeting is accepted

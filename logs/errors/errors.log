@@ -242,3 +242,6 @@ ERROR 2024-06-24 22:04:47,300 Sessions assets.py 14 availabeSessionDeletion mess
 ERROR 2024-06-24 22:05:46,271 Sessions assets.py 14 availabeSessionDeletion message - Error deleting available session name 'slots' is not defined
 ERROR 2024-06-25 01:48:04,251 Sessions assets.py 14 upcoming_sessions_mentor message - Error while displaying upcoming session
 ERROR 2024-06-25 21:12:22,282 Authentication assets.py 52 getMenteeDetails message - Error saving mentor details - 'organisation'
+ERROR 2024-06-30 19:38:55,427 Authentication assets.py 52 home_page_count message - Error name 'mentee_id' is not defined
+ERROR 2024-06-30 19:39:56,717 Authentication assets.py 52 home_page_count message - Error name 'RequestedSession' is not defined
+ERROR 2024-06-30 19:43:16,306 Authentication assets.py 52 home_page_count message - Error cannot access local variable 'booked_details' where it is not associated with a value
