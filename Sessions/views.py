@@ -353,7 +353,7 @@ def upcoming_sessions_mentee(request) :
                 value['link'] = None
                 value['date'] = session.slot_date
                 value['session_id'] = session.id
-                value['reasons'] = index.reason
+                value['reason'] = index.reason
 
                 # requested_details = RequestedSession.objects.filter(session = index.mentor.id)[0]
                 # print('=-=-=-=-=-=-=-',requested_details.mentee.first_name)
@@ -558,7 +558,7 @@ def new_sessions_booking(request):
         start_date = request.data['start_date']
         start_time = request.data['start_time']
         end_time = request.data['end_time']
-        reason = request.data['Reasons']
+        reason = request.data['reason']
         print('this is the reasons da',reason,'---')
         mentor_id = decryptData(request.data['mentor_id'])
         mentee_id = userDetails['id']
