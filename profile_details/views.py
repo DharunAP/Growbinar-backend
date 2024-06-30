@@ -8,7 +8,7 @@ from .serializers import TestimonialSerializer, ExperienceSerializer
 from Authentication.jwtVerification import *
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 from django.views.decorators.cache import cache_page
-# from django_ratelimit.decorators import ratelimit
+from django_ratelimit.decorators import ratelimit
 from datetime import datetime
 
 def get_datetime(entry):
@@ -37,7 +37,7 @@ def getAvailableSessions(id):
     return sorted_data
 
 @api_view(['GET'])
-# @ratelimit(key='ip', rate='2/1m', method='GET', block=True)
+@ratelimit(key='ip', rate='2/1m', method='GET', block=True)
 def listAllMentors(request):
     log("Entered list Mentors",DEBUG_CODE)
     try:
