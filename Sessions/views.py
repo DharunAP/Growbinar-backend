@@ -7,7 +7,7 @@ from .assets import log
 from static.cipher import encryptData,decryptData
 from datetime import datetime
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
-
+from django_ratelimit.decorators import ratelimit
 from .zoom_meet import create_meeting_view
 from Authentication.assets import sessionBookedMail
 
@@ -75,7 +75,9 @@ def createAvailableSession(request):
             log('Error returing the available sessions '+str(e),ERROR_CODE)
             return Response({'message':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
-    # for post method to strore data
+    # 
+    # --- POST --- method 👇🏻
+    # 
     try:
         # getting the available session object
         availabeSession = AvailabeSession.objects.filter(mentor = userDetails['user'])
@@ -107,7 +109,7 @@ def createAvailableSession(request):
                 return Response({'message':SESSION_EXISTS,"conflicted slots":conflictingSlots},status=STATUSES['BAD_REQUEST'])
             return Response({'message':SESSION_UPDATED},status=STATUSES['SUCCESS'])
 
-        # creating new available session for the mentor
+        # -- creating new available session for the mentor --
         slots = []
         for slot in request.data['availableSlots']:
             date = datetime.strptime(slot['date'], '%Y-%m-%d').date()
@@ -131,6 +133,7 @@ def createAvailableSession(request):
         return Response({'message':ERROR_SAVING_USER_DETAILS},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def bookSession(request):
     log('Entered booking a session',DEBUG_CODE)
     try:
@@ -209,6 +212,7 @@ def bookSession(request):
         return Response({'message':"Error booking a session"},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def sessionCompleted(request):
     try:
         validation_response = validate_token(request)  # validating the requested user using authorization headder
@@ -259,6 +263,7 @@ def sessionCompleted(request):
         return Response({'message':"error in marking",'error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def sessionFeedback(request):
 
     '''
@@ -299,6 +304,7 @@ def sessionFeedback(request):
         return Response({'message':ERROR_CREATING_FEEDBACK},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['GET'])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
 def upcoming_sessions_mentee(request) :
     log('Entered upcoming session',DEBUG_CODE)
     validation_response = validate_token(request)
@@ -395,6 +401,7 @@ def upcoming_sessions_mentee(request) :
             }, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def availabeSessionDeletion(request):
     try:
         log('Entered available session deletion',DEBUG_CODE)
@@ -429,7 +436,7 @@ def availabeSessionDeletion(request):
 # Guhan code
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
+@ratelimit(key='ip', rate='50/1m', method='GET', block=True)
 def upcoming_sessions_mentor(request) :
     log('Entered upcoming session',DEBUG_CODE)
     validation_response = validate_token(request)
@@ -525,7 +532,7 @@ def upcoming_sessions_mentor(request) :
 # View for creating new Session
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def new_sessions_booking(request):
     try:
         print("hello")
@@ -549,9 +556,9 @@ def new_sessions_booking(request):
         start_date = request.data['start_date']
         start_time = request.data['start_time']
         end_time = request.data['end_time']
-        reason = request.data['reasons']
+        reason = request.data['Reasons']
+        print('this is the reasons da',reason,'---')
         mentor_id = decryptData(request.data['mentor_id'])
-        # mentor_id = request.data['mentor_id']  # preferred mentor of the mentee
         mentee_id = userDetails['id']
         print(mentor_id, " --- in decrypted format -- ")
 
@@ -583,7 +590,7 @@ def new_sessions_booking(request):
             converted_start_time = convert_to_hms(start_time)
             converted_end_time = convert_to_hms(end_time)
         except ValueError as e:
-            return JsonResponse({'message': str(e)}, status=400)
+            return JsonResponse({'Error': str(e),"message" : "Some Error has Occured"}, status=400)
 
         users_start_time = datetime.strptime(converted_start_time, '%H:%M:%S').time()
         users_end_time = datetime.strptime(converted_end_time, '%H:%M:%S').time()
@@ -612,7 +619,7 @@ def new_sessions_booking(request):
                             mentor=mentor_ins,
                             slot_date=start_date,
                             from_slot_time=users_start_time,
-                            to_slot_time=users_end_time
+                            to_slot_time=users_end_time,
                         )
 
                     new_session.save()
@@ -671,7 +678,8 @@ def new_sessions_booking(request):
                     requested_session = RequestedSession.objects.create(
                             session=new_session,  # This will store the ID of the new_session in the requested session
                             mentee=mentee_ins,
-                            is_accepted=False
+                            is_accepted=False,
+                            reason = reason
                         )
                     requested_session.save()
                     print(new_session.id)
@@ -691,7 +699,7 @@ def new_sessions_booking(request):
                              'Error' : str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@ratelimit(key='ip', rate='50/1m', method='POST', block=True)
 def session_cancellation(request):
     print("Session Cancellation")
     
