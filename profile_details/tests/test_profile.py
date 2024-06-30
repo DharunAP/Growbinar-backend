@@ -117,7 +117,7 @@ class list_all_mentors_and_mentees(TestCase) :
         print("no pain no gain")
 
         response = client.get(reverse('list-mentors'))
-        print(response.content, 'this is the response of the test 😑😑')
+        print(response.content, 'this is the response of the test 😑')
         json_response = response.json()
         self.assertEqual(response.status_code,200)
         

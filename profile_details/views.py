@@ -361,7 +361,7 @@ def mentor_details(request):
         experienceList = []
         for value in experience:
             index = {
-                'role' : value.role,
+                'designation' : value.role,
                 'startDate' : value.from_duration,
                 'endDate' : value.to_duration,
                 'organization':value.company,

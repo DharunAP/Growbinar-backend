@@ -187,29 +187,29 @@ WSGI_APPLICATION = 'Growbinar_Backend.wsgi.application'
 
 # Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'GrowbinarDB',
-        'USER':'Django',
-        'PASSWORD':'django',
- }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'verceldb',
-#         'USER': 'default',
-#         'PASSWORD': os.environ['db_password'],
-#         'HOST': os.environ['db_host_id'],
-#         'PORT': '5432', 
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#             'connect_timeout': 15,
-#         }
-#     }
+#         'NAME':'GrowbinarDB',
+#         'USER':'Django',
+#         'PASSWORD':'django',
+#  }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': os.environ['db_password'],
+        'HOST': os.environ['db_host_id'],
+        'PORT': '5432', 
+        'OPTIONS': {
+            'sslmode': 'require',
+            'connect_timeout': 15,
+        }
+    }
+}
 
 
 # Email Settings

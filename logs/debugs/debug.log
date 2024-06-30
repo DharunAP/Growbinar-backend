@@ -1464,3 +1464,13 @@ DEBUG 2024-06-20 14:55:36,022 profile_details assets.py 15 listAllMentors messag
 DEBUG 2024-06-20 14:55:41,358 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
 DEBUG 2024-06-20 14:55:43,209 profile_details assets.py 15 listAllMentors message - Entered list Mentors
 DEBUG 2024-06-20 14:55:48,768 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-06-30 15:16:50,762 Sessions assets.py 10 new_sessions_booking message - Session created successfully
+DEBUG 2024-06-30 15:16:51,871 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
+DEBUG 2024-06-30 15:23:09,578 Sessions assets.py 10 new_sessions_booking message - Session created successfully
+DEBUG 2024-06-30 15:23:11,371 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
+DEBUG 2024-06-30 15:39:59,487 Sessions assets.py 10 new_sessions_booking message - No free slots available
+DEBUG 2024-06-30 15:40:11,920 Sessions assets.py 10 new_sessions_booking message - No free slots available
+DEBUG 2024-06-30 15:40:28,405 Sessions assets.py 10 new_sessions_booking message - No free slots available
+DEBUG 2024-06-30 15:41:26,157 Sessions assets.py 10 new_sessions_booking message - No free slots available
+DEBUG 2024-06-30 15:50:44,157 Sessions assets.py 10 new_sessions_booking message - No free slots available
+DEBUG 2024-06-30 15:50:59,425 Sessions assets.py 10 new_sessions_booking message - No free slots available

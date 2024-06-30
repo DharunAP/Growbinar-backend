@@ -552,8 +552,8 @@ def new_sessions_booking(request):
         start_time = request.data['start_time']
         end_time = request.data['end_time']
         reason = request.data['Reasons']
+        print('this is the reasons da',reason,'---')
         mentor_id = decryptData(request.data['mentor_id'])
-        # mentor_id = request.data['mentor_id']  # preferred mentor of the mentee
         mentee_id = userDetails['id']
         print(mentor_id, " --- in decrypted format -- ")
 
@@ -614,7 +614,8 @@ def new_sessions_booking(request):
                             mentor=mentor_ins,
                             slot_date=start_date,
                             from_slot_time=users_start_time,
-                            to_slot_time=users_end_time
+                            to_slot_time=users_end_time,
+                            # reason = reason
                         )
 
                     new_session.save()
@@ -673,7 +674,8 @@ def new_sessions_booking(request):
                     requested_session = RequestedSession.objects.create(
                             session=new_session,  # This will store the ID of the new_session in the requested session
                             mentee=mentee_ins,
-                            is_accepted=False
+                            is_accepted=False,
+                            reason = reason
                         )
                     requested_session.save()
                     print(new_session.id)
