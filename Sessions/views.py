@@ -353,7 +353,7 @@ def upcoming_sessions_mentee(request) :
                 value['link'] = None
                 value['date'] = session.slot_date
                 value['session_id'] = session.id
-                value['reasons'] = index.reason
+                value['reason'] = index.reason
 
                 # requested_details = RequestedSession.objects.filter(session = index.mentor.id)[0]
                 # print('=-=-=-=-=-=-=-',requested_details.mentee.first_name)
