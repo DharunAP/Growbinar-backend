@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from static.models import Mentee,Mentor,Experience,AuthToken
+from static.models import Mentee,Mentor,Experience,AuthToken,RequestedSession,Session,BookedSession
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from static.cipher import encryptData,decryptData
 from static.message_constants import LOGIN_SUCCESS,INVALID_ROLE,LOGIN_ERROR,INVALID_CREDENTIALS,STATUSES,USER_NOT_FOUND
@@ -87,7 +87,97 @@ def user_login(request):
         log('Error while Login  ' + str(error),ERROR_CODE)
         return JsonResponse({'message' : LOGIN_ERROR,'error':str(error)}, status = STATUSES['INTERNAL_SERVER_ERROR'])
 
+@api_view(['GET'])
+def home_page_count(request):
+    log('Entered home page count sessions',DEBUG_CODE)
+    validation_response = validate_token(request)
+    if validation_response is not None:
+        return validation_response
+    try:
+        userDetails = getUserDetails(request)  # getting the details of the requested user
+        # if userDetails['type']!='mentee':      # chekking weather he is allowed inside this endpoint or not
+        #     return Response({'message':ACCESS_DENIED},status=STATUSES['BAD_REQUEST'])
+        userChecking = checkUserStatus(userDetails['user'],userDetails['type'])
+        if(userChecking is not None):
+            return userChecking
+    except Exception as error:
+        print(error)
+        return Response({'message':'Error authorizing the user try logging in again'})
 
+    try:
+        if userDetails['type']=='mentor':
+
+
+            mentor_id = userDetails['id']
+            mentor_details = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,profile_picture_url FROM static_mentor WHERE id={mentor_id};")[0]
+            print(mentor_details)
+
+            # if mentor_details.exists() :
+            if mentor_details :
+                # if the mentor Exists
+                log("Mentor Exists",DEBUG_CODE)
+                # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
+                session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE mentor_id={mentor_id};")
+                
+                print('entered the loop --',session_details)
+                sessions = []  # list to store the upcoming sessions
+                upcommingCount = 0
+                pendingCount = 0
+                for index in session_details:
+                    value = dict()
+
+                    requested_details = RequestedSession.objects.filter(session = index.id)[0]
+                    print('before if',requested_details.is_accepted)
+                    if requested_details.is_accepted :
+                        log('meeting is accepted',DEBUG_CODE)
+                        booked_details = BookedSession.objects.filter(requested_session = requested_details)
+                        if not booked_details.exists():
+                            continue
+                        booked_details = booked_details[0]
+                        if not booked_details.is_completed :
+                            upcommingCount +=1
+
+                    else :
+                        pendingCount +=1
+                        log('meeting is not accepted',DEBUG_CODE)
+            
+                return Response({'message':'Details sent successfully','upcommingCount':upcommingCount,'pendingCount':pendingCount},status=STATUSES['SUCCESS'])
+        else:
+            mentee_id = userDetails['id']
+            mentee_details = Mentee.objects.get(id = mentee_id)
+            print(mentee_details)
+
+            # if mentor_details.exists() :
+            if mentee_details :
+                # if the mentor Exists
+                log("Mentee Exists",DEBUG_CODE)
+                # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
+                requestedSession_details = RequestedSession.objects.filter(mentee_id = mentee_id)
+                
+                upcommingCount = 0
+                pendingCount = 0
+                for index in requestedSession_details:
+                    session = index.session
+
+                    if index.is_accepted is True :
+                        # session is accepted by the mentor
+                        booked_details = BookedSession.objects.filter(requested_session = index)
+                        if not booked_details.exists():
+                            continue
+                        booked_details = booked_details[0]
+                        if not booked_details.is_completed :
+                            upcommingCount +=1
+
+                    else :
+                        # session is not acceted by mentor and the date also before current date
+                        log('session not accepted by mentor',DEBUG_CODE)
+                        pendingCount+=1
+
+                return Response({'message':'Details sent successfully','upcommingCount':upcommingCount,'pendingCount':pendingCount},status=STATUSES['SUCCESS'])
+        return Response({'message':'user does not exists'},status = STATUSES['BAD_REQUEST'])
+    except Exception as e:
+        log('Error '+str(e),ERROR_CODE)
+        return Response({'message':'Error sending upcomming sessions count','error':str(e)},status=STATUSES['INTERNAL_SERVER_ERROR'])    
 
 
 @api_view(['POST'])
