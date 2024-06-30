@@ -579,7 +579,7 @@ def new_sessions_booking(request):
             return Response({'message':'No available sessions'},status= STATUSES['BAD_REQUEST'])
         available_sessions = available_sessions[0]
         free_slots = [slot for slot in available_sessions.availableSlots if slot['date'] == start_date]  # for taking list for that date
-        print(free_slots, "--ithu summa trial tha")
+        print(free_slots, "--on that day free sessions are available--")
 
         try:
             converted_start_time = convert_to_hms(start_time)
