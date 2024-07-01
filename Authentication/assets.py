@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 import pyshorteners
 import logging
+import os
 import inspect
 from django.template.loader import render_to_string,get_template
 from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
@@ -11,7 +12,7 @@ def urlShortner(url):
 
 def sendVerificationMail(url, email_id):
     print(url)
-    template = get_template('template/index.html').render({'BASE_URL':'https://growbinar-backend-4.onrender.com/','verifyMail':url})
+    template = get_template('template/index.html').render({'BASE_URL':os.getenv('BACKEND_URL'),'verifyMail':url})
     send_mail(
         subject="Verify your mail by clicking the below link",  # subject in the sending mail
         from_email="admin@growbinar.com",                       # sender mail

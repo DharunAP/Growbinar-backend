@@ -4,3 +4,5 @@ DEBUG 2024-06-30 23:30:52,899 Sessions assets.py 10 new_sessions_booking message
 DEBUG 2024-06-30 23:31:08,104 Sessions assets.py 10 new_sessions_booking message - No already session available 
 DEBUG 2024-06-30 23:31:08,774 Sessions assets.py 10 new_sessions_booking message - New session created
 DEBUG 2024-06-30 23:31:09,779 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
+DEBUG 2024-07-01 22:17:39,469 Authentication assets.py 49 MentorSignup message - Entered mentor-signup
+DEBUG 2024-07-01 22:17:43,202 Authentication assets.py 49 MentorSignup message - signup successfull

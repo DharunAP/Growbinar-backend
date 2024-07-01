@@ -627,7 +627,7 @@ def new_sessions_booking(request):
                         continue
 
                     if point.from_slot_time <= users_start_time and point.to_slot_time >= users_end_time :
-                        return Response({"message " : "Slot booked already"},status=STATUSES['BAD_REQUEST']) 
+                        return Response({"message" : "Slot booked already"},status=STATUSES['BAD_REQUEST']) 
 
                 # if not session_details :
                 log('No already session available ',DEBUG_CODE)
