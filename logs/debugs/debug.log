@@ -1,8 +1,38 @@
-DEBUG 2024-06-30 23:30:51,289 Sessions assets.py 10 new_sessions_booking message - No already session available 
-DEBUG 2024-06-30 23:30:51,947 Sessions assets.py 10 new_sessions_booking message - New session created
-DEBUG 2024-06-30 23:30:52,899 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
-DEBUG 2024-06-30 23:31:08,104 Sessions assets.py 10 new_sessions_booking message - No already session available 
-DEBUG 2024-06-30 23:31:08,774 Sessions assets.py 10 new_sessions_booking message - New session created
-DEBUG 2024-06-30 23:31:09,779 Sessions assets.py 10 new_sessions_booking message - Requestedsession created successfully
-DEBUG 2024-07-01 22:17:39,469 Authentication assets.py 49 MentorSignup message - Entered mentor-signup
-DEBUG 2024-07-01 22:17:43,202 Authentication assets.py 49 MentorSignup message - signup successfull
+DEBUG 2024-07-13 14:47:18,290 Authentication assets.py 49 user_login message - Entered User-Login 
+ERROR 2024-07-13 14:47:21,103 Authentication assets.py 53 user_login message - Error while Login  relation "core_mentee" does not exist
+LINE 1: ...."is_experience", "core_mentee"."created_at" FROM "core_ment...
+                                                             ^
+
+DEBUG 2024-07-13 14:49:27,845 Authentication assets.py 49 user_login message - Entered User-Login 
+DEBUG 2024-07-13 14:49:32,781 Authentication assets.py 49 user_login message - User is Mentee
+WARNING 2024-07-13 14:49:32,781 Authentication assets.py 51 user_login message - User Not Found
+DEBUG 2024-07-13 14:50:29,450 Authentication assets.py 49 user_login message - Entered User-Login 
+DEBUG 2024-07-13 14:50:32,489 Authentication assets.py 49 user_login message - User is Mentee
+WARNING 2024-07-13 14:50:32,498 Authentication assets.py 51 user_login message - User Not Found
+DEBUG 2024-07-13 14:50:49,033 Authentication assets.py 49 user_login message - Entered User-Login 
+DEBUG 2024-07-13 14:50:51,430 Authentication assets.py 49 user_login message - User is Mentor
+WARNING 2024-07-13 14:50:51,438 Authentication assets.py 51 user_login message - User Not Found
+DEBUG 2024-07-13 14:52:39,831 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-07-13 14:52:42,283 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-07-13 14:57:26,195 profile_details assets.py 15 listAllMentors message - Entered list Mentors
+DEBUG 2024-07-13 14:57:28,524 profile_details assets.py 15 listAllMentors message - Mentors listed successfully
+DEBUG 2024-07-13 15:01:13,392 Authentication assets.py 49 MenteeSignup message - Entered mentee-signup
+DEBUG 2024-07-13 15:01:23,640 Authentication assets.py 49 MenteeSignup message - signup successfull
+DEBUG 2024-07-13 15:02:39,810 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-07-13 15:03:31,053 Authentication assets.py 49 getMenteeDetails message - Entered mentor details endpoint
+WARNING 2024-07-13 15:03:34,694 Authentication assets.py 51 getMenteeDetails message - Email not verified
+DEBUG 2024-07-13 15:03:57,326 Authentication assets.py 49 getMenteeDetails message - Entered mentor details endpoint
+WARNING 2024-07-13 15:04:02,767 Authentication assets.py 51 getMenteeDetails message - Email not verified
+DEBUG 2024-07-13 15:07:46,383 Authentication assets.py 49 getMenteeDetails message - Entered mentor details endpoint
+WARNING 2024-07-13 15:07:54,601 Authentication assets.py 51 getMenteeDetails message - Email not verified
+DEBUG 2024-07-13 15:08:40,937 Authentication assets.py 49 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-07-13 15:08:45,724 Authentication assets.py 49 VerifyMentee message - Email verification sucess for 1
+DEBUG 2024-07-13 15:10:08,096 Authentication assets.py 49 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-07-13 15:10:14,297 Authentication assets.py 49 VerifyMentee message - Email verification sucess for 1
+DEBUG 2024-07-13 15:10:38,690 Authentication assets.py 49 VerifyMentee message - Entered email verification of mentee
+DEBUG 2024-07-13 15:10:43,282 Authentication assets.py 49 VerifyMentee message - Email verification sucess for 1
+DEBUG 2024-07-13 15:10:53,344 Authentication assets.py 49 getMenteeDetails message - Entered mentor details endpoint
+DEBUG 2024-07-13 15:10:59,734 Authentication assets.py 49 getMenteeDetails message - success
+DEBUG 2024-07-13 15:12:49,074 profile_details assets.py 15 menteeDetails message - Entered mentee details
+DEBUG 2024-07-13 15:12:52,885 profile_details assets.py 15 menteeDetails message - Mentee details provided sucessfully
+DEBUG 2024-07-13 15:13:05,269 Authentication assets.py 49 user_login message - Entered User-Login 

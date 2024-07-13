@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import *                                    # importing views to be called for each route
-from static import routes             # importing url routes from the static files in the project dir
+from core import routes             # importing url routes from the core files in the project dir
 
 
 urlpatterns = [
@@ -15,5 +15,5 @@ urlpatterns = [
     path(routes.HOME_COUNT, home_page_count, name='home-page-count'),
     path(routes.CommonEndpoint,checkUserDetails, name="common-endpoint"),
     path(routes.userLogout,user_logout,name='logout'),
-    path('verifyMailSampleTemplate/',verifyMailSampleTemplate)
+    path(routes.SAMPLE_TEMPLATE_EMAIL,verifyMailSampleTemplate)
 ]

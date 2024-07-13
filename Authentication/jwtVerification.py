@@ -4,8 +4,8 @@ from rest_framework import status
 from django.utils import timezone
 from datetime import timedelta
 from rest_framework_simplejwt.tokens import AccessToken
-from static.models import Mentee,Mentor,AuthToken
-from static.message_constants import STATUSES,TOKEN_TIMEDOUT,INVALID_TOKEN,VALID_TOKEN,EMAIL_NOT_VERIFIFED,DETAILS_NOT_ENTERED
+from core.models import Mentee,Mentor,AuthToken
+from core.message_constants import STATUSES,TOKEN_TIMEDOUT,INVALID_TOKEN,VALID_TOKEN,EMAIL_NOT_VERIFIFED,DETAILS_NOT_ENTERED
 import pytz
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from datetime import datetime

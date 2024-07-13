@@ -4,7 +4,7 @@ import logging
 import os
 import inspect
 from django.template.loader import render_to_string,get_template
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
+from core.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 def urlShortner(url):
     short_url = pyshorteners.Shortener().tinyurl.short(url) # using tinyURL service to shorten the url from the pyShortner
@@ -15,9 +15,9 @@ def sendVerificationMail(url, email_id):
     template = get_template('template/index.html').render({'BASE_URL':os.getenv('BACKEND_URL'),'verifyMail':url})
     send_mail(
         subject="Verify your mail by clicking the below link",  # subject in the sending mail
-        from_email="admin@growbinar.com",                       # sender mail
+        from_email=os.getenv('email_host_id'),                  # sender mail
         html_message= template,                                 # html template
-        message='https://growbinar-backend-4.onrender.com/'+url,# message in the mail
+        message=os.getenv('BACKEND_URL')+url,                   # message in the mail
         recipient_list=[email_id,]                              # recipient mail id
     )
     print("mail sent")

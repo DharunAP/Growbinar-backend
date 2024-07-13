@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from static.models import Mentee,Mentor
+from core.models import Mentee,Mentor
 
 class UserSerializer(serializers.Serializer):
     email_id = serializers.EmailField()

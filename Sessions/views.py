@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from static.models import AvailabeSession,Session,SessionFeedback,BookedSession,RequestedSession
+from core.models import AvailabeSession,Session,SessionFeedback,BookedSession,RequestedSession
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import *
+from core.message_constants import *
 from .assets import log
-from static.cipher import encryptData,decryptData
+from core.cipher import encryptData,decryptData
 from datetime import datetime
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
+from core.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 from django_ratelimit.decorators import ratelimit
 from .zoom_meet import create_meeting_view
 from Authentication.assets import sessionBookedMail
@@ -461,7 +461,7 @@ def upcoming_sessions_mentor(request) :
  
     try :
         # mentor_details = Mentor.objects.filter(id = mentor_id)
-        mentor_details = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,profile_picture_url FROM static_mentor WHERE id={mentor_id};")[0]
+        mentor_details = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,profile_picture_url FROM core_mentor WHERE id={mentor_id};")[0]
         print(mentor_details)
 
         # if mentor_details.exists() :
@@ -469,7 +469,7 @@ def upcoming_sessions_mentor(request) :
             # if the mentor Exists
             log("Mentor Exists",DEBUG_CODE)
             # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
-            session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE mentor_id={mentor_id};")
+            session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM core_session WHERE mentor_id={mentor_id};")
             
             print('entered the loop --',session_details)
             sessions = []  # list to store the upcoming sessions

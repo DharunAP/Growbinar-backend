@@ -18,7 +18,9 @@ SESSION_COMPLETE = 'session_complete/'
 UPCOMMING_SESSION_MENTEE = 'upcoming_sessions_mentee/'
 DELETE_AVAILABLE_SESSION = 'delete_available_session/'
 HOME_COUNT = 'session_count/'
-
+CREATE_MEETING = 'create-meeting/'
+TESTIMONIALS = 'testimonials/'
+SAMPLE_TEMPLATE_EMAIL = 'verifyMailSampleTemplate/'
 userLogin = 'login/'
 
 upcomingSesions = 'upcoming_sessions/'

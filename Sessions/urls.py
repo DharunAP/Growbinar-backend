@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import *           # importing views to be called for each route
-from static import routes      # importing url routes from the static files in the project dir
+from core import routes      # importing url routes from the core files in the project dir
 from .zoom_meet import *
 
 urlpatterns = [
@@ -13,6 +13,6 @@ urlpatterns = [
     path(routes.upcomingSesions,upcoming_sessions_mentor,name='upcomming-sessions'),
     path(routes.newsession, new_sessions_booking, name = 'new-session-bboking'),
     path(routes.cancelsession, session_cancellation, name = 'cancel-session'),
-    path('create-meeting/', create_meeting_view, name='create_meeting'),
+    path(routes.CREATE_MEETING, create_meeting_view, name='create_meeting'),
 
 ]

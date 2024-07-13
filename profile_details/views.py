@@ -1,12 +1,12 @@
-from static.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session,Testimonial
+from core.models import Mentee,Mentor,Experience,RequestedSession,BookedSession,Session,Testimonial
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from static.message_constants import *
+from core.message_constants import *
 from .assets import urlShortner,log
-from static.cipher import encryptData,decryptData
+from core.cipher import encryptData,decryptData
 from .serializers import TestimonialSerializer, ExperienceSerializer
 from Authentication.jwtVerification import *
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
+from core.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 from django.views.decorators.cache import cache_page
 from django_ratelimit.decorators import ratelimit
 from datetime import datetime
@@ -42,7 +42,7 @@ def listAllMentors(request):
     log("Entered list Mentors",DEBUG_CODE)
     try:
         # getting required fields from the mentor table for each mentor
-        mentors = Mentor.objects.raw("SELECT id,profile_picture_url,is_top_rated,is_experience,languages,first_name,last_name,designation,company,mentor_experience FROM static_mentor;")
+        mentors = Mentor.objects.raw("SELECT id,profile_picture_url,is_top_rated,is_experience,languages,first_name,last_name,designation,company,mentor_experience FROM core_mentor;")
         data = []
         print('hi',len(mentors))
         # iterating through the query set to convert each instance to an proper list 
@@ -99,10 +99,20 @@ def menteeDetails(request):
             log(INVALID_USER_ID,WARNING_CODE)
             return Response({'message':INVALID_USER_ID},status=STATUSES['BAD_REQUEST'])
 
-        mentee = Mentee.objects.raw(f"SELECT id,is_experience,first_name,last_name,languages,role,organization,profile_picture_url,city,is_experience,description,areas_of_interest FROM static_mentee WHERE id={mentee_id};")[0]
+        mentee = Mentee.objects.raw(f"SELECT id,is_experience,first_name,last_name,languages,role,organization,profile_picture_url,city,is_experience,description,areas_of_interest FROM core_mentee WHERE id={mentee_id};")
+
+        if(len(mentee)==0):
+            log(USER_NOT_FOUND,WARNING_CODE)
+            return Response({'message':USER_NOT_FOUND},status=STATUSES['BAD_REQUEST'])
+        else:
+            mentee = mentee[0]
         
+        # checking for user's email verification and stepper
+        if not mentee.is_email_verified or mentee.first_name==None:
+            return Response({'message':USER_NOT_FOUND},status=STATUSES['SUCCESS'])
+
         # urlShortner(mentee.profile_picture_url) # implementing url shortner
-        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration FROM static_Experience WHERE referenced_id={mentee.id} and role_type=\'mentee\'")
+        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration FROM core_Experience WHERE referenced_id={mentee.id} and role_type=\'mentee\'")
         experience_list = []
         # iterating through the experience to list it
         for i in experience:
@@ -152,17 +162,17 @@ def listMentorsOfMentee(request):
         print(userDetails['id'])
         menteeID = userDetails['id']
         # getting the requested sessions of the mentee
-        request_sessions = RequestedSession.objects.raw(f'SELECT session_id,mentee_id,is_accepted from static_RequestedSession where mentee_id={menteeID};')
+        request_sessions = RequestedSession.objects.raw(f'SELECT session_id,mentee_id,is_accepted from core_RequestedSession where mentee_id={menteeID};')
         if(len(request_sessions)<1): # check if there is some data or not
             return Response({"message":NO_DATA_AVAILABLE},status=STATUSES['SUCCESS'])
 
         mentor_list = []
         for index in request_sessions:
             # getting the session object of each requested sesssion 
-            session = Session.objects.raw(f'SELECT id,mentor_id,is_booked from static_session where id={index.session_id}')[0]
+            session = Session.objects.raw(f'SELECT id,mentor_id,is_booked from core_session where id={index.session_id}')[0]
             if session.is_booked:
                 # if session is booked then get booked sessions details
-                booked_session = BookedSession.objects.raw(f"SELECT id,is_completed from static_BookedSession where requested_session_id={index.session_id}")
+                booked_session = BookedSession.objects.raw(f"SELECT id,is_completed from core_BookedSession where requested_session_id={index.session_id}")
                 if(len(booked_session)<1):
                     continue
                 if booked_session[0].is_completed:
@@ -315,13 +325,13 @@ def experience(request):
 
 # Guhan code
 
-from static.models import Mentor,Experience,AvailabeSession,Mentee,UserQuery
+from core.models import Mentor,Experience,AvailabeSession,Mentee,UserQuery
 from rest_framework.decorators import api_view,permission_classes
-from static.message_constants import STATUSES,USER_NOT_FOUND,FETCHING_ERROR,MENTOR_DETAILS,SESSION_EXISTS,QUERY_SUBMITTED,QUERY_EMPTY
+from core.message_constants import STATUSES,USER_NOT_FOUND,FETCHING_ERROR,MENTOR_DETAILS,SESSION_EXISTS,QUERY_SUBMITTED,QUERY_EMPTY
 from .assets import log
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
-from static.cipher import decryptData,encryptData
+from core.cipher import decryptData,encryptData
 from Authentication.jwtVerification import validate_token
 from datetime import datetime
 from Authentication.jwtVerification import validate_token
@@ -349,12 +359,17 @@ def mentor_details(request):
             return Response({'message':INVALID_USER_ID},status=STATUSES['BAD_REQUEST'])
         print('mentor - id',mentor_id,'----')
 
-        mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM static_mentor WHERE id={mentor_id};")
+        mentor = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,languages,bio,is_email_verified,city FROM core_mentor WHERE id={mentor_id};")
         if(len(mentor)==0):
             log(USER_NOT_FOUND,WARNING_CODE)
             return Response({'message':USER_NOT_FOUND},status=STATUSES['BAD_REQUEST'])
         else:
             mentor = mentor[0]
+        
+        # checking for user's email verification and stepper
+        if not mentor.is_email_verified or mentor.first_name==None:
+            return Response({'message':USER_NOT_FOUND},status=STATUSES['SUCCESS'])
+
         try:
             availabeSession = AvailabeSession.objects.get(mentor_id = mentor_id)
             flag=True
@@ -364,7 +379,7 @@ def mentor_details(request):
         print('----avai-----',availabeSession)
         # print(mentor.is_email_verified)
         log("mentor email verified",DEBUG_CODE)
-        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM static_Experience WHERE referenced_id={mentor.id} and role_type=\'mentor\';")
+        experience = Experience.objects.raw(f"SELECT id,company,from_duration,to_duration,role FROM core_Experience WHERE referenced_id={mentor.id} and role_type=\'mentor\';")
         experienceList = []
         for value in experience:
             index = {
@@ -411,7 +426,7 @@ def listAllMentees(request):
     log("Entered list Mentee",DEBUG_CODE)
     try:
         # getting required fields from the mentor table for each mentor
-        mentee = Mentee.objects.raw("SELECT id,first_name,last_name,country,city,phone_number,email_id,profile_picture_url,areas_of_interest FROM static_mentee;")
+        mentee = Mentee.objects.raw("SELECT id,first_name,last_name,country,city,phone_number,email_id,profile_picture_url,areas_of_interest FROM core_mentee;")
         data = []
         print('hi',len(mentee))
         # iterating through the query set to convert each instance to an proper list 
@@ -420,7 +435,7 @@ def listAllMentees(request):
                 continue
             value = dict()
             value['mentee_id']=encryptData(mentee.id)
-            value['profile_picture_url']=pyshorteners.Shortener().tinyurl.short(mentee.profile_picture_url) # implementing url shortner
+            value['profile_picture_url']=mentee.profile_picture_url # implementing url shortner
             value['name'] = mentee.first_name + " " + mentee.last_name
             value['role'] = mentee.role
             value['email-id'] = mentee.email_id

@@ -1,0 +1,4 @@
+ERROR 2024-07-13 14:47:21,103 Authentication assets.py 53 user_login message - Error while Login  relation "core_mentee" does not exist
+LINE 1: ...."is_experience", "core_mentee"."created_at" FROM "core_ment...
+                                                             ^
+

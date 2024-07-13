@@ -1,19 +1,19 @@
 from django.shortcuts import render, redirect
-from static.models import Mentee,Mentor,Experience,AuthToken,RequestedSession,Session,BookedSession
+from core.models import Mentee,Mentor,Experience,AuthToken,RequestedSession,Session,BookedSession
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
-from static.cipher import encryptData,decryptData
-from static.message_constants import LOGIN_SUCCESS,INVALID_ROLE,LOGIN_ERROR,INVALID_CREDENTIALS,STATUSES,USER_NOT_FOUND
+from core.cipher import encryptData,decryptData
+from core.message_constants import LOGIN_SUCCESS,INVALID_ROLE,LOGIN_ERROR,INVALID_CREDENTIALS,STATUSES,USER_NOT_FOUND
 from rest_framework_simplejwt.tokens import AccessToken
 from django.http import JsonResponse
 from rest_framework.response import Response
 from .serializers import MentorSerializer,MenteeSerializer,UserSerializer
-from static.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,USER_CREATED,EMAIL_EXISTS,SIGNUP_ERROR,VERIFIED_USER_EMAIL,ERROR_VERIFYING_USER_EMAIL,USER_DETAILS_SAVED,ERROR_SAVING_USER_DETAILS,EMAIL_NOT_VERIFIFED,ACCESS_DENIED
-from static.routes import VERIFY_MENTOR_ROUTE,VERIFY_MENTEE_ROUTE
+from core.message_constants import STATUSES,INVALID_CREDENTIALS,DETAILS_NOT_ENTERED,ERROR_VERIFYING_USER_EMAIL,USER_CREATED,EMAIL_EXISTS,SIGNUP_ERROR,VERIFIED_USER_EMAIL,ERROR_VERIFYING_USER_EMAIL,USER_DETAILS_SAVED,ERROR_SAVING_USER_DETAILS,EMAIL_NOT_VERIFIFED,ACCESS_DENIED
+from core.routes import VERIFY_MENTOR_ROUTE,VERIFY_MENTEE_ROUTE
 from django.contrib.auth.hashers import make_password,check_password
 from .assets import sendVerificationMail,log
 from .jwtVerification import get_or_create_jwt, getUserDetails, validate_token, checkUserStatus
 from rest_framework.permissions import IsAuthenticated
-from static.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
+from core.message_constants import DEBUG_CODE,WARNING_CODE,ERROR_CODE
 
 
 @api_view(['POST'])
@@ -61,20 +61,14 @@ def user_login(request):
             log("User Logged In",DEBUG_CODE)
 
             if not user.is_email_verified:  # checking for user email verification
-                return Response({'message':EMAIL_NOT_VERIFIFED,'token':token},status=STATUSES['BAD_REQUEST'])
+                return Response({'message':EMAIL_NOT_VERIFIFED,'token':token,'id':encryptData(user.id)},status=STATUSES['BAD_REQUEST'])
             elif user.first_name is None:   # checking weather user has completed stepper page
-                return Response({'message':DETAILS_NOT_ENTERED,'token':token},status=STATUSES['SUCCESS']) 
+                return Response({'message':DETAILS_NOT_ENTERED,'token':token,'id':encryptData(user.id)},status=STATUSES['SUCCESS']) 
 
             return JsonResponse({
                 'message': LOGIN_SUCCESS,  # Using 'message' key
                 'token' : token,
                 'id':encryptData(user.id)
-                # 'data' : {
-                #     'name' : user.first_name + user.last_name,
-                #     'user_id' : encryptData(user.id),  # encoding the user id
-                #     'email' : email,
-                #     'role' : user_role
-                # }
             }, status= STATUSES['SUCCESS'])
         
         else:
@@ -109,7 +103,7 @@ def home_page_count(request):
 
 
             mentor_id = userDetails['id']
-            mentor_details = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,profile_picture_url FROM static_mentor WHERE id={mentor_id};")[0]
+            mentor_details = Mentor.objects.raw(f"SELECT id,first_name,last_name,designation,company,profile_picture_url FROM core_mentor WHERE id={mentor_id};")[0]
             print(mentor_details)
 
             # if mentor_details.exists() :
@@ -117,7 +111,7 @@ def home_page_count(request):
                 # if the mentor Exists
                 log("Mentor Exists",DEBUG_CODE)
                 # session_details =  Session.objects.filter(mentor = mentor_details.id) # getting the session details with that mentor
-                session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM static_session WHERE mentor_id={mentor_id};")
+                session_details = Session.objects.raw(f"SELECT id,from_slot_time,slot_date FROM core_session WHERE mentor_id={mentor_id};")
                 
                 print('entered the loop --',session_details)
                 sessions = []  # list to store the upcoming sessions
@@ -255,6 +249,7 @@ def VerifyMentee(request):
         mentee = Mentee.objects.get(id=menteeID)
         mentee.is_email_verified = True
         mentee.save()
+        print(mentee.is_email_verified)
         log('Email verification sucess for '+menteeID,DEBUG_CODE)
         return redirect('https://growbinar.com/mentee')
     except Exception as error:
@@ -513,5 +508,5 @@ def resendMail(request):
 
 
     # cur = connection.cursor()
-    # cur.execute("INSERT INTO static_mentor (email_id,password) values(\'dharun.ap2022cse@sece.ac.in\',\'ehllo\');")
-    # Mentor.objects.raw("INSERT INTO static_mentors (email,password) values(dharun.ap2022cse@sece.ac.in,ehllo);")
+    # cur.execute("INSERT INTO core_mentor (email_id,password) values(\'dharun.ap2022cse@sece.ac.in\',\'ehllo\');")
+    # Mentor.objects.raw("INSERT INTO core_mentors (email,password) values(dharun.ap2022cse@sece.ac.in,ehllo);")

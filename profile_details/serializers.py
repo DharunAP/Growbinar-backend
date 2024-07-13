@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from static.models import Testimonial, Experience
+from core.models import Testimonial, Experience
 
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
